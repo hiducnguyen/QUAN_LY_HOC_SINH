@@ -1,15 +1,11 @@
-﻿using QUAN_LY_HOC_SINH.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Repositories.Enums;
 
-namespace QUAN_LY_HOC_SINH.Models
+namespace Repositories.Models
 {
     public class BANG_DIEM_MON_HOC
     {
         public virtual int ID { get; set; }
-        public virtual MON_HOC MON_HOC { get; set; }
+        public virtual int MON_HOC_ID { get; set; }
         public virtual HocKi HOC_KY { get; set; }
         public virtual float Diem15phut { get; set; }
         public virtual float Diem1tiet { get; set; }

@@ -1,10 +1,8 @@
-﻿using QUAN_LY_HOC_SINH.Enums;
+﻿using Repositories.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace QUAN_LY_HOC_SINH.Models
+namespace Repositories.Models
 {
     public class HOC_SINH
     {

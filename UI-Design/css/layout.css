@@ -1,0 +1,53 @@
+header {
+    margin-top: 10px;
+}
+
+/*  Brand bar   */
+#brand a, #brand a:hover {
+    color: #007bff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#horizontal_menu {
+    text-align: right;
+    padding-top: 40px;
+    padding-right: 0;
+}
+
+#horizontal_menu a, #horizontal_menu a:hover {
+    text-decoration: none;
+    font-size: 1.2em;
+    vertical-align: bottom;
+    padding-right: 0;
+}
+/*  End of brand bar   */
+
+/*  Navigation bar */
+.nav_group {
+    margin-top: 20px;
+}
+
+.nav_group_name {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #007bff;
+    margin: 0;
+}
+
+.nav_option, .nav_option:hover {
+    display: block;
+    font-size: 1.2em;
+    text-decoration: none; 
+}
+
+@media (max-width: 991px) {
+    #nav_bar {
+        text-align: center;
+    }
+}
+/*  Navigation bar */
+
+footer {
+    text-align: center;
+}

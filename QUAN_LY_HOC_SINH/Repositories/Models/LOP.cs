@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace QUAN_LY_HOC_SINH.Models
+namespace Repositories.Models
 {
     public class LOP
     {
