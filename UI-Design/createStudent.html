@@ -40,16 +40,22 @@
                     <p class="nav_group_name">Thêm</p>
                     <a href="./createStudent.html" class="nav_option">Học sinh</a>
                     <a href="./createClass.html" class="nav_option">Lớp học</a>
+                    <a href="./createSubject.html" class="nav_option">Môn học</a>
+                    <a href="./createTranscript.html" class="nav_option">Bảng điểm</a>
                 </div>
                 <div class="nav_group">
                     <p class="nav_group_name">Danh sách</p>
                     <a href="./listStudents.html" class="nav_option">Học sinh</a>
                     <a href="./listClasses.html" class="nav_option">Lớp học</a>
+                    <a href="./listSubjects.html" class="nav_option">Môn học</a>
+                    <a href="./listTranscripts.html" class="nav_option">Bảng điểm</a>
                 </div>
                 <div class="nav_group">
                     <p class="nav_group_name">Khác</p>
-                    <a href="#" class="nav_option">Tạo báo cáo</a>
-                    <a href="#" class="nav_option">Thay đổi quy định</a>
+                    <a href="./searchTranscript.html" class="nav_option">Tra cứu điểm</a>
+                    <a href="./searchSubjectReport.html" class="nav_option">Báo cáo môn học</a>
+                    <a href="./searchSemesterReport.html" class="nav_option">Báo cáo học kỳ</a>
+                    <a href="./listRules.html" class="nav_option">Thay đổi quy định</a>
                 </div>
             </nav>
             <div class="col-lg-8 content">
@@ -72,9 +78,31 @@
                         <option value="other">Khác</option>
                     </select>
                     <br>
-                    <button class="btn btn-secondary">Hủy</button>
+                    <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">Hủy</a>
                     <button type="submit" class="btn btn-primary">Xong</button>
                 </form>
+                <!-- Cancel Modal -->
+                <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cancelModalLabel">Hủy</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" name="id" hidden/>
+                                <p>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                                <a href="#" class="btn btn-primary">Có</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Cancel Modal -->
                 <!--    End of Content  -->
             </div>
         </div>

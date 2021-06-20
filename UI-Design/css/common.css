@@ -34,6 +34,9 @@ input[type="checkbox" i]{
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
 }
+td, th {
+    text-align: center;
+}
 @media (min-width: 992px) {
     .expand-lg {
         display: block !important;

@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <title>Trang chủ | Quản lý học sinh</title>
+    <title>Quy định | Quản lý học sinh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/layout.css">
 </head>
@@ -15,7 +16,7 @@
     <div class="container">
         <header class="row">
             <div id="brand" class="col-12 col-lg-7">
-                <a href="#" class="navbar-brand">
+                <a href="./index.html" class="navbar-brand">
                     <img src="./images/logo.jpg" alt="Logo" id="logo" class="d-none d-sm-inline">
                     <span id="brand_name">QUẢN LÝ HỌC SINH</span>
                 </a>
@@ -35,7 +36,7 @@
                 Mục lục
             </button>
             <nav class="col-lg-2 navbar-collapse collapse expand-lg" id="nav_bar">
-                <a href="#" class="nav_option">Trang chủ</a>
+                <a href="./index.html" class="nav_option">Trang chủ</a>
                 <div class="nav_group">
                     <p class="nav_group_name">Thêm</p>
                     <a href="./createStudent.html" class="nav_option">Học sinh</a>
@@ -58,9 +59,70 @@
                     <a href="./listRules.html" class="nav_option">Thay đổi quy định</a>
                 </div>
             </nav>
-            <div class="col-lg-8 content">
+            <div class="col-lg-10 content">
                 <!--    Content here -->
-                <h2>Ứng dụng quản lý học sinh</h2>
+                <p class="page_title">Danh sách quy định</p>
+                <form action="">
+                    <div class="table-responsive">
+                        <table class="data_table table-striped table-bordered">
+                            <thead>
+                                <th>Tên quy định</th>
+                                <th>Đơn vị</th>
+                                <th>Giá trị</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Độ tuổi tối thiểu</td>
+                                    <td>Số nguyên</td>
+                                    <td><input type="text" name="minimumAge" value="15" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Độ tuổi tối đa</td>
+                                    <td>Số nguyên</td>
+                                    <td><input type="text" name="maximumAge" value="30" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Sĩ số tối đa</td>
+                                    <td>Số nguyên</td>
+                                    <td>
+                                        <input type="text" name="maximumNumberOfStudents" value="35"
+                                            class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Điểm đạt chuẩn</td>
+                                    <td>Số thực</td>
+                                    <td><input type="text" name="standardScore" value="5.0" class="form-control"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">Hủy</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </form>
+                <!-- Cancel Modal -->
+                <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cancelModalLabel">Hủy</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" name="id" hidden />
+                                <p>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                                <a href="#" class="btn btn-primary">Có</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Cancel Modal -->
                 <!--    End of Content  -->
             </div>
         </div>
@@ -83,6 +145,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+    <script src="./scripts/custom.js"></script>
 </body>
 
 </html>

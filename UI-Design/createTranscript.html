@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Trang chủ | Quản lý học sinh</title>
+    <title>Thêm bảng điểm | Quản lý học sinh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -15,7 +15,7 @@
     <div class="container">
         <header class="row">
             <div id="brand" class="col-12 col-lg-7">
-                <a href="#" class="navbar-brand">
+                <a href="./index.html" class="navbar-brand">
                     <img src="./images/logo.jpg" alt="Logo" id="logo" class="d-none d-sm-inline">
                     <span id="brand_name">QUẢN LÝ HỌC SINH</span>
                 </a>
@@ -35,7 +35,7 @@
                 Mục lục
             </button>
             <nav class="col-lg-2 navbar-collapse collapse expand-lg" id="nav_bar">
-                <a href="#" class="nav_option">Trang chủ</a>
+                <a href="./index.html" class="nav_option">Trang chủ</a>
                 <div class="nav_group">
                     <p class="nav_group_name">Thêm</p>
                     <a href="./createStudent.html" class="nav_option">Học sinh</a>
@@ -60,7 +60,52 @@
             </nav>
             <div class="col-lg-8 content">
                 <!--    Content here -->
-                <h2>Ứng dụng quản lý học sinh</h2>
+                <p class="page_title">Thêm bảng điểm</p>
+                <form action="">
+                    <label for="className" class="required">Lớp</label>
+                    <input name="className" type="text" class="form-control">
+                    <label for="subject" class="required">Môn học</label>
+                    <select name="subject" class="form-control">
+                        <option value="" selected disabled>Chọn môn học</option>
+                        <option value="Toán">Toán</option>
+                        <option value="Lý">Lý</option>
+                        <option value="Hóa">Hóa</option>
+                        <option value="Anh">Anh</option>
+                        <option value="Sử">Sử</option>
+                        <option value="Địa">Địa</option>
+                    </select>
+                    <label for="semester" class="required">Học kỳ</label>
+                    <select name="semester" class="form-control">
+                        <option value="" disabled selected>Chọn học kỳ</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                    <br>
+                    <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">Hủy</a>
+                    <a class="btn btn-primary" href="./createTranscriptDetail.html">Xong</a>
+                </form>
+                <!-- Cancel Modal -->
+                <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cancelModalLabel">Hủy</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" name="id" hidden/>
+                                <p>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                                <a href="#" class="btn btn-primary">Có</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Cancel Modal -->
                 <!--    End of Content  -->
             </div>
         </div>

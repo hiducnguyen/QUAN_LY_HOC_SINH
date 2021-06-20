@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <title>Thêm lớp học | Quản lý học sinh</title>
+    <title>Thêm học sinh | Quản lý học sinh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/layout.css">
 </head>
@@ -58,53 +59,93 @@
                     <a href="./listRules.html" class="nav_option">Thay đổi quy định</a>
                 </div>
             </nav>
-            <div class="col-lg-8 content">
+            <div class="col-lg-10 content">
                 <!--    Content here -->
-                <p class="page_title">Thêm lớp học</p>
-                <form action="">
-                    <label for="name" class="required">Tên</label>
-                    <input name="name" type="text" class="form-control">
-                    <label for="class" class="required">Khối</label>
-                    <select name="class" class="form-control">
-                        <option value="" selected disabled>Chọn khối</option>
-                        <option value="male">10</option>
-                        <option value="female">11</option>
-                        <option value="other">12</option>
-                    </select>
-                    <label for="students" class="required">Học sinh</label>
-                    <div>
-                        <select name="students" class="form-control multi_select" multiple>
-                            <option value="DCV">1000: Nguyễn Văn Đức</option>
-                            <option value="HDH">1001: Đồng Hữu Hiếu</option>
-                            <option value="VHA">1002: Trần Văn Hảo</option>
-                        </select>
-                    </div>
-                    <br>
-                    <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">Hủy</a>
-                    <button type="submit" class="btn btn-primary">Xong</button>
-                </form>
-                <!-- Cancel Modal -->
-                <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel"
+                <p class="page_title">Danh sách lớp học</p>
+                <div class="table-responsive">
+                    <table class="data_table table-striped table-bordered">
+                        <thead>
+                            <th>Tên</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sinh học</td>
+                                <td>
+                                    <a data-toggle="modal" data-id="Sinh học" href="#deleteModal">Xóa</a>
+                                    <a href="#">Sửa</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hóa học</td>
+                                <td>
+                                    <a data-toggle="modal" data-id="Hóa học" href="#deleteModal">Xóa</a>
+                                    <a href="#">Sửa</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Toán học</td>
+                                <td>
+                                    <a data-toggle="modal" data-id="Toán học" href="#deleteModal">Xóa</a>
+                                    <a href="#">Sửa</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vật lí</td>
+                                <td>
+                                    <a data-toggle="modal" data-id="Vật lí" href="#deleteModal">Xóa</a>
+                                    <a href="#">Sửa</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ngữ văn</td>
+                                <td>
+                                    <a data-toggle="modal" data-id="Ngữ văn" href="#deleteModal">Xóa</a>
+                                    <a href="#">Sửa</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Thể dục</td>
+                                <td>
+                                    <a data-toggle="modal" data-id="Thể dục" href="#deleteModal">Xóa</a>
+                                    <a href="#">Sửa</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Giáo dục công dân</td>
+                                <td>
+                                    <a data-toggle="modal" data-id="Giáo dục công dân" href="#deleteModal">Xóa</a>
+                                    <a href="#">Sửa</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Delete Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="cancelModalLabel">Hủy</h5>
+                                <h5 class="modal-title" id="deleteModalLabel">Xóa môn học</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <input type="text" name="id" hidden/>
-                                <p>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
-                                <a href="#" class="btn btn-primary">Có</a>
-                            </div>
+                            <form id="form_delete" method="post" action="#">
+                                <div class="modal-body">
+                                    <input type="text" name="id" hidden/>
+                                    <p>Bạn có chắc chắn muốn xóa môn học có tên <span id="id_to_delete"></span> ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                                    <button type="submit" class="btn btn-primary">Có</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!-- End of Cancel Modal -->
+                <!-- End of Delete Modal -->
                 <!--    End of Content  -->
             </div>
         </div>
@@ -115,16 +156,15 @@
             <p>&#169; Develope by helloVanDuc </p>
         </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>

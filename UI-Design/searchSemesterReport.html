@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <title>Trang chủ | Quản lý học sinh</title>
+    <title>Danh sách bảng điểm | Quản lý học sinh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/layout.css">
 </head>
@@ -15,7 +16,7 @@
     <div class="container">
         <header class="row">
             <div id="brand" class="col-12 col-lg-7">
-                <a href="#" class="navbar-brand">
+                <a href="./index.html" class="navbar-brand">
                     <img src="./images/logo.jpg" alt="Logo" id="logo" class="d-none d-sm-inline">
                     <span id="brand_name">QUẢN LÝ HỌC SINH</span>
                 </a>
@@ -35,7 +36,7 @@
                 Mục lục
             </button>
             <nav class="col-lg-2 navbar-collapse collapse expand-lg" id="nav_bar">
-                <a href="#" class="nav_option">Trang chủ</a>
+                <a href="./index.html" class="nav_option">Trang chủ</a>
                 <div class="nav_group">
                     <p class="nav_group_name">Thêm</p>
                     <a href="./createStudent.html" class="nav_option">Học sinh</a>
@@ -58,9 +59,14 @@
                     <a href="./listRules.html" class="nav_option">Thay đổi quy định</a>
                 </div>
             </nav>
-            <div class="col-lg-8 content">
+            <div class="col-lg-10 content">
                 <!--    Content here -->
-                <h2>Ứng dụng quản lý học sinh</h2>
+                <p class="page_title">Tạo báo cáo tổng kết học kỳ</p>
+                <form action="">
+                        <input type="text" name="semester" class="form-control" placeholder="Học kỳ">
+                        <br>
+                        <a href="./semesterReport.html" class="btn btn-primary">Tạo</a>
+                </form>
                 <!--    End of Content  -->
             </div>
         </div>
@@ -83,6 +89,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+    <script src="./scripts/custom.js"></script>
 </body>
 
 </html>
