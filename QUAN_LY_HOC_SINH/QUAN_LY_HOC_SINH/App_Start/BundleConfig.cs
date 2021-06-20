@@ -19,11 +19,26 @@ namespace QUAN_LY_HOC_SINH
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/popper.js",
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                      "~/Content/bootstrap.min.css"));
+
+            // Select2
+            bundles.Add(new ScriptBundle("~/bundles/select2").Include(
+                      "~/Scripts/select2.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/select2").Include(
+                      "~/Content/css/select2.min.css"));
+
+            // Custom
+            bundles.Add(new StyleBundle("~/Content/custom").Include(
+                      "~/Content/css/common.css",
+                      "~/Content/css/layout.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                      "~/Scripts/custom.js"));
         }
     }
 }

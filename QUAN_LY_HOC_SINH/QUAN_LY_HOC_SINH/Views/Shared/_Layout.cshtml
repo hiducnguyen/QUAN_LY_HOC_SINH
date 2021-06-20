@@ -1,42 +1,77 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <title>@ViewBag.Title | Quản lý học sinh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/select2")
+    @Styles.Render("~/Content/custom")
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="container">
+        <header class="row">
+            <div id="brand" class="col-12 col-lg-7">
+                <a href="/" class="navbar-brand">
+                    <img src="./images/logo.jpg" alt="Logo" id="logo" class="d-none d-sm-inline">
+                    <span id="brand_name">QUẢN LÝ HỌC SINH</span>
+                </a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div id="horizontal_menu" class="col-12 col-lg-5 row">
+                <a href="#" class="col-7">Tài khoản</a>
+                <a href="#" class="col-5">Đăng xuất</a>
             </div>
+        </header>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <button class="btn btn-outline-primary m-auto navbar-toggler d-lg-none d-block" id="btn_menu"
+                    data-toggle="collapse" data-target="#nav_bar" aria-controls="nav_bar_box" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                Mục lục
+            </button>
+            <nav class="col-lg-2 navbar-collapse collapse expand-lg" id="nav_bar">
+                <a href="/" class="nav_option">Trang chủ</a>
+                <div class="nav_group">
+                    <p class="nav_group_name">Thêm</p>
+                    <a href="./createStudent.html" class="nav_option">Học sinh</a>
+                    <a href="./createClass.html" class="nav_option">Lớp học</a>
+                    <a href="./createSubject.html" class="nav_option">Môn học</a>
+                    <a href="./createTranscript.html" class="nav_option">Bảng điểm</a>
+                </div>
+                <div class="nav_group">
+                    <p class="nav_group_name">Danh sách</p>
+                    <a href="./listStudents.html" class="nav_option">Học sinh</a>
+                    <a href="./listClasses.html" class="nav_option">Lớp học</a>
+                    <a href="./listSubjects.html" class="nav_option">Môn học</a>
+                    <a href="./listTranscripts.html" class="nav_option">Bảng điểm</a>
+                </div>
+                <div class="nav_group">
+                    <p class="nav_group_name">Khác</p>
+                    <a href="./searchTranscript.html" class="nav_option">Tra cứu điểm</a>
+                    <a href="./searchSubjectReport.html" class="nav_option">Báo cáo môn học</a>
+                    <a href="./searchSemesterReport.html" class="nav_option">Báo cáo học kỳ</a>
+                    <a href="./listRules.html" class="nav_option">Thay đổi quy định</a>
+                </div>
+            </nav>
+            <!--    Content here -->
+            @RenderBody()
+            <!--    End of Content  -->
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+    <hr>
+    <div class="container">
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&#169; Phát triển bởi helloVanDuc </p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/select2")
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+    @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
