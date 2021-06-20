@@ -1,6 +1,9 @@
 ﻿using NHibernate;
 using NHibernate.Cfg;
+using Repositories.UnitOfWork;
+using System.Web.Mvc;
 using Unity;
+using Unity.AspNet.Mvc;
 
 namespace QUAN_LY_HOC_SINH
 {
@@ -10,9 +13,9 @@ namespace QUAN_LY_HOC_SINH
         {
             var container = new UnityContainer();
 
-            ISessionFactory sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            container.RegisterSingleton<IUnitOfWork, UnitOfWork>();
 
-            container.RegisterInstance<ISessionFactory>(sessionFactory);
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
 
     }
