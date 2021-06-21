@@ -34,8 +34,8 @@ namespace QUAN_LY_HOC_SINH
 
             // Custom
             bundles.Add(new StyleBundle("~/Content/custom").Include(
-                      "~/Content/css/common.css",
-                      "~/Content/css/layout.css"));
+                      "~/Content/common.css",
+                      "~/Content/layout.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                       "~/Scripts/custom.js"));

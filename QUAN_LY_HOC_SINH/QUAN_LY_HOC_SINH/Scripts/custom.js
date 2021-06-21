@@ -31,7 +31,7 @@
         let id = $(e.relatedTarget).data('id');
 
         //  Populate the text box
-        document.querySelector('#deleteModal input[name="id"]').innerText = id;
+        document.querySelector('#deleteModal input[name="id"]').value = id;
         document.querySelector('#deleteModal #id_to_delete').innerText = id;
     });
 });

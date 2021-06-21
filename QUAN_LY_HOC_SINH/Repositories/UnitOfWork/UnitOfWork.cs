@@ -3,13 +3,8 @@ using NHibernate.Cfg;
 using NHibernate.Cfg.MappingSchema;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
-using Repositories.Mapping;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories.UnitOfWork
 {
@@ -30,8 +25,6 @@ namespace Repositories.UnitOfWork
 
             //  Create session factory
             _sessionFactory = config.BuildSessionFactory();
-
-            new SchemaExport(config).Create(false, true);
         }
 
         private HbmMapping GetMappings()
