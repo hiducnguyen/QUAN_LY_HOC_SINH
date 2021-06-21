@@ -51,6 +51,7 @@
     <Compile Include="GenericRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentRepositoryTest.cs" />
+    <Compile Include="StudentServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
