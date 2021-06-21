@@ -1,11 +1,6 @@
 ﻿using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 using Repositories.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories.Mapping
 {
@@ -19,31 +14,39 @@ namespace Repositories.Mapping
                 m.Generator(Generators.GuidComb);
                 m.Column("ID");
             });
-            Version(x => x.Version, m => {
+            Version(x => x.Version, m =>
+            {
                 m.Column("VERSION");
             });
-            Property(x => x.StudentId, m => {
+            Property(x => x.StudentId, m =>
+            {
                 m.NotNullable(true);
+                m.Unique(true);
                 m.Column("MA_SO");
             });
-            Property(x => x.Name, m => {
+            Property(x => x.Name, m =>
+            {
                 m.NotNullable(true);
                 m.Column("HO_TEN");
             });
-            Property(x => x.Gender, m => {
+            Property(x => x.Gender, m =>
+            {
                 m.NotNullable(true);
                 m.Column("GIOI_TINH");
             });
-            Property(x => x.BirthDate, m => {
+            Property(x => x.BirthDate, m =>
+            {
                 m.Column(c => c.SqlType("date"));
                 m.NotNullable(true);
                 m.Column("NGAY_SINH");
             });
-            Property(x => x.Address, m => {
+            Property(x => x.Address, m =>
+            {
                 m.NotNullable(true);
                 m.Column("DIA_CHI");
             });
-            Property(x => x.Email, m => {
+            Property(x => x.Email, m =>
+            {
                 m.NotNullable(true);
                 m.Column("EMAIL");
             });
