@@ -6,8 +6,6 @@ using Repositories.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test
 {
@@ -46,11 +44,11 @@ namespace Test
         public void FindAllStudents__SaveThreeMockStudentsAndInvokeFindAllStudents__AllThreeMockStudentsShouldBeFound()
         {
             // Arrange
-            _mockStudents.Add(CreateOneMockStudent(1000, "student one", Gender.Female, new DateTime(2000, 3, 26),
+            _mockStudents.Add(CreateOneMockStudent(5000, "student one", Gender.Female, new DateTime(2000, 3, 26),
                 "addrees one", "email one"));
-            _mockStudents.Add(CreateOneMockStudent(1001, "student two", Gender.Female, new DateTime(2000, 3, 26),
+            _mockStudents.Add(CreateOneMockStudent(5001, "student two", Gender.Female, new DateTime(2000, 3, 26),
                 "addrees two", "email two"));
-            _mockStudents.Add(CreateOneMockStudent(1003, "student three", Gender.Female, new DateTime(2000, 3, 26),
+            _mockStudents.Add(CreateOneMockStudent(5002, "student three", Gender.Female, new DateTime(2000, 3, 26),
                 "addrees three", "email three"));
 
             using (_unitOfWork.Start())
@@ -107,7 +105,7 @@ namespace Test
         {
             return new Student
             {
-                StudentId = 1000,
+                StudentId = 5000,
                 Name = "mock student",
                 Gender = Gender.Female,
                 BirthDate = new DateTime(2000, 3, 26),
@@ -116,11 +114,11 @@ namespace Test
             };
         }
         private Student CreateOneMockStudent(
-            int studentId, 
-            string name, 
-            Gender gender, 
-            DateTime birthDate, 
-            string address, 
+            int studentId,
+            string name,
+            Gender gender,
+            DateTime birthDate,
+            string address,
             string email)
         {
             return new Student

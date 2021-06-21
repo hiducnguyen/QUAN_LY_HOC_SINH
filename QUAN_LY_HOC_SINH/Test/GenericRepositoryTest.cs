@@ -115,7 +115,7 @@ namespace Test
         {
             return new Student
             {
-                StudentId = 1000,
+                StudentId = 5000,
                 Name = "Nguyễn Văn Đức",
                 Gender = Gender.Male,
                 BirthDate = new DateTime(2000, 3, 26),
