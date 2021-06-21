@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/select2")
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
     @Styles.Render("~/Content/custom")
 </head>
-
 <body>
+    @{
+        string controller = ViewContext.RouteData.GetRequiredString("controller").ToLower();
+        string action = ViewContext.RouteData.GetRequiredString("action").ToLower();
+        string currentLink = $"/{controller}/{action}";
+    }
     <div class="container">
         <header class="row">
             <div id="brand" class="col-12 col-lg-7">
                 <a href="/" class="navbar-brand">
-                    <img src="./images/logo.jpg" alt="Logo" id="logo" class="d-none d-sm-inline">
+                    <img src="~/Images/logo.jpg" alt="Logo" id="logo" class="d-none d-sm-inline">
                     <span id="brand_name">QUẢN LÝ HỌC SINH</span>
                 </a>
             </div>
@@ -32,17 +37,21 @@
                 Mục lục
             </button>
             <nav class="col-lg-2 navbar-collapse collapse expand-lg" id="nav_bar">
-                <a href="/" class="nav_option">Trang chủ</a>
+                <a href="/" class="nav_option @(currentLink=="/home/index"?"current_item":"")">Trang chủ</a>
                 <div class="nav_group">
                     <p class="nav_group_name">Thêm</p>
-                    <a href="./createStudent.html" class="nav_option">Học sinh</a>
-                    <a href="./createClass.html" class="nav_option">Lớp học</a>
+                    <a href="/student/create" class="nav_option @(currentLink=="/student/create"?"current_item":"")">
+                        Học sinh
+                    </a>
+                    <a href="/class/create" class="nav_option @(currentLink=="/class/create"?"current_item":"")">
+                        Lớp học
+                    </a>
                     <a href="./createSubject.html" class="nav_option">Môn học</a>
                     <a href="./createTranscript.html" class="nav_option">Bảng điểm</a>
                 </div>
                 <div class="nav_group">
                     <p class="nav_group_name">Danh sách</p>
-                    <a href="./listStudents.html" class="nav_option">Học sinh</a>
+                    <a href="/student/index" class="nav_option @(currentLink=="/student/index"?"current_item":"")">Học sinh</a>
                     <a href="./listClasses.html" class="nav_option">Lớp học</a>
                     <a href="./listSubjects.html" class="nav_option">Môn học</a>
                     <a href="./listTranscripts.html" class="nav_option">Bảng điểm</a>
@@ -67,6 +76,7 @@
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/select2")
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>

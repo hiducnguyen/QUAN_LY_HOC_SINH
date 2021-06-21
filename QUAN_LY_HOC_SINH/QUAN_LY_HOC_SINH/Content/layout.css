@@ -41,6 +41,15 @@
     text-decoration: none;
 }
 
+.current_item, .current_item:hover {
+    color: black;
+    font-style: italic;
+}
+
+.current_item::after {
+    content: " <<";
+}
+
 @media (max-width: 991px) {
     #nav_bar {
         text-align: center;
