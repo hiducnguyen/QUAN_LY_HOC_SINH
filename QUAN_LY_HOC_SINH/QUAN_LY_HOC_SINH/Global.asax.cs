@@ -12,6 +12,7 @@ namespace QUAN_LY_HOC_SINH
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            InjectorConfig.RegisterInjectors();
         }
     }
 }
