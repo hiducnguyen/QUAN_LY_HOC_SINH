@@ -1,0 +1,65 @@
+﻿@model IList<Services.DTO.IndexStudentDTO>
+@using Services.DTO
+@using Resources
+@using System.Globalization
+
+<div class="col-lg-10 content">
+    <p class="page_title">Danh sách học sinh</p>
+    <div class="table-responsive">
+        <table class="data_table table-striped table-bordered">
+            <thead>
+            <th>@Resource.StudentId</th>
+            <th>@Resource.StudentName</th>
+            <th>@Resource.Gender</th>
+            <th>@Resource.BirthDate</th>
+            <th>@Resource.Email</th>
+            <th>@Resource.Address</th>
+            <th></th>
+            </thead>
+            <tbody>
+                @foreach (IndexStudentDTO student in Model)
+                {
+                    <tr>
+                        <td>@student.StudentId</td>
+                        <td>@student.Name</td>
+                        <td>@student.Gender</td>
+                        <td>@student.BirthDate.ToString(new CultureInfo("vi-VN").DateTimeFormat.ShortDatePattern)</td>
+                        <td>@student.Email</td>
+                        <td>@student.Address</td>
+                        <td>
+                            <a data-toggle="modal" data-id="@student.StudentId" href="#deleteModal">@Resource.Delete</a>
+                            <a href="/student/edit/@student.StudentId">@Resource.Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">@Resource.Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <form method="post" action="/student/delete">
+                    <div class="modal-body">
+                        <input type="number" name="id" hidden/>
+                        <p>
+                            @string.Format(Resource.DeleteConfirmMessage, Resource.Student, Resource.StudentId)
+                            <span id="id_to_delete"></span> ?
+                        </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Resource.No</button>
+                    <button type="submit" class="btn btn-primary">@Resource.Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End of Delete Modal -->
+</div>
