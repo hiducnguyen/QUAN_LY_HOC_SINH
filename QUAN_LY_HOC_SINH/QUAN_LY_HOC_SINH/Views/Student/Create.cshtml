@@ -21,7 +21,7 @@
         <div>
             @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "required" })
             @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control",
-           @type = "date", @data_val_date = Resource.DateOnlyError } })
+           @type = "date", @data_val_date = Resource.DateOnlyError }})
             @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
         </div>
         <div>
@@ -44,26 +44,7 @@
         <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">@Resource.Cancel</a>
         <button type="submit" class="btn btn-primary">@Resource.Done</button>
     }
-    <!-- Cancel Modal -->
-    <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cancelModalLabel">@Resource.Cancel</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" name="id" hidden />
-                    <p>@Resource.ConfirmCancel</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Resource.No</button>
-                    <a href="#" class="btn btn-primary">@Resource.Yes</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of Cancel Modal -->
+    @Html.Partial("_CancelModal", new ViewDataDictionary {
+        { "RedirectLink", "/student/index"}
+    })
 </div>

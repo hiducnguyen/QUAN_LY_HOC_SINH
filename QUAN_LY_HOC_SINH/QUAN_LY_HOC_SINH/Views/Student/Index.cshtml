@@ -35,31 +35,9 @@
             </tbody>
         </table>
     </div>
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">@Resource.Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <form method="post" action="/student/delete">
-                    <div class="modal-body">
-                        <input type="number" name="id" hidden/>
-                        <p>
-                            @string.Format(Resource.DeleteConfirmMessage, Resource.Student, Resource.StudentId)
-                            <span id="id_to_delete"></span> ?
-                        </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Resource.No</button>
-                    <button type="submit" class="btn btn-primary">@Resource.Yes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End of Delete Modal -->
+    @Html.Partial("_DeleteModal", new ViewDataDictionary {
+    { "Action", "/student/delete"},
+    { "ObjectName", Resource.Student},
+    { "ObjectIdName", Resource.StudentId }
+    })
 </div>
