@@ -38,6 +38,7 @@ namespace Services.DTO
         [Display(Name = "Gender", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         public string Gender { get; set; }
+        public int Version { get; set; }
 
         public SelectList AllGenders { get; set; }
         public bool EditMode { get; set; }

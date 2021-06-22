@@ -10,7 +10,15 @@
 
         <div>
             @Html.LabelFor(model => model.StudentId, htmlAttributes: new { @class = "required" })
-            @Html.EditorFor(model => model.StudentId, new { htmlAttributes = new { @class = "form-control" } })
+            @if (Model.EditMode)
+            {
+                @Html.EditorFor(model => model.StudentId, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.StudentId)
+            }
+            else
+            {
+                @Html.EditorFor(model => model.StudentId, new { htmlAttributes = new { @class = "form-control" } })
+            }
             @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
         </div>
         <div>
@@ -40,6 +48,7 @@
             @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
         </div>
         @Html.HiddenFor(model => model.EditMode)
+        @Html.HiddenFor(model => model.Version)
         <br>
         <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">@Resource.Cancel</a>
         <button type="submit" class="btn btn-primary">@Resource.Done</button>

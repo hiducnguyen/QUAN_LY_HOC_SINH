@@ -71,6 +71,28 @@ namespace QUAN_LY_HOC_SINH.Controllers
             return View("Create", model);
         }
 
+        // POST: Student/Edit/id
+        [HttpPost]
+        public ActionResult Edit(
+            [Bind(Include = "StudentId,Name,BirthDate,Email,Address,Gender,Version")]
+            CreateStudentDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.EditMode = true;
+                _studentService.UpdateStudent(model);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                model.EditMode = true;
+                model.AllGenders = CreateSelectListGender();
+                ViewBag.Title = Resource.EditStudent;
+
+                return View("Create", model);
+            }
+        }
+
         [HttpPost]
         public ActionResult Delete(int? id)
         {
@@ -91,7 +113,8 @@ namespace QUAN_LY_HOC_SINH.Controllers
             }
             if (_studentService.IsStudentIdAlreadyExist(studentId))
             {
-                return Json(string.Format(Resource.StudentIdAlreadyExists, studentId), JsonRequestBehavior.AllowGet);
+                return Json(string.Format(Resource.ObjectAlreadyExists, Resource.Student, Resource.StudentId, studentId)
+                    , JsonRequestBehavior.AllowGet);
             }
             else
             {

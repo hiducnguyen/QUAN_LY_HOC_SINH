@@ -2,6 +2,7 @@
 using Repositories.Enums;
 using Repositories.Models;
 using Repositories.UnitOfWork;
+using Resources;
 using Services.DTO;
 using Services.Exceptions;
 using System;
@@ -29,13 +30,18 @@ namespace Services
         }
         public Student CreateStudent(CreateStudentDTO createStudentDTO)
         {
-            Student student = mapDTOtoStudent(createStudentDTO);
+            if (IsMissingRequiredField(createStudentDTO))
+            {
+                throw new MissingRequiredFieldException();
+            }
+
+            Student student = MapDTOtoStudent(createStudentDTO);
 
             using (_unitOfWork.Start())
             {
                 if (_studentRepository.FindStudentByStudentId(student.StudentId) != null)
                 {
-                    throw new StudentIdAlreadyExistsException(student.StudentId);
+                    throw new ObjectAlreadyExistsException(Resource.Student, Resource.StudentId, student.StudentId);
                 }
 
                 _genericRepository.Save(student);
@@ -52,7 +58,7 @@ namespace Services
                 Student student = _studentRepository.FindStudentByStudentId(studentId);
                 if (student == null)
                 {
-                    throw new StudentNotExistsException(studentId);
+                    throw new ObjectNotExistsException(Resource.Student, Resource.StudentId, studentId);
                 }
 
                 _genericRepository.Delete(student);
@@ -71,7 +77,7 @@ namespace Services
             IList<IndexStudentDTO> indexStudentDTOs = new List<IndexStudentDTO>();
             foreach (Student student in students)
             {
-                indexStudentDTOs.Add(mapStudentToIndexStudentDTO(student));
+                indexStudentDTOs.Add(MapStudentToIndexStudentDTO(student));
             }
 
             return indexStudentDTOs;
@@ -85,7 +91,7 @@ namespace Services
             {
                 student = _studentRepository.FindStudentByStudentId(studentId);
             }
-            CreateStudentDTO createStudentDTO = mapStudentToCreateStudentDTO(student);
+            CreateStudentDTO createStudentDTO = MapStudentToCreateStudentDTO(student);
             return createStudentDTO;
         }
 
@@ -98,7 +104,7 @@ namespace Services
             }
         }
 
-        private Student mapDTOtoStudent(CreateStudentDTO createStudentDTO)
+        private Student MapDTOtoStudent(CreateStudentDTO createStudentDTO)
         {
             return new Student
             {
@@ -107,10 +113,11 @@ namespace Services
                 BirthDate = createStudentDTO.BirthDate,
                 Email = createStudentDTO.Email,
                 Address = createStudentDTO.Address,
-                Gender = GenderHelper.ToGender(createStudentDTO.Gender)
+                Gender = GenderHelper.ToGender(createStudentDTO.Gender),
+                Version = (createStudentDTO.EditMode)?createStudentDTO.Version:default
             };
         }
-        private IndexStudentDTO mapStudentToIndexStudentDTO(Student student)
+        private IndexStudentDTO MapStudentToIndexStudentDTO(Student student)
         {
             return new IndexStudentDTO
             {
@@ -122,7 +129,7 @@ namespace Services
                 Gender = GenderHelper.GetText(student.Gender)
             };
         }
-        private CreateStudentDTO mapStudentToCreateStudentDTO(Student student)
+        private CreateStudentDTO MapStudentToCreateStudentDTO(Student student)
         {
             return new CreateStudentDTO
             {
@@ -131,8 +138,46 @@ namespace Services
                 BirthDate = student.BirthDate,
                 Email = student.Email,
                 Address = student.Address,
-                Gender = student.Gender.ToString()
+                Gender = student.Gender.ToString(),
+                Version = student.Version
             };
+        }
+
+        public void UpdateStudent(CreateStudentDTO createStudentDTO)
+        {
+            if (IsMissingRequiredField(createStudentDTO))
+            {
+                throw new MissingRequiredFieldException();
+            }
+
+            Student student = MapDTOtoStudent(createStudentDTO);
+            using (_unitOfWork.Start())
+            {
+                Student currentStudent = _studentRepository.FindStudentByStudentId(student.StudentId);
+                if (currentStudent == null)
+                {
+                    throw new ObjectNotExistsException(Resource.Student, Resource.StudentId, student.StudentId);
+                }
+                if (currentStudent.Version != student.Version)
+                {
+                    throw new ObjectHasBeenUpdatedException(Resource.Student, Resource.StudentId, student.StudentId);
+                }
+
+                currentStudent.Name = student.Name;
+                currentStudent.Gender = student.Gender;
+                currentStudent.Email = student.Email;
+                currentStudent.Address = student.Address;
+                currentStudent.BirthDate = student.BirthDate;
+
+                _genericRepository.Update(currentStudent);
+                _unitOfWork.Commit();
+            }
+        }
+        private bool IsMissingRequiredField(CreateStudentDTO createStudentDTO)
+        {
+            return (createStudentDTO.StudentId == default) || (createStudentDTO.Name == default) ||
+                (createStudentDTO.Address == default) || (createStudentDTO.BirthDate == default) ||
+                (createStudentDTO.Gender == default) || (createStudentDTO.Email == default);
         }
     }
 }

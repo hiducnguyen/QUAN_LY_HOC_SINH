@@ -168,6 +168,15 @@
   <data name="No" xml:space="preserve">
     <value>Không</value>
   </data>
+  <data name="ObjectAlreadyExists" xml:space="preserve">
+    <value>{0} có {1}: {2} đã tồn tại, vui lòng chọn {1} khác</value>
+  </data>
+  <data name="ObjectDoesNotExists" xml:space="preserve">
+    <value>{0} với {1}: {2} không tồn tại</value>
+  </data>
+  <data name="ObjectHasBeenUpdated" xml:space="preserve">
+    <value>{0} có {1}: {2} đã bị thay đổi sau khi bạn tải chúng</value>
+  </data>
   <data name="Other" xml:space="preserve">
     <value>Khác</value>
   </data>
@@ -177,20 +186,20 @@
   <data name="RequiredError" xml:space="preserve">
     <value>Giá trị này không được bỏ trống</value>
   </data>
+  <data name="RequiredFieldMissing" xml:space="preserve">
+    <value>Một (một số) trường giá trị bắt buộc bị thiếu</value>
+  </data>
   <data name="StringLengthError" xml:space="preserve">
     <value>{0} không được vượt quá {1} kí tự</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value>Học sinh</value>
   </data>
-  <data name="StudentDoesNotExists" xml:space="preserve">
-    <value>Học sinh với mã số học sinh {0} không tồn tại</value>
-  </data>
   <data name="StudentId" xml:space="preserve">
     <value>Mã số học sinh</value>
   </data>
-  <data name="StudentIdAlreadyExists" xml:space="preserve">
-    <value>Mã số học sinh: {0} đã tồn tại, vui lòng chọn mã số khác</value>
+  <data name="StudentIdAlreadyExist" xml:space="preserve">
+    <value>Mã số học sinh đã tồn tại, vui lòng chọn mã số khác</value>
   </data>
   <data name="StudentName" xml:space="preserve">
     <value>Họ tên</value>

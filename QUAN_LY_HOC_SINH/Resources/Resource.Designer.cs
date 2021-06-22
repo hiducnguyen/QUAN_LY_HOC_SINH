@@ -214,6 +214,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} có {1}: {2} đã tồn tại, vui lòng chọn {1} khác.
+        /// </summary>
+        public static string ObjectAlreadyExists {
+            get {
+                return ResourceManager.GetString("ObjectAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} với {1}: {2} không tồn tại.
+        /// </summary>
+        public static string ObjectDoesNotExists {
+            get {
+                return ResourceManager.GetString("ObjectDoesNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} có {1}: {2} đã bị thay đổi sau khi bạn tải chúng.
+        /// </summary>
+        public static string ObjectHasBeenUpdated {
+            get {
+                return ResourceManager.GetString("ObjectHasBeenUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Khác.
         /// </summary>
         public static string Other {
@@ -241,6 +268,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Một (một số) trường giá trị bắt buộc bị thiếu.
+        /// </summary>
+        public static string RequiredFieldMissing {
+            get {
+                return ResourceManager.GetString("RequiredFieldMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} không được vượt quá {1} kí tự.
         /// </summary>
         public static string StringLengthError {
@@ -259,15 +295,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Học sinh với mã số học sinh {0} không tồn tại.
-        /// </summary>
-        public static string StudentDoesNotExists {
-            get {
-                return ResourceManager.GetString("StudentDoesNotExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mã số học sinh.
         /// </summary>
         public static string StudentId {
@@ -277,11 +304,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mã số học sinh: {0} đã tồn tại, vui lòng chọn mã số khác.
+        ///   Looks up a localized string similar to Mã số học sinh đã tồn tại, vui lòng chọn mã số khác.
         /// </summary>
-        public static string StudentIdAlreadyExists {
+        public static string StudentIdAlreadyExist {
             get {
-                return ResourceManager.GetString("StudentIdAlreadyExists", resourceCulture);
+                return ResourceManager.GetString("StudentIdAlreadyExist", resourceCulture);
             }
         }
         

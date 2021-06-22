@@ -71,7 +71,7 @@ namespace Test
         }
 
         [Test]
-        public void CreateStudent__AddOneStudentWithExistingStudentId__StudentIdAlreadyExistExceptionShouldBeThrown()
+        public void CreateStudent__AddOneStudentWithExistingStudentId__ObjectAlreadyExistExceptionShouldBeThrown()
         {
             // Arrange
             CreateStudentDTO createStudentDTO = new CreateStudentDTO
@@ -90,7 +90,183 @@ namespace Test
             void createTheStudentWithExistingStudentId() => _studentService.CreateStudent(createStudentDTO);
 
             // Assert
-            Assert.Throws(typeof(StudentIdAlreadyExistsException), createTheStudentWithExistingStudentId);
+            Assert.Throws(typeof(ObjectAlreadyExistsException), createTheStudentWithExistingStudentId);
+        }
+
+        [Test]
+        public void CreateStudent__AddOneStudentMissingName__MissingRequiredFieldExceptionShouldBeThrown()
+        {
+            // Arrange
+            CreateStudentDTO createStudentDTO = new CreateStudentDTO
+            {
+                StudentId = 5000,
+                BirthDate = new DateTime(2000, 3, 26),
+                Email = "email@gmail.com",
+                Address = "mock address",
+                Gender = "Male"
+            };
+
+            // Act
+            void createStudentMissingName() => _studentService.CreateStudent(createStudentDTO);
+
+            // Assert
+            Assert.Throws(typeof(MissingRequiredFieldException), createStudentMissingName);
+        }
+
+        [Test]
+        public void UpdateStudent__UpdateOneValidStudent__TheStudentShouldBeUpdatedSuccessfully()
+        {
+            // Arrange
+            Student student = new Student
+            {
+                StudentId = 5000,
+                Name = "Nguyễn Văn Đức",
+                BirthDate = new DateTime(2000, 3, 26),
+                Email = "email@gmail.com",
+                Address = "mock address",
+                Gender = Gender.Male
+            };
+            using (_unitOfWork.Start())
+            {
+                _genericRepository.Save(student);
+                _unitOfWork.Commit();
+            }
+            CreateStudentDTO createStudentDTO = new CreateStudentDTO
+            {
+                StudentId = 5000,
+                Name = "updated name",
+                BirthDate = new DateTime(1998, 3, 26),
+                Email = "updatedEmail@gmail.com",
+                Address = "updated address",
+                Gender = "Female",
+                Version = student.Version,
+                EditMode = true
+            };
+
+            // Act
+            _studentService.UpdateStudent(createStudentDTO);
+
+            // Assert
+            Student updatedStudent;
+            using (_unitOfWork.Start())
+            {
+                updatedStudent = _studentRepository.FindStudentByStudentId(student.StudentId);
+            }
+            _mockStudents.Add(updatedStudent);
+            Assert.AreNotEqual(null, updatedStudent);
+            AssertStudentWithDTO(createStudentDTO, updatedStudent);
+        }
+
+        [Test]
+        public void UpdateStudent__UpdateNonExistStudent__ObjectNotExistsExceptionShouldBeThrown()
+        {
+            // Arrange
+            int studentId;
+            using (_unitOfWork.Start())
+            {
+                do
+                {
+                    studentId = new Random().Next(1000, 9999);
+                }
+                while (_studentRepository.FindStudentByStudentId(studentId) != null);
+            }
+            CreateStudentDTO createStudentDTO = new CreateStudentDTO
+            {
+                StudentId = studentId,
+                Name = "name",
+                Email = "emal",
+                Address = "address",
+                Gender = "Male",
+                BirthDate = new DateTime(2000, 3, 23),
+                EditMode = true
+            };
+
+            // Act
+            void updateANonExistStudent() => _studentService.UpdateStudent(createStudentDTO);
+
+            // Assert
+            Assert.Throws(typeof(ObjectNotExistsException), updateANonExistStudent);
+        }
+
+        [Test]
+        public void UpdateStudent__UpdateAStudentMissingName__MissingRequiredFieldExceptionShouldBeThrown()
+        {
+            // Arrange
+            Student student = new Student
+            {
+                StudentId = 5000,
+                Name = "Nguyễn Văn Đức",
+                BirthDate = new DateTime(2000, 3, 26),
+                Email = "email@gmail.com",
+                Address = "mock address",
+                Gender = Gender.Male
+            };
+            using (_unitOfWork.Start())
+            {
+                _genericRepository.Save(student);
+                _unitOfWork.Commit();
+            }
+            _mockStudents.Add(student);
+            CreateStudentDTO createStudentDTO = new CreateStudentDTO
+            {
+                StudentId = 5000,
+                BirthDate = new DateTime(1998, 3, 26),
+                Email = "updatedEmail@gmail.com",
+                Address = "updated address",
+                Gender = "Female",
+                Version = student.Version,
+                EditMode = true
+            };
+
+            // Act
+            void updateAMissingNameStudent() => _studentService.UpdateStudent(createStudentDTO);
+
+            // Assert
+            Assert.Throws(typeof(MissingRequiredFieldException), updateAMissingNameStudent);
+        }
+
+        [Test]
+        public void UpdateStudent__UpdateAStudentWithHasBeenUpdated__ObjectHasBeenUpdatedExceptionShouldBeThrown()
+        {
+            // Arrange
+            Student student = new Student
+            {
+                StudentId = 5000,
+                Name = "Nguyễn Văn Đức",
+                BirthDate = new DateTime(2000, 3, 26),
+                Email = "email@gmail.com",
+                Address = "mock address",
+                Gender = Gender.Male
+            };
+            using (_unitOfWork.Start())
+            {
+                _genericRepository.Save(student);
+                _unitOfWork.Commit();
+            }
+            _mockStudents.Add(student);
+            CreateStudentDTO createStudentDTO = new CreateStudentDTO
+            {
+                StudentId = 5000,
+                Name = "name",
+                BirthDate = new DateTime(1998, 3, 26),
+                Email = "updatedEmail@gmail.com",
+                Address = "updated address",
+                Gender = "Female",
+                Version = student.Version,
+                EditMode = true
+            };
+            using (_unitOfWork.Start())
+            {
+                student.Name = "new name";
+                _genericRepository.Update(student);
+                _unitOfWork.Commit();
+            }
+
+            // Act
+            void updateAStudentWhichHasBeenUpdated() => _studentService.UpdateStudent(createStudentDTO);
+
+            // Assert
+            Assert.Throws(typeof(ObjectHasBeenUpdatedException), updateAStudentWhichHasBeenUpdated);
         }
 
         [Test]
@@ -172,7 +348,7 @@ namespace Test
         }
 
         [Test]
-        public void DeleteStudent__TryToDeleteANonExistStudent__StudentNotExistExceptionShouldBeThrown()
+        public void DeleteStudent__TryToDeleteANonExistStudent__ObjectNotExistsExceptionShouldBeThrown()
         {
             // Arrange
             int studentId;
@@ -189,7 +365,7 @@ namespace Test
             void deleteANonExistStudent() =>_studentService.DeleteStudent(studentId);
 
             // Assert
-            Assert.Throws(typeof(StudentNotExistsException), deleteANonExistStudent);
+            Assert.Throws(typeof(ObjectNotExistsException), deleteANonExistStudent);
         }
 
         [Test]
