@@ -162,6 +162,15 @@
   <data name="Gender" xml:space="preserve">
     <value>Giới tính</value>
   </data>
+  <data name="Id" xml:space="preserve">
+    <value>Mã số</value>
+  </data>
+  <data name="ListRules" xml:space="preserve">
+    <value>Danh sách quy định</value>
+  </data>
+  <data name="ListStudents" xml:space="preserve">
+    <value>Danh sách học sinh</value>
+  </data>
   <data name="Male" xml:space="preserve">
     <value>Nam</value>
   </data>
@@ -189,6 +198,15 @@
   <data name="RequiredFieldMissing" xml:space="preserve">
     <value>Một (một số) trường giá trị bắt buộc bị thiếu</value>
   </data>
+  <data name="Rule" xml:space="preserve">
+    <value>Quy định</value>
+  </data>
+  <data name="RuleName" xml:space="preserve">
+    <value>Tên quy định</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
   <data name="StringLengthError" xml:space="preserve">
     <value>{0} không được vượt quá {1} kí tự</value>
   </data>
@@ -204,8 +222,17 @@
   <data name="StudentName" xml:space="preserve">
     <value>Họ tên</value>
   </data>
+  <data name="Type" xml:space="preserve">
+    <value>Kiểu dữ liệu</value>
+  </data>
+  <data name="UnableToCast" xml:space="preserve">
+    <value>Giá trị không hợp lệ, không thể chuyển về kiểu dữ liệu phù hợp của quy định</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Sửa</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Giá trị</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Có</value>

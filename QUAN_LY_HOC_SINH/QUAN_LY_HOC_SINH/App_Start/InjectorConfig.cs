@@ -16,8 +16,10 @@ namespace QUAN_LY_HOC_SINH
             container.RegisterSingleton<IUnitOfWork, UnitOfWork>();
             container.RegisterSingleton<IGenericRepository, GenericRepository>();
             container.RegisterSingleton<IStudentRepository, StudentRepository>();
+            container.RegisterSingleton<IRuleRepository, RuleRepository>();
 
             container.RegisterSingleton<IStudentService, StudentService>();
+            container.RegisterSingleton<IRuleService, RuleService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

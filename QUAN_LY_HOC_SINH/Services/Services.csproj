@@ -65,13 +65,17 @@
   <ItemGroup>
     <Compile Include="DTO\CreateStudentDTO.cs" />
     <Compile Include="DTO\IndexStudentDTO.cs" />
+    <Compile Include="DTO\UpdateRuleDTO.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
     <Compile Include="Exceptions\MissingRequiredFieldException.cs" />
     <Compile Include="Exceptions\ObjectHasBeenUpdatedException.cs" />
     <Compile Include="Exceptions\ObjectNotExistsException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyExistsException.cs" />
+    <Compile Include="Exceptions\UnableToCastException.cs" />
+    <Compile Include="IRuleService.cs" />
     <Compile Include="IStudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleService.cs" />
     <Compile Include="StudentService.cs" />
   </ItemGroup>
   <ItemGroup>

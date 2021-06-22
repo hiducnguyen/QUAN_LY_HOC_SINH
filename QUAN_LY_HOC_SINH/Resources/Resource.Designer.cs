@@ -196,6 +196,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mã số.
+        /// </summary>
+        public static string Id {
+            get {
+                return ResourceManager.GetString("Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danh sách quy định.
+        /// </summary>
+        public static string ListRules {
+            get {
+                return ResourceManager.GetString("ListRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danh sách học sinh.
+        /// </summary>
+        public static string ListStudents {
+            get {
+                return ResourceManager.GetString("ListStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nam.
         /// </summary>
         public static string Male {
@@ -277,6 +304,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quy định.
+        /// </summary>
+        public static string Rule {
+            get {
+                return ResourceManager.GetString("Rule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên quy định.
+        /// </summary>
+        public static string RuleName {
+            get {
+                return ResourceManager.GetString("RuleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lưu.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} không được vượt quá {1} kí tự.
         /// </summary>
         public static string StringLengthError {
@@ -322,11 +376,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kiểu dữ liệu.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giá trị không hợp lệ, không thể chuyển về kiểu dữ liệu phù hợp của quy định.
+        /// </summary>
+        public static string UnableToCast {
+            get {
+                return ResourceManager.GetString("UnableToCast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sửa.
         /// </summary>
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giá trị.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
         

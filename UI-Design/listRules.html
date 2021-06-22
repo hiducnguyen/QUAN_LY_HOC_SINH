@@ -67,39 +67,44 @@
                         <table class="data_table table-striped table-bordered">
                             <thead>
                                 <th>Tên quy định</th>
-                                <th>Đơn vị</th>
                                 <th>Giá trị</th>
+                                <th></th>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Độ tuổi tối thiểu</td>
-                                    <td>Số nguyên</td>
-                                    <td><input type="text" name="minimumAge" value="15" class="form-control"></td>
+                                    <form action="">
+                                        <td>Độ tuổi tối thiểu</td>
+                                        <td><input type="text" name="minimumAge" value="15" class="form-control"></td>
+                                        <td><button type="submit" class="btn btn-primary">Lưu</button></td>
+                                    </form>
                                 </tr>
                                 <tr>
-                                    <td>Độ tuổi tối đa</td>
-                                    <td>Số nguyên</td>
-                                    <td><input type="text" name="maximumAge" value="30" class="form-control"></td>
+                                    <form action="">
+                                        <td>Độ tuổi tối đa</td>
+                                        <td><input type="text" name="maximumAge" value="30" class="form-control"></td>
+                                        <td><button type="submit" class="btn btn-primary">Lưu</button></td>
+                                    </form>
                                 </tr>
                                 <tr>
-                                    <td>Sĩ số tối đa</td>
-                                    <td>Số nguyên</td>
-                                    <td>
-                                        <input type="text" name="maximumNumberOfStudents" value="35"
-                                            class="form-control">
-                                    </td>
+                                    <form action="">
+                                        <td>Sĩ số tối đa</td>
+                                        <td>
+                                            <input type="text" name="maximumNumberOfStudents" value="35"
+                                                class="form-control">
+                                        </td>
+                                        <td><button type="submit" class="btn btn-primary">Lưu</button></td>
+                                    </form>
                                 </tr>
                                 <tr>
-                                    <td>Điểm đạt chuẩn</td>
-                                    <td>Số thực</td>
-                                    <td><input type="text" name="standardScore" value="5.0" class="form-control"></td>
+                                    <form action="">
+                                        <td>Điểm đạt chuẩn</td>
+                                        <td><input type="text" name="standardScore" value="5.0" class="form-control"></td>
+                                        <td><button type="submit" class="btn btn-primary">Lưu</button></td>
+                                    </form>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <br>
-                    <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">Hủy</a>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
                 </form>
                 <!-- Cancel Modal -->
                 <div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel"
