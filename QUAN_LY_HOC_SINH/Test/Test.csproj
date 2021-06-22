@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="GenericRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleRepositoryTest.cs" />
+    <Compile Include="RuleServiceTest.cs" />
     <Compile Include="StudentRepositoryTest.cs" />
     <Compile Include="StudentServiceTest.cs" />
   </ItemGroup>

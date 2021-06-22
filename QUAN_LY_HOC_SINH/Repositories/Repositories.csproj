@@ -63,6 +63,7 @@
     <Compile Include="Enums\Semester.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
+    <Compile Include="IRuleRepository.cs" />
     <Compile Include="IStudentRepository.cs" />
     <Compile Include="Mapping\TranscriptMap.cs" />
     <Compile Include="Mapping\StudentMap.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleRepository.cs" />
     <Compile Include="StudentRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />

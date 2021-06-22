@@ -226,7 +226,7 @@ namespace Test
         }
 
         [Test]
-        public void UpdateStudent__UpdateAStudentWithHasBeenUpdated__ObjectHasBeenUpdatedExceptionShouldBeThrown()
+        public void UpdateStudent__UpdateAStudentWhichHasBeenUpdated__ObjectHasBeenUpdatedExceptionShouldBeThrown()
         {
             // Arrange
             Student student = new Student

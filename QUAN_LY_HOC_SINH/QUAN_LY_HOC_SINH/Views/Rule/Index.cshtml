@@ -1,0 +1,36 @@
+﻿@using Services.DTO
+@model IList<UpdateRuleDTO>
+@using Resources
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.ListRules</p>
+        <div class="table-responsive">
+            <table class="data_table table-striped table-bordered">
+                <thead>
+                    <th>@Resource.RuleName</th>
+                    <th>@Resource.Value</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    @foreach (UpdateRuleDTO rule in Model)
+                    {
+                    <tr>
+                        
+                            <td>@rule.Name</td>
+                            <td><input type="text" name="value" value="@rule.Value" class="form-control" form="@rule.Id"/></td>
+                            <td><button type="submit" class="btn btn-primary" form="@rule.Id">@Resource.Save</button></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            @foreach (UpdateRuleDTO rule in Model)
+            {
+            <form id="@rule.Id" action="/rule/edit/@rule.Id" method="post">
+                <input type="number" name="version" value="@rule.Version" form="@rule.Id" hidden />
+            </form>
+            }
+        </div>
+
+    @Html.Partial("_CancelModal", new ViewDataDictionary {
+        { "RedirectLink", "/home/index"}
+    })
+</div>
