@@ -27,5 +27,25 @@ namespace Services
         /// You just can update only Value property of the rule
         /// </remarks>
         void UpdateRule(UpdateRuleDTO updateRuleDTO);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Maximum age of student which is allowed when they are added</returns>
+        int GetMaximumAge();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Minimum age of student which is allowed when they are added</returns>
+        int GetMinimumAge();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Maximum number of student which is allowed in a class when they are created</returns>
+        int GetMaxNumberOfStudentEachClass();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>The minimum score a student need to have to pass a subject</returns>
+        float GetMinimumPassScored();
     }
 }

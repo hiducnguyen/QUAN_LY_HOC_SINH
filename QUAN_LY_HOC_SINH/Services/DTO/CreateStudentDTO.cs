@@ -22,6 +22,7 @@ namespace Services.DTO
         [Display(Name = "BirthDate", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Remote("IsStudentAgeValid", "Rule", AdditionalFields = "EditMode")]
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Email", ResourceType = typeof(Resource))]

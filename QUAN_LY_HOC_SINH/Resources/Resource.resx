@@ -213,6 +213,9 @@
   <data name="Student" xml:space="preserve">
     <value>Học sinh</value>
   </data>
+  <data name="StudentAgeInvalid" xml:space="preserve">
+    <value>Độ tuổi của học sinh phải từ {0} tới {1}</value>
+  </data>
   <data name="StudentId" xml:space="preserve">
     <value>Mã số học sinh</value>
   </data>

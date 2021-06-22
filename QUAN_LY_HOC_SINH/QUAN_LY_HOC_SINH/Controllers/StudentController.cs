@@ -20,7 +20,7 @@ namespace QUAN_LY_HOC_SINH.Controllers
         // GET: Student/Index
         public ActionResult Index()
         {
-            ViewBag.Title = "Danh sách học sinh";
+            ViewBag.Title = Resource.ListStudents;
 
             IList<IndexStudentDTO> model = _studentService.FindAllStudents();
             

@@ -349,6 +349,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Độ tuổi của học sinh phải từ {0} tới {1}.
+        /// </summary>
+        public static string StudentAgeInvalid {
+            get {
+                return ResourceManager.GetString("StudentAgeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mã số học sinh.
         /// </summary>
         public static string StudentId {

@@ -17,12 +17,53 @@ namespace Services
         private IUnitOfWork _unitOfWork;
         private IGenericRepository _genericRepository;
         private IRuleRepository _ruleRepository;
+
+        private UpdateRuleDTO MapRuleToUpdateRuleDTO(Rule rule)
+        {
+            return new UpdateRuleDTO
+            {
+                Id = rule.Id,
+                Name = rule.Name,
+                Type = rule.Type,
+                Value = rule.Value,
+                Version = rule.Version
+            };
+        }
+        private bool IsAbleToCast(string type, string value)
+        {
+            type = type.ToLower();
+            if (type == "int")
+            {
+                try
+                {
+                    Convert.ToInt32(value);
+                }
+                catch (FormatException)
+                {
+                    return false;
+                }
+            }
+            if (type == "float")
+            {
+                try
+                {
+                    Convert.ToSingle(value);
+                }
+                catch (FormatException)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public RuleService(IUnitOfWork unitOfWork, IGenericRepository genericRepository, IRuleRepository ruleRepository)
         {
             _unitOfWork = unitOfWork;
             _genericRepository = genericRepository;
             _ruleRepository = ruleRepository;
         }
+        
         public IList<UpdateRuleDTO> FindAllRules()
         {
             IList<Rule> rules;
@@ -66,43 +107,22 @@ namespace Services
                 _unitOfWork.Commit();
             }
         }
-        private UpdateRuleDTO MapRuleToUpdateRuleDTO(Rule rule)
+
+        public int GetMaxNumberOfStudentEachClass()
         {
-            return new UpdateRuleDTO
-            {
-                Id = rule.Id,
-                Name = rule.Name,
-                Type = rule.Type,
-                Value = rule.Value,
-                Version = rule.Version
-            };
+            return Convert.ToInt32(_ruleRepository.FindRuleById(1000).Value);
         }
-        private bool IsAbleToCast(string type, string value)
+        public int GetMinimumAge()
         {
-            type = type.ToLower();
-            if (type == "int")
-            {
-                try
-                {
-                    Convert.ToInt32(value);
-                }
-                catch (FormatException)
-                {
-                    return false;
-                }
-            }
-            if (type == "float")
-            {
-                try
-                {
-                    Convert.ToSingle(value);
-                }
-                catch (FormatException)
-                {
-                    return false;
-                }
-            }
-            return true;
+            return Convert.ToInt32(_ruleRepository.FindRuleById(1001).Value);
+        }
+        public int GetMaximumAge()
+        {
+            return Convert.ToInt32(_ruleRepository.FindRuleById(1002).Value);
+        }
+        public float GetMinimumPassScored()
+        {
+            return Convert.ToSingle(_ruleRepository.FindRuleById(1003).Value);
         }
     }
 }
