@@ -11,7 +11,6 @@ namespace Repositories.Mapping
             Table("QUY_DINH");
             Id(x => x.Id, m =>
             {
-                m.Generator(Generators.GuidComb);
                 m.Column("ID");
             });
             Version(x => x.Version, m =>
@@ -20,17 +19,20 @@ namespace Repositories.Mapping
             });
             Property(x => x.Name, m =>
             {
+                m.Column(c => c.SqlType("nvarchar(255)"));
                 m.NotNullable(true);
                 m.Unique(true);
                 m.Column("TEN");
             });
             Property(x => x.Type, m =>
             {
+                m.Column(c => c.SqlType("varchar(50)"));
                 m.NotNullable(true);
                 m.Column("KIEU_DU_LIEU");
             });
             Property(x => x.Value, m =>
             {
+                m.Column(c => c.SqlType("varchar(255)"));
                 m.NotNullable(true);
                 m.Column("GIA_TRI");
             });

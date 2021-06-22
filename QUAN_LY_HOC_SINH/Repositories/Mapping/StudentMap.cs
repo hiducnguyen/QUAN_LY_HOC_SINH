@@ -20,12 +20,14 @@ namespace Repositories.Mapping
             });
             Property(x => x.StudentId, m =>
             {
+                m.Column(c => c.SqlType("numeric(4,0)"));
                 m.NotNullable(true);
                 m.Unique(true);
                 m.Column("MA_SO");
             });
             Property(x => x.Name, m =>
             {
+                m.Column(c => c.SqlType("nvarchar(255)"));
                 m.NotNullable(true);
                 m.Column("HO_TEN");
             });
@@ -42,11 +44,13 @@ namespace Repositories.Mapping
             });
             Property(x => x.Address, m =>
             {
+                m.Column(c => c.SqlType("nvarchar(255)"));
                 m.NotNullable(true);
                 m.Column("DIA_CHI");
             });
             Property(x => x.Email, m =>
             {
+                m.Column(c => c.SqlType("nvarchar(50)"));
                 m.NotNullable(true);
                 m.Column("EMAIL");
             });

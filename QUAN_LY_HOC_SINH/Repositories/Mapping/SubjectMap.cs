@@ -20,6 +20,7 @@ namespace Repositories.Mapping
             });
             Property(x => x.Name, m =>
             {
+                m.Column(c => c.SqlType("nvarchar(255)"));
                 m.NotNullable(true);
                 m.Unique(true);
                 m.Column("TEN");
