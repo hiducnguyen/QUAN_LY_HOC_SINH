@@ -22,6 +22,7 @@ namespace Test
         private IUnitOfWork _unitOfWork;
         private IGenericRepository _genericRepository;
         private IStudentRepository _studentRepository;
+        private IClassRepository _classRepository;
         
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -30,7 +31,8 @@ namespace Test
             _unitOfWork = new UnitOfWork();
             _genericRepository = new GenericRepository(_unitOfWork);
             _studentRepository = new StudentRepository(_unitOfWork);
-            _studentService = new StudentService(_genericRepository, _studentRepository, _unitOfWork);
+            _classRepository = new ClassRepository(_unitOfWork);
+            _studentService = new StudentService(_genericRepository, _studentRepository, _classRepository, _unitOfWork);
         }
 
         [TearDown]

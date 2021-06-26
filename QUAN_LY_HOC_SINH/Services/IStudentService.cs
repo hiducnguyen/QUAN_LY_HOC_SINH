@@ -1,6 +1,7 @@
 ﻿using Repositories.Models;
 using Services.DTO;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace Services
 {
@@ -56,5 +57,19 @@ namespace Services
         /// <param name="studentId"></param>
         /// <returns></returns>
         bool IsStudentIdAlreadyExist(int studentId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>All student which have not had class yet</returns>
+        MultiSelectList GetAllAvailableStudents();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="className"></param>
+        /// <exception cref="Services.Exceptions.ObjectNotExistsException">
+        /// Throw when the class with corresponding className not exist
+        /// </exception>
+        /// <returns>All student which have not had class yet and all current student of the class which have className</returns>
+        MultiSelectList GetAllAvailableStudents(string className);
     }
 }

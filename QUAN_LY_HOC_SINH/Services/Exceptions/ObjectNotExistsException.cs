@@ -9,7 +9,7 @@ namespace Services.Exceptions
 {
     public class ObjectNotExistsException : BaseException
     {
-        public ObjectNotExistsException(string objectName, string objectIdName, int objectId) :
+        public ObjectNotExistsException(string objectName, string objectIdName, object objectId) :
             base(string.Format(Resource.ObjectDoesNotExists, objectName, objectIdName, objectId))
         {
 

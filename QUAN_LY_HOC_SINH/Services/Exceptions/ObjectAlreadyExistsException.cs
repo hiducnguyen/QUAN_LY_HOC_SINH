@@ -9,7 +9,7 @@ namespace Services.Exceptions
 {
     public class ObjectAlreadyExistsException : BaseException
     {
-        public ObjectAlreadyExistsException(string objectName, string objectIdName, int objectId) 
+        public ObjectAlreadyExistsException(string objectName, string objectIdName, object objectId) 
             : base(string.Format(Resource.ObjectAlreadyExists, objectName, objectIdName, objectId))
         {
 

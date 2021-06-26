@@ -9,7 +9,7 @@ namespace Services.Exceptions
 {
     public class ObjectHasBeenUpdatedException : BaseException
     {
-        public ObjectHasBeenUpdatedException(string objectName, string objectIdName, int objectId) :
+        public ObjectHasBeenUpdatedException(string objectName, string objectIdName, object objectId) :
             base(string.Format(Resource.ObjectHasBeenUpdated, objectName, objectIdName, objectId))
         {
 

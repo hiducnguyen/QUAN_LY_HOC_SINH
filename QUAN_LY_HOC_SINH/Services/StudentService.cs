@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Services
 {
@@ -17,15 +18,63 @@ namespace Services
     {
         private IGenericRepository _genericRepository;
         private IStudentRepository _studentRepository;
+        private IClassRepository _classRepository;
         private IUnitOfWork _unitOfWork;
+
+        private Student MapDTOtoStudent(CreateStudentDTO createStudentDTO, bool editMode = false)
+        {
+            return new Student
+            {
+                StudentId = createStudentDTO.StudentId,
+                Name = createStudentDTO.Name,
+                BirthDate = createStudentDTO.BirthDate,
+                Email = createStudentDTO.Email,
+                Address = createStudentDTO.Address,
+                Gender = GenderHelper.ToGender(createStudentDTO.Gender),
+                Version = (editMode) ? createStudentDTO.Version : default
+            };
+        }
+        private IndexStudentDTO MapStudentToIndexStudentDTO(Student student)
+        {
+            return new IndexStudentDTO
+            {
+                StudentId = student.StudentId,
+                Name = student.Name,
+                BirthDate = student.BirthDate,
+                Email = student.Email,
+                Address = student.Address,
+                Gender = GenderHelper.GetText(student.Gender)
+            };
+        }
+        private CreateStudentDTO MapStudentToCreateStudentDTO(Student student)
+        {
+            return new CreateStudentDTO
+            {
+                StudentId = student.StudentId,
+                Name = student.Name,
+                BirthDate = student.BirthDate,
+                Email = student.Email,
+                Address = student.Address,
+                Gender = student.Gender.ToString(),
+                Version = student.Version
+            };
+        }
+        private bool IsMissingRequiredField(CreateStudentDTO createStudentDTO)
+        {
+            return (createStudentDTO.StudentId == default) || (createStudentDTO.Name == default) ||
+                (createStudentDTO.Address == default) || (createStudentDTO.BirthDate == default) ||
+                (createStudentDTO.Gender == default) || (createStudentDTO.Email == default);
+        }
 
         public StudentService(
             IGenericRepository genericRepository,
             IStudentRepository studentRepository,
+            IClassRepository classRepository,
             IUnitOfWork unitOfWork)
         {
             _genericRepository = genericRepository;
             _studentRepository = studentRepository;
+            _classRepository = classRepository;
             _unitOfWork = unitOfWork;
         }
         public Student CreateStudent(CreateStudentDTO createStudentDTO)
@@ -104,45 +153,6 @@ namespace Services
             }
         }
 
-        private Student MapDTOtoStudent(CreateStudentDTO createStudentDTO)
-        {
-            return new Student
-            {
-                StudentId = createStudentDTO.StudentId,
-                Name = createStudentDTO.Name,
-                BirthDate = createStudentDTO.BirthDate,
-                Email = createStudentDTO.Email,
-                Address = createStudentDTO.Address,
-                Gender = GenderHelper.ToGender(createStudentDTO.Gender),
-                Version = (createStudentDTO.EditMode)?createStudentDTO.Version:default
-            };
-        }
-        private IndexStudentDTO MapStudentToIndexStudentDTO(Student student)
-        {
-            return new IndexStudentDTO
-            {
-                StudentId = student.StudentId,
-                Name = student.Name,
-                BirthDate = student.BirthDate,
-                Email = student.Email,
-                Address = student.Address,
-                Gender = GenderHelper.GetText(student.Gender)
-            };
-        }
-        private CreateStudentDTO MapStudentToCreateStudentDTO(Student student)
-        {
-            return new CreateStudentDTO
-            {
-                StudentId = student.StudentId,
-                Name = student.Name,
-                BirthDate = student.BirthDate,
-                Email = student.Email,
-                Address = student.Address,
-                Gender = student.Gender.ToString(),
-                Version = student.Version
-            };
-        }
-
         public void UpdateStudent(CreateStudentDTO createStudentDTO)
         {
             if (IsMissingRequiredField(createStudentDTO))
@@ -150,7 +160,7 @@ namespace Services
                 throw new MissingRequiredFieldException();
             }
 
-            Student student = MapDTOtoStudent(createStudentDTO);
+            Student student = MapDTOtoStudent(createStudentDTO, true);
             using (_unitOfWork.Start())
             {
                 Student currentStudent = _studentRepository.FindStudentByStudentId(student.StudentId);
@@ -173,11 +183,46 @@ namespace Services
                 _unitOfWork.Commit();
             }
         }
-        private bool IsMissingRequiredField(CreateStudentDTO createStudentDTO)
+
+        public MultiSelectList GetAllAvailableStudents()
         {
-            return (createStudentDTO.StudentId == default) || (createStudentDTO.Name == default) ||
-                (createStudentDTO.Address == default) || (createStudentDTO.BirthDate == default) ||
-                (createStudentDTO.Gender == default) || (createStudentDTO.Email == default);
+            IEnumerable<SelectListItem> availableStudents;
+            using (_unitOfWork.Start())
+            {
+                availableStudents = new List<SelectListItem>(
+                    _studentRepository.FindAllAvailableStudents().Select(x => new SelectListItem
+                    {
+                        Value = x.StudentId.ToString(),
+                        Text = $"{x.StudentId}: {x.Name}"
+                    })
+                );
+            }
+
+            return new MultiSelectList(availableStudents.OrderBy(x => x.Text), "Value", "Text");
+        }
+
+        public MultiSelectList GetAllAvailableStudents(string className)
+        {
+            IList<Student> students;
+            using (_unitOfWork.Start())
+            {
+                Class @class = _classRepository.FindClassByName(className);
+                if (@class == null)
+                {
+                    throw new ObjectNotExistsException(Resource.Class, Resource.Name, className);
+                }
+                IList<Student> currentStudentsOfClass = _studentRepository.FindStudentsByClassId(@class.Id);
+                IList<Student> studentsWithNoClass = _studentRepository.FindAllAvailableStudents();
+                students = currentStudentsOfClass.Concat(studentsWithNoClass).ToList();
+            }
+            IEnumerable <SelectListItem> selectListStudents = new List<SelectListItem>(
+                students.Select(x => new SelectListItem
+                {
+                    Value = x.StudentId.ToString(),
+                    Text = $"{x.StudentId}: {x.Name}"
+                })
+            );
+            return new MultiSelectList(selectListStudents.OrderBy(x => x.Text), "Value", "Text");
         }
     }
 }
