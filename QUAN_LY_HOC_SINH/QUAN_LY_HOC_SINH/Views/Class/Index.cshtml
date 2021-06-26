@@ -1,0 +1,38 @@
+﻿@model IList<Services.DTO.IndexClassDTO>
+@using Services.DTO
+@using Resources
+
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.ListClasses</p>
+    <div class="table-responsive">
+        <table class="data_table table-striped table-bordered">
+            <thead>
+            <th>@Resource.Name</th>
+            <th>@Resource.Grade</th>
+            <th>@Resource.NumberOfStudentsInClass</th>
+            <th></th>
+            </thead>
+            <tbody>
+                @foreach (IndexClassDTO classDTO in Model)
+                {
+                    <tr>
+                        <td>@classDTO.Name</td>
+                        <td>@classDTO.Grade</td>
+                        <td>@classDTO.NumberOfStudents</td>
+                        <td>
+                            <a data-toggle="modal" data-id="@classDTO.Name" href="#deleteModal">@Resource.Delete</a>
+                            <a href="/class/edit/@classDTO.Name">@Resource.Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @Html.Partial("_DeleteModal", new ViewDataDictionary {
+        { "Action", "/class/delete"},
+        { "InputType", "text" },
+        { "ObjectName", Resource.Class},
+        { "ObjectIdName", Resource.Name }
+    })
+</div>

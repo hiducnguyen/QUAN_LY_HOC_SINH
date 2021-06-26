@@ -33,8 +33,7 @@ namespace QUAN_LY_HOC_SINH.Controllers
             ViewBag.Title = Resource.CreateStudent;
             CreateStudentDTO model = new CreateStudentDTO
             {
-                AllGenders = CreateSelectListGender(),
-                EditMode = false
+                AllGenders = CreateSelectListGender()
             };
             return View(model);
         }
@@ -55,7 +54,6 @@ namespace QUAN_LY_HOC_SINH.Controllers
             {
                 ViewBag.Title = Resource.CreateStudent;
                 model.AllGenders = CreateSelectListGender();
-                model.EditMode = false;
                 return View(model);
             }
         }
@@ -79,7 +77,6 @@ namespace QUAN_LY_HOC_SINH.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.EditMode = true;
                 _studentService.UpdateStudent(model);
                 return RedirectToAction("Index");
             }

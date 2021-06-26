@@ -1,0 +1,44 @@
+﻿@model Services.DTO.CreateClassDTO
+@using Resources
+
+<div class="col-lg-8 content">
+    <p class="page_title">@(Model.EditMode?@Resource.EditClass:@Resource.CreateClass)</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "required" })
+            @if (Model.EditMode)
+            {
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.HiddenFor(model => model.Name)
+            }
+            else
+            {
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            }
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "required" })
+            @Html.DropDownListFor(model => model.Grade, Model.AllGrades, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Students)
+            @Html.ListBoxFor(model => model.Students, Model.AllAvaibleStudents, 
+            new { @class = "form-control multi_select", @multiple = "multiple" })
+            @Html.ValidationMessageFor(model => model.Students, "", new { @class = "text-danger" })
+        </div>
+        @Html.HiddenFor(model => model.EditMode)
+        @Html.HiddenFor(model => model.Version)
+        <br>
+        <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">@Resource.Cancel</a>
+        <button type="submit" class="btn btn-primary">@Resource.Done</button>
+    }
+    @Html.Partial("_CancelModal", new ViewDataDictionary {
+        { "RedirectLink", "/class/index"}
+    })
+</div>

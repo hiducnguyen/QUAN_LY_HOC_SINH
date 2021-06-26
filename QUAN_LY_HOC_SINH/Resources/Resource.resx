@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Account" xml:space="preserve">
+    <value>Tài khoản</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Địa chỉ</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Quản lý học sinh</value>
   </data>
   <data name="BirthDate" xml:space="preserve">
     <value>Ngày sinh</value>
@@ -126,11 +135,23 @@
   <data name="Cancel" xml:space="preserve">
     <value>Hủy</value>
   </data>
+  <data name="ChangeRule" xml:space="preserve">
+    <value>Thay đổi quy định</value>
+  </data>
   <data name="ChooseGender" xml:space="preserve">
     <value>Chọn giới tính</value>
   </data>
+  <data name="Class" xml:space="preserve">
+    <value>Lớp</value>
+  </data>
+  <data name="ClassLong" xml:space="preserve">
+    <value>Lớp học</value>
+  </data>
   <data name="ConfirmCancel" xml:space="preserve">
     <value>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</value>
+  </data>
+  <data name="CreateClass" xml:space="preserve">
+    <value>Thêm lớp học</value>
   </data>
   <data name="CreateStudent" xml:space="preserve">
     <value>Thêm học sinh</value>
@@ -147,6 +168,9 @@
   <data name="Done" xml:space="preserve">
     <value>Xong</value>
   </data>
+  <data name="EditClass" xml:space="preserve">
+    <value>Cập nhật thông tin lớp học</value>
+  </data>
   <data name="EditStudent" xml:space="preserve">
     <value>Cập nhật thông tin học sinh</value>
   </data>
@@ -162,8 +186,20 @@
   <data name="Gender" xml:space="preserve">
     <value>Giới tính</value>
   </data>
+  <data name="Grade" xml:space="preserve">
+    <value>Khối</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Trang chủ</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>Mã số</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>Danh sách</value>
+  </data>
+  <data name="ListClasses" xml:space="preserve">
+    <value>Danh sách lớp học</value>
   </data>
   <data name="ListRules" xml:space="preserve">
     <value>Danh sách quy định</value>
@@ -171,11 +207,23 @@
   <data name="ListStudents" xml:space="preserve">
     <value>Danh sách học sinh</value>
   </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
   <data name="Male" xml:space="preserve">
     <value>Nam</value>
   </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Mục lục</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Không</value>
+  </data>
+  <data name="NumberOfStudentsInClass" xml:space="preserve">
+    <value>Sĩ số</value>
   </data>
   <data name="ObjectAlreadyExists" xml:space="preserve">
     <value>{0} có {1}: {2} đã tồn tại, vui lòng chọn {1} khác</value>
@@ -192,6 +240,12 @@
   <data name="RangeError" xml:space="preserve">
     <value>{0} phải thuộc khoảng từ {1} đến {2}</value>
   </data>
+  <data name="ReportSemester" xml:space="preserve">
+    <value>Báo cáo học kì</value>
+  </data>
+  <data name="ReportSubject" xml:space="preserve">
+    <value>Báo cáo môn học</value>
+  </data>
   <data name="RequiredError" xml:space="preserve">
     <value>Giá trị này không được bỏ trống</value>
   </data>
@@ -207,6 +261,9 @@
   <data name="Save" xml:space="preserve">
     <value>Lưu</value>
   </data>
+  <data name="SearchTranscript" xml:space="preserve">
+    <value>Tra cứu điểm</value>
+  </data>
   <data name="StringLengthError" xml:space="preserve">
     <value>{0} không được vượt quá {1} kí tự</value>
   </data>
@@ -216,6 +273,9 @@
   <data name="StudentAgeInvalid" xml:space="preserve">
     <value>Độ tuổi của học sinh phải từ {0} tới {1}</value>
   </data>
+  <data name="StudentAlreadyHaveClass" xml:space="preserve">
+    <value>Học sinh với mã số {0} đã có lớp học, bạn không thể thêm học sinh này vào lớp khác</value>
+  </data>
   <data name="StudentId" xml:space="preserve">
     <value>Mã số học sinh</value>
   </data>
@@ -224,6 +284,12 @@
   </data>
   <data name="StudentName" xml:space="preserve">
     <value>Họ tên</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="Transcript" xml:space="preserve">
+    <value>Bảng điểm</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Kiểu dữ liệu</value>

@@ -59,9 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassRepository.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\Semester.cs" />
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="IClassRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="IRuleRepository.cs" />
     <Compile Include="IStudentRepository.cs" />

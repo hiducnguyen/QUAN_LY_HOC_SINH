@@ -61,11 +61,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tài khoản.
+        /// </summary>
+        public static string Account {
+            get {
+                return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Địa chỉ.
         /// </summary>
         public static string Address {
             get {
                 return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản lý học sinh.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
             }
         }
         
@@ -88,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thay đổi quy định.
+        /// </summary>
+        public static string ChangeRule {
+            get {
+                return ResourceManager.GetString("ChangeRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chọn giới tính.
         /// </summary>
         public static string ChooseGender {
@@ -97,11 +133,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lớp.
+        /// </summary>
+        public static string Class {
+            get {
+                return ResourceManager.GetString("Class", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lớp học.
+        /// </summary>
+        public static string ClassLong {
+            get {
+                return ResourceManager.GetString("ClassLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?.
         /// </summary>
         public static string ConfirmCancel {
             get {
                 return ResourceManager.GetString("ConfirmCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thêm lớp học.
+        /// </summary>
+        public static string CreateClass {
+            get {
+                return ResourceManager.GetString("CreateClass", resourceCulture);
             }
         }
         
@@ -151,6 +214,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cập nhật thông tin lớp học.
+        /// </summary>
+        public static string EditClass {
+            get {
+                return ResourceManager.GetString("EditClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cập nhật thông tin học sinh.
         /// </summary>
         public static string EditStudent {
@@ -196,11 +268,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Khối.
+        /// </summary>
+        public static string Grade {
+            get {
+                return ResourceManager.GetString("Grade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trang chủ.
+        /// </summary>
+        public static string HomePage {
+            get {
+                return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mã số.
         /// </summary>
         public static string Id {
             get {
                 return ResourceManager.GetString("Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danh sách.
+        /// </summary>
+        public static string List {
+            get {
+                return ResourceManager.GetString("List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danh sách lớp học.
+        /// </summary>
+        public static string ListClasses {
+            get {
+                return ResourceManager.GetString("ListClasses", resourceCulture);
             }
         }
         
@@ -223,6 +331,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đăng xuất.
+        /// </summary>
+        public static string LogOut {
+            get {
+                return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nam.
         /// </summary>
         public static string Male {
@@ -232,11 +349,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mục lục.
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Không.
         /// </summary>
         public static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sĩ số.
+        /// </summary>
+        public static string NumberOfStudentsInClass {
+            get {
+                return ResourceManager.GetString("NumberOfStudentsInClass", resourceCulture);
             }
         }
         
@@ -286,6 +430,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Báo cáo học kì.
+        /// </summary>
+        public static string ReportSemester {
+            get {
+                return ResourceManager.GetString("ReportSemester", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Báo cáo môn học.
+        /// </summary>
+        public static string ReportSubject {
+            get {
+                return ResourceManager.GetString("ReportSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giá trị này không được bỏ trống.
         /// </summary>
         public static string RequiredError {
@@ -331,6 +493,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tra cứu điểm.
+        /// </summary>
+        public static string SearchTranscript {
+            get {
+                return ResourceManager.GetString("SearchTranscript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} không được vượt quá {1} kí tự.
         /// </summary>
         public static string StringLengthError {
@@ -358,6 +529,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Học sinh với mã số {0} đã có lớp học, bạn không thể thêm học sinh này vào lớp khác.
+        /// </summary>
+        public static string StudentAlreadyHaveClass {
+            get {
+                return ResourceManager.GetString("StudentAlreadyHaveClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mã số học sinh.
         /// </summary>
         public static string StudentId {
@@ -381,6 +561,24 @@ namespace Resources {
         public static string StudentName {
             get {
                 return ResourceManager.GetString("StudentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Môn học.
+        /// </summary>
+        public static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bảng điểm.
+        /// </summary>
+        public static string Transcript {
+            get {
+                return ResourceManager.GetString("Transcript", resourceCulture);
             }
         }
         
