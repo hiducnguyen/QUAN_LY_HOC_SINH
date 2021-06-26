@@ -11,7 +11,7 @@
             </div>
             <form method="post" action="@ViewBag.Action">
                 <div class="modal-body">
-                    <input type="number" name="id" hidden />
+                    <input type="@(ViewBag.InputType ?? "number")" name="id" hidden />
                     <p>
                         @string.Format(Resource.DeleteConfirmMessage, ViewBag.ObjectName, ViewBag.ObjectIdName)
                         <span id="id_to_delete"></span> ?

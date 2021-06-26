@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Resources
+<!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewBag.Title | Quản lý học sinh</title>
+    <title>@ViewBag.Title | @Resource.AppName</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/bootstrap")
     @Styles.Render("~/Content/select2")
@@ -19,12 +20,12 @@
             <div id="brand" class="col-12 col-lg-7">
                 <a href="/" class="navbar-brand">
                     <img src="~/Images/logo.jpg" alt="Logo" id="logo" class="d-none d-sm-inline">
-                    <span id="brand_name">QUẢN LÝ HỌC SINH</span>
+                    <span id="brand_name">@Resource.AppName</span>
                 </a>
             </div>
             <div id="horizontal_menu" class="col-12 col-lg-5 row">
-                <a href="#" class="col-7">Tài khoản</a>
-                <a href="#" class="col-5">Đăng xuất</a>
+                <a href="#" class="col-7">@Resource.Account</a>
+                <a href="#" class="col-5">@Resource.LogOut</a>
             </div>
         </header>
     </div>
@@ -34,35 +35,46 @@
             <button class="btn btn-outline-primary m-auto navbar-toggler d-lg-none d-block" id="btn_menu"
                     data-toggle="collapse" data-target="#nav_bar" aria-controls="nav_bar_box" aria-expanded="false"
                     aria-label="Toggle navigation">
-                Mục lục
+                @Resource.Menu
             </button>
             <nav class="col-lg-2 navbar-collapse collapse expand-lg" id="nav_bar">
-                <a href="/" class="nav_option @(currentLink=="/home/index"?"current_item":"")">Trang chủ</a>
+                <a href="/" class="nav_option @(currentLink=="/home/index"?"current_item":"")">@Resource.HomePage</a>
                 <div class="nav_group">
-                    <p class="nav_group_name">Thêm</p>
+                    <p class="nav_group_name">@Resource.Add</p>
                     <a href="/student/create" class="nav_option @(currentLink=="/student/create"?"current_item":"")">
-                        Học sinh
+                        @Resource.Student
                     </a>
                     <a href="/class/create" class="nav_option @(currentLink=="/class/create"?"current_item":"")">
-                        Lớp học
+                        @Resource.ClassLong
                     </a>
-                    <a href="./createSubject.html" class="nav_option">Môn học</a>
-                    <a href="./createTranscript.html" class="nav_option">Bảng điểm</a>
+                    <a href="/subject/create" class="nav_option @(currentLink=="/subject/create"?"current_item":"")">
+                        @Resource.Subject
+                    </a>
+                    <a href="/transcript/create" class="nav_option @(currentLink=="/transcript/create"?"current_item":"")">
+                        @Resource.Transcript
+                    </a>
                 </div>
                 <div class="nav_group">
-                    <p class="nav_group_name">Danh sách</p>
-                    <a href="/student/index" class="nav_option @(currentLink=="/student/index"?"current_item":"")">Học sinh</a>
-                    <a href="./listClasses.html" class="nav_option">Lớp học</a>
-                    <a href="./listSubjects.html" class="nav_option">Môn học</a>
-                    <a href="./listTranscripts.html" class="nav_option">Bảng điểm</a>
+                    <p class="nav_group_name">@Resource.List</p>
+                    <a href="/student/index" class="nav_option @(currentLink=="/student/index"?"current_item":"")">
+                        @Resource.Student</a>
+                    <a href="/class/index" class="nav_option @(currentLink=="/class/index"?"current_item":"")">
+                        @Resource.ClassLong</a>
+                    <a href="/subject/index" class="nav_option @(currentLink=="/subject/index"?"current_item":"")">
+                        @Resource.Subject</a>
+                    <a href="/transcript/index" class="nav_option @(currentLink=="/transcript/index"?"current_item":"")">
+                        @Resource.Transcript</a>
                 </div>
                 <div class="nav_group">
-                    <p class="nav_group_name">Khác</p>
-                    <a href="./searchTranscript.html" class="nav_option">Tra cứu điểm</a>
-                    <a href="./searchSubjectReport.html" class="nav_option">Báo cáo môn học</a>
-                    <a href="./searchSemesterReport.html" class="nav_option">Báo cáo học kỳ</a>
+                    <p class="nav_group_name">@Resource.Other</p>
+                    <a href="./searchTranscript.html" class="nav_option">
+                        @Resource.SearchTranscript</a>
+                    <a href="./searchSubjectReport.html" class="nav_option">
+                        @Resource.ReportSubject</a>
+                    <a href="./searchSemesterReport.html" class="nav_option">
+                        @Resource.ReportSemester</a>
                     <a href="/rule/index" class="nav_option @(currentLink=="/rule/index"?"current_item":"")">
-                    Thay đổi quy định</a>
+                        @Resource.ChangeRule</a>
                 </div>
             </nav>
             <!--    Content here -->
