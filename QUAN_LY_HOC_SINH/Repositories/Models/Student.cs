@@ -13,6 +13,7 @@ namespace Repositories.Models
         public virtual DateTime BirthDate { get; set; }
         public virtual string Address { get; set; }
         public virtual string Email { get; set; }
+        public virtual Guid? ClassId { get; set; }
         public virtual ISet<Transcript> Transcripts { get; set; }
         public virtual int Version { get; set; }
     }

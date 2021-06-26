@@ -16,6 +16,7 @@ namespace Test
         private IGenericRepository _genericRepository;
         private IUnitOfWork _unitOfWork;
         private IList<Student> _mockStudents;
+        private IList<Class> _mockClasses;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -24,6 +25,7 @@ namespace Test
             _studentRepository = new StudentRepository(_unitOfWork);
             _genericRepository = new GenericRepository(_unitOfWork);
             _mockStudents = new List<Student>();
+            _mockClasses = new List<Class>();
         }
 
         [TearDown]
@@ -35,9 +37,14 @@ namespace Test
                 {
                     _genericRepository.Delete(student);
                 }
+                foreach (Class c in _mockClasses)
+                {
+                    _genericRepository.Delete(c);
+                }
                 _unitOfWork.Commit();
             }
             _mockStudents.Clear();
+            _mockClasses.Clear();
         }
 
         [Test]
@@ -101,6 +108,93 @@ namespace Test
             AssertTwoStudents(student, foundStudent);
         }
 
+        [Test]
+        public void FindAllAvailableStudents__SaveTwoStudentsAndOneHaveClass__TheStudentWithClassShouldBeFoundTheOtherShouldNot()
+        {
+            // Arrange
+            Student studentWithoutClass = CreateOneMockStudent(5000, "student one", Gender.Female,
+                new DateTime(2000, 3, 26), "addrees one", "email one");
+            Student studentWithClass = CreateOneMockStudent(5001, "student two", Gender.Female,
+                new DateTime(2000, 3, 26), "addrees two", "email two");
+            _mockStudents.Add(studentWithClass);
+            _mockStudents.Add(studentWithoutClass);
+
+            Class @class = new Class
+            {
+                Name = "test",
+                Grade = 12,
+                Students = new HashSet<Student> { _mockStudents[0] }
+            };
+            _mockClasses.Add(@class);
+
+            using (_unitOfWork.Start())
+            {
+                _genericRepository.Save(studentWithClass);
+                _genericRepository.Save(studentWithoutClass);
+                _genericRepository.Save(@class);
+
+                _unitOfWork.Commit();
+            }
+
+            // Act
+            IList<Student> availableStudents;
+            using (_unitOfWork.Start())
+            {
+                availableStudents = _studentRepository.FindAllAvailableStudents();
+            }
+
+            // Assert
+            Assert.AreEqual(null, availableStudents
+                .Where(x => x.StudentId == studentWithClass.StudentId)
+                .SingleOrDefault());
+            Student foundStudentWithoutClass = availableStudents
+                .Where(x => x.StudentId == studentWithoutClass.StudentId)
+                .SingleOrDefault();
+            Assert.AreNotEqual(null, foundStudentWithoutClass);
+            AssertTwoStudents(studentWithoutClass, foundStudentWithoutClass);
+        }
+
+        [Test]
+        public void FindStudentsByClassId__OneClassHaveTwoStudents__TwoStudentShouldBeFoundSuccessfully()
+        {
+            // Arrange
+            _mockStudents.Add(CreateOneMockStudent(5000, "test one", Gender.Male,
+                new DateTime(2000,3,26), "test one", "test@gmail.com"));
+            _mockStudents.Add(CreateOneMockStudent(5001, "test two", Gender.Male,
+                new DateTime(2002, 3, 26), "test two", "test2@gmail.com"));
+            Class @class = new Class
+            {
+                Name = "test",
+                Grade = 10,
+                Students = _mockStudents.ToHashSet()
+            };
+            using (_unitOfWork.Start())
+            {
+                _genericRepository.Save(_mockStudents[0]);
+                _genericRepository.Save(_mockStudents[1]);
+                _genericRepository.Save(@class);
+                _unitOfWork.Commit();
+            }
+            _mockClasses.Add(@class);
+
+            // Act
+            IList<Student> students;
+            using (_unitOfWork.Start())
+            {
+                students = _studentRepository.FindStudentsByClassId(@class.Id);
+            }
+
+            // Assert
+            Assert.AreNotEqual(null, students);
+            Assert.AreEqual(_mockStudents.Count, students.Count);
+            foreach (Student student in _mockStudents)
+            {
+                Student foundStudent = students.Where(x => x.StudentId == student.StudentId).FirstOrDefault();
+                Assert.AreNotEqual(null, foundStudent);
+                AssertTwoStudents(student, foundStudent);
+            }
+        }
+
         private Student CreateOneMockStudent()
         {
             return new Student
@@ -138,6 +232,7 @@ namespace Test
             Assert.AreEqual(expected.Gender, actual.Gender);
             Assert.AreEqual(expected.BirthDate, actual.BirthDate);
             Assert.AreEqual(expected.Address, actual.Address);
+            Assert.AreEqual(expected.Email, actual.Email);
         }
     }
 }

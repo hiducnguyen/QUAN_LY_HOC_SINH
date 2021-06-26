@@ -18,9 +18,14 @@ namespace Repositories.Mapping
             {
                 m.Column("VERSION");
             });
+            Property(x => x.Grade, m =>
+            {
+                m.NotNullable(true);
+                m.Column("KHOI");
+            });
             Property(x => x.Name, m =>
             {
-                m.Column(c => c.SqlType("nvarchar(255)"));
+                m.Column(c => c.SqlType("nvarchar(10)"));
                 m.NotNullable(true);
                 m.Unique(true);
                 m.Column("TEN");

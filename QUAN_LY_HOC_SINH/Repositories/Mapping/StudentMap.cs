@@ -54,6 +54,10 @@ namespace Repositories.Mapping
                 m.NotNullable(true);
                 m.Column("EMAIL");
             });
+            Property(x => x.ClassId, m =>
+            {
+                m.Column("LOP_ID");
+            });
             Set(x => x.Transcripts, m =>
             {
                 m.Key(k => k.Column("HOC_SINH_ID"));

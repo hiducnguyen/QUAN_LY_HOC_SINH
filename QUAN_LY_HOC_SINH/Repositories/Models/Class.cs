@@ -7,8 +7,8 @@ namespace Repositories.Models
     {
         public virtual Guid Id { get; set; }
         public virtual string Name { get; set; }
-        public virtual IList<Student> Students { get; set; }
-        public virtual int NumberOfStudents { get => Students.Count; }
+        public virtual int Grade { get; set; }
+        public virtual ISet<Student> Students { get; set; }
         public virtual int Version { get; set; }
     }
 }
