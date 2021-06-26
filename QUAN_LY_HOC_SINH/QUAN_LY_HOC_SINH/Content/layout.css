@@ -3,6 +3,9 @@
 }
 
 /*  Brand bar   */
+#brand_name {
+    text-transform: uppercase;
+}
 #brand a, #brand a:hover {
     color: #007bff;
     font-size: 1.5em;
@@ -15,12 +18,12 @@
     padding-right: 0;
 }
 
-    #horizontal_menu a, #horizontal_menu a:hover {
-        text-decoration: none;
-        font-size: 1.2em;
-        vertical-align: bottom;
-        padding-right: 0;
-    }
+#horizontal_menu a, #horizontal_menu a:hover {
+    text-decoration: none;
+    font-size: 1.2em;
+    vertical-align: bottom;
+    padding-right: 0;
+}
 /*  End of brand bar   */
 
 /*  Navigation bar */
