@@ -178,6 +178,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thêm môn học.
+        /// </summary>
+        public static string CreateSubject {
+            get {
+                return ResourceManager.GetString("CreateSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giá trị này phải là một ngày.
         /// </summary>
         public static string DateOnlyError {
@@ -228,6 +237,15 @@ namespace Resources {
         public static string EditStudent {
             get {
                 return ResourceManager.GetString("EditStudent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật thông tin môn học.
+        /// </summary>
+        public static string EditSubject {
+            get {
+                return ResourceManager.GetString("EditSubject", resourceCulture);
             }
         }
         
@@ -327,6 +345,15 @@ namespace Resources {
         public static string ListStudents {
             get {
                 return ResourceManager.GetString("ListStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danh sách môn học.
+        /// </summary>
+        public static string ListSubjects {
+            get {
+                return ResourceManager.GetString("ListSubjects", resourceCulture);
             }
         }
         

@@ -40,6 +40,7 @@ namespace Services
         /// <summary>
         /// Find a student by studetnId and map it to CreateStudentDTO
         /// </summary>
+        /// <exception cref="Services.Exceptions.ObjectNotExistsException"></exception>
         /// <param name="studentId"></param>
         /// <returns></returns>
         CreateStudentDTO FindStudentByStudentId(int studentId);

@@ -84,8 +84,10 @@
     <Compile Include="ClassService.cs" />
     <Compile Include="DTO\CreateClassDTO.cs" />
     <Compile Include="DTO\CreateStudentDTO.cs" />
+    <Compile Include="DTO\CreateSubjectDTO.cs" />
     <Compile Include="DTO\IndexClassDTO.cs" />
     <Compile Include="DTO\IndexStudentDTO.cs" />
+    <Compile Include="DTO\IndexSubjectDTO.cs" />
     <Compile Include="DTO\UpdateRuleDTO.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
     <Compile Include="Exceptions\MissingRequiredFieldException.cs" />
@@ -97,9 +99,11 @@
     <Compile Include="IClassService.cs" />
     <Compile Include="IRuleService.cs" />
     <Compile Include="IStudentService.cs" />
+    <Compile Include="ISubjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleService.cs" />
     <Compile Include="StudentService.cs" />
+    <Compile Include="SubjectService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Repositories\Repositories.csproj">

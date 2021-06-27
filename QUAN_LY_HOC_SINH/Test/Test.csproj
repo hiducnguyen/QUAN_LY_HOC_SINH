@@ -56,6 +56,8 @@
     <Compile Include="RuleServiceTest.cs" />
     <Compile Include="StudentRepositoryTest.cs" />
     <Compile Include="StudentServiceTest.cs" />
+    <Compile Include="SubjectRepositoryTest.cs" />
+    <Compile Include="SubjectServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

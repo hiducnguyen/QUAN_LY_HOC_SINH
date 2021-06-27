@@ -156,6 +156,9 @@
   <data name="CreateStudent" xml:space="preserve">
     <value>Thêm học sinh</value>
   </data>
+  <data name="CreateSubject" xml:space="preserve">
+    <value>Thêm môn học</value>
+  </data>
   <data name="DateOnlyError" xml:space="preserve">
     <value>Giá trị này phải là một ngày</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="EditStudent" xml:space="preserve">
     <value>Cập nhật thông tin học sinh</value>
+  </data>
+  <data name="EditSubject" xml:space="preserve">
+    <value>Cập nhật thông tin môn học</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -206,6 +212,9 @@
   </data>
   <data name="ListStudents" xml:space="preserve">
     <value>Danh sách học sinh</value>
+  </data>
+  <data name="ListSubjects" xml:space="preserve">
+    <value>Danh sách môn học</value>
   </data>
   <data name="LogOut" xml:space="preserve">
     <value>Đăng xuất</value>

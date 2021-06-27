@@ -140,6 +140,7 @@ namespace Services
             {
                 student = _studentRepository.FindStudentByStudentId(studentId);
             }
+            if (student == null) throw new ObjectNotExistsException(Resource.Student, Resource.StudentId, studentId);
             CreateStudentDTO createStudentDTO = MapStudentToCreateStudentDTO(student);
             return createStudentDTO;
         }
