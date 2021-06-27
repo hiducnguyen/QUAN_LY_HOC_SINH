@@ -23,6 +23,10 @@ namespace Repositories.Mapping
                 m.NotNullable(true);
                 m.Column("HOC_KY");
             });
+            ManyToOne(x => x.Subject, m =>
+            {
+                m.Column("MON_HOC_ID");
+            });
             Property(x => x.FifteenMinuteTestScore, m =>
             {
                 m.NotNullable(true);

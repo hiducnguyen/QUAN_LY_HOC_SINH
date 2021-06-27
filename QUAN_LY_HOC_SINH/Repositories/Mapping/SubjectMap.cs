@@ -18,6 +18,13 @@ namespace Repositories.Mapping
             {
                 m.Column("VERSION");
             });
+            Property(x => x.SubjectId, m =>
+            {
+                m.Column(c => c.SqlType("numeric(3,0)"));
+                m.NotNullable(true);
+                m.Unique(true);
+                m.Column("MA_SO");
+            });
             Property(x => x.Name, m =>
             {
                 m.Column(c => c.SqlType("nvarchar(255)"));
@@ -25,11 +32,6 @@ namespace Repositories.Mapping
                 m.Unique(true);
                 m.Column("TEN");
             });
-            Set(x => x.Transcripts, m =>
-            {
-                m.Key(k => k.Column("MON_HOC_ID"));
-                m.Table("BANG_DIEM");
-            }, r => r.OneToMany());
         }
     }
 }
