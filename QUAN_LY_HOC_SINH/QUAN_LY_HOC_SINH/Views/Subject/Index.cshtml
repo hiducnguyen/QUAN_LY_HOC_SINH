@@ -1,0 +1,34 @@
+﻿@model IList<Services.DTO.IndexSubjectDTO>
+@using Services.DTO
+@using Resources
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.ListSubjects</p>
+    <div class="table-responsive">
+        <table class="data_table table-striped table-bordered">
+            <thead>
+            <th>@Resource.Id</th>
+            <th>@Resource.Name</th>
+            <th></th>
+            </thead>
+            <tbody>
+                @foreach (IndexSubjectDTO subjectDTO in Model)
+                {
+                    <tr>
+                        <td>@subjectDTO.SubjectId</td>
+                        <td>@subjectDTO.Name</td>
+                        <td>
+                            <a data-toggle="modal" data-id="@subjectDTO.SubjectId" href="#deleteModal">@Resource.Delete</a>
+                            <a href="/subject/edit/@subjectDTO.SubjectId">@Resource.Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @Html.Partial("_DeleteModal", new ViewDataDictionary {
+        { "Action", "/subject/delete"},
+        { "ObjectName", Resource.Subject},
+        { "ObjectIdName", Resource.Id }
+    })
+</div>
