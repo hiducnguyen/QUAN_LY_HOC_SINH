@@ -1,0 +1,64 @@
+﻿@model IList<Services.DTO.TranscriptDetailDTO>
+@using Resources
+@using Services.DTO
+
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.TranscriptDetail</p>
+    <h5 class="d-flex justify-content-center">
+        @Resource.Class:&nbsp;<span>@ViewBag.ClassName</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        @Resource.Subject:&nbsp;<span>@ViewBag.SubjectName</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        @Resource.Semester:&nbsp;<span>@ViewBag.Semester</span>
+    </h5>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="table-responsive">
+            <table class="data_table table-striped table-bordered">
+                <thead>
+                <th>@Resource.StudentId</th>
+                <th>@Resource.StudentName</th>
+                <th>@Resource.FifteenMinutesTestScore</th>
+                <th>@Resource.FortyFiveMinutesTestScore</th>
+                <th>@Resource.FinalTestScore</th>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model[i].StudentId</td>
+                            <td>@Model[i].StudentName</td>
+                            <td>
+                                @Html.EditorFor(model => model[i].FifteenMinutesTestScore,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model[i].FifteenMinutesTestScore, "",
+                               new { @class = "text-danger", @data_val_number = Resource.NumberOnlyError })
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model[i].FortyFiveMinutesTestScore,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model[i].FortyFiveMinutesTestScore, "",
+                               new { @class = "text-danger", @data_val_number = Resource.NumberOnlyError })
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model[i].FinalTestScore,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model[i].FinalTestScore, "",
+                               new { @class = "text-danger", @data_val_number = Resource.NumberOnlyError })
+                            </td>
+                            @Html.HiddenFor(model => model[i].Version)
+                            @Html.HiddenFor(model => model[i].StudentId)
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">@Resource.Cancel</a>
+        <button type="submit" class="btn btn-primary">@Resource.Done</button>
+    }
+
+    @Html.Partial("_CancelModal", new ViewDataDictionary {
+        { "RedirectLink", "/transcript/index"}
+    })
+ </div>

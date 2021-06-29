@@ -1,0 +1,41 @@
+﻿@model IList<Services.DTO.IndexTranscriptDTO>
+@using Services.DTO
+@using Resources
+
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.ListScripts</p>
+    <div class="table-responsive">
+        <table class="data_table table-striped table-bordered">
+            <thead>
+                <th>@Resource.Class</th>
+                <th>@Resource.Subject</th>
+                <th>@Resource.Semester</th>
+                <th></th>
+            </thead>
+            <tbody>
+                @foreach (IndexTranscriptDTO transcript in Model)
+                {
+                    <tr>
+                        <td>@transcript.ClassName</td>
+                        <td>@transcript.SubjectName</td>
+                        <td>@transcript.Semester</td>
+                        <td>
+                            <a data-toggle="modal" href="#deleteModal"
+                               data-id="@transcript.SubjectId/@transcript.ClassName/@transcript.Semester"
+                               >@Resource.Delete</a>
+                            <a href="/transcript/detail/@transcript.SubjectId/@transcript.ClassName/@transcript.Semester"
+                               >@Resource.Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    @Html.Partial("_DeleteModal", new ViewDataDictionary {
+        { "Action", "/transcript/delete"},
+        { "InputType", "text" },
+        { "ObjectName", Resource.Transcript},
+        { "ObjectIdName", Resource.TranscriptOfClass }
+    })
+</div>
