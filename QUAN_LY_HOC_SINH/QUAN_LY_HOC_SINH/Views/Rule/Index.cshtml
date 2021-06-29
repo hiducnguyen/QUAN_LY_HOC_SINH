@@ -3,33 +3,38 @@
 @using Resources
 <div class="col-lg-10 content">
     <p class="page_title">@Resource.ListRules</p>
+    @using (Html.BeginForm("Edit", "Rule", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
         <div class="table-responsive">
             <table class="data_table table-striped table-bordered">
                 <thead>
-                    <th>@Resource.RuleName</th>
-                    <th>@Resource.Value</th>
-                    <th></th>
+                <th>@Resource.Id</th>
+                <th>@Resource.RuleName</th>
+                <th>@Resource.Value</th>
                 </thead>
                 <tbody>
-                    @foreach (UpdateRuleDTO rule in Model)
+                    @for (int i = 0; i < Model.Count; i++)
                     {
                     <tr>
-                        
-                            <td>@rule.Name</td>
-                            <td><input type="text" name="value" value="@rule.Value" class="form-control" form="@rule.Id"/></td>
-                            <td><button type="submit" class="btn btn-primary" form="@rule.Id">@Resource.Save</button></td>
+                        <td>@Model[i].Id</td>
+                        <td>@Model[i].Name</td>
+                        <td>
+                            @Html.EditorFor(model => model[i].Value,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        @Html.HiddenFor(model => model[i].Version)
+                        @Html.HiddenFor(model => model[i].Id)
                     </tr>
                     }
                 </tbody>
             </table>
-            @foreach (UpdateRuleDTO rule in Model)
-            {
-            <form id="@rule.Id" action="/rule/edit/@rule.Id" method="post">
-                <input type="number" name="version" value="@rule.Version" form="@rule.Id" hidden />
-            </form>
-            }
         </div>
-
+        <br/>
+        <a class="btn btn-secondary" data-toggle="modal" href="#cancelModal">@Resource.Cancel</a>
+        <button type="submit" class="btn btn-primary">@Resource.Done</button>
+    }
     @Html.Partial("_CancelModal", new ViewDataDictionary {
         { "RedirectLink", "/home/index"}
     })

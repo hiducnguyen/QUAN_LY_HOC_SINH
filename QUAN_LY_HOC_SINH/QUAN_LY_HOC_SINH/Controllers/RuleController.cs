@@ -25,17 +25,16 @@ namespace QUAN_LY_HOC_SINH.Controllers
             return View(model);
         }
 
-        //  POST: Rule/Edit/Id
+        //  POST: Rule/Edit
         [HttpPost]
-        public ActionResult Edit(int id, string value, int version)
+        public ActionResult Edit(
+            [Bind(Include = "Id,Value,Version")]
+            IList<UpdateRuleDTO> model)
         {
-            UpdateRuleDTO updateRuleDTO = new UpdateRuleDTO
+            foreach (UpdateRuleDTO updateRuleDTO in model)
             {
-                Id = id,
-                Value = value,
-                Version = version
-            };
-            _ruleService.UpdateRule(updateRuleDTO);
+                _ruleService.UpdateRule(updateRuleDTO);
+            }
             return RedirectToAction("Index");
         }
 
