@@ -8,6 +8,7 @@ namespace Repositories.Models
         public virtual Guid Id { get; set; }
         public virtual Semester Semester { get; set; }
         public virtual Subject Subject { get; set; }
+        public virtual Guid StudentId { get; set; }
         public virtual float FifteenMinuteTestScore { get; set; }
         public virtual float FortyFiveMinuteTestScore { get; set; }
         public virtual float FinalTestScore { get; set; }

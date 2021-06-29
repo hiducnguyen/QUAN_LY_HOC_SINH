@@ -20,11 +20,13 @@ namespace Repositories.Mapping
             });
             Property(x => x.Semester, m =>
             {
+                m.UniqueKey("UQ_MON_HOC_SINH_HOC_KI");
                 m.NotNullable(true);
                 m.Column("HOC_KY");
             });
             ManyToOne(x => x.Subject, m =>
             {
+                m.UniqueKey("UQ_MON_HOC_SINH_HOC_KI");
                 m.Column("MON_HOC_ID");
             });
             Property(x => x.FifteenMinuteTestScore, m =>
@@ -41,6 +43,12 @@ namespace Repositories.Mapping
             {
                 m.NotNullable(true);
                 m.Column("DIEM_CUOI_KY");
+            });
+            Property(x => x.StudentId, m =>
+            {
+                m.UniqueKey("UQ_MON_HOC_SINH_HOC_KI");
+                m.NotNullable(true);
+                m.Column("HOC_SINH_ID");
             });
         }
     }
