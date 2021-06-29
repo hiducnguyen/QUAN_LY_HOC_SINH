@@ -28,7 +28,7 @@ namespace Services.DTO
         public IList<int> Students { get; set; }
         
         public MultiSelectList AllAvaibleStudents { get; set; }
-        
+
         public bool EditMode { get; set; }
         
         public int Version { get; set; }

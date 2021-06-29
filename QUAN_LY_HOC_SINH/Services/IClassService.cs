@@ -65,5 +65,10 @@ namespace Services
         /// <exception cref="Services.Exceptions.ObjectNotExistsException"></exception>
         /// <param name="className"></param>
         void DeleteClass(string className);
+        /// <summary>
+        /// Find all classes and convert them to select list
+        /// </summary>
+        /// <returns></returns>
+        SelectList GetSelectListClasses();
     }
 }

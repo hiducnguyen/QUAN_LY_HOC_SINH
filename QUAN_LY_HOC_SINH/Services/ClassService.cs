@@ -90,7 +90,7 @@ namespace Services
                 })
             );
 
-            return new SelectList(allGrades.OrderBy(x => x.Text), "Value", "Text"); ;
+            return new SelectList(allGrades.OrderBy(x => x.Text), "Value", "Text");
         }
 
         public bool IsClassNameExist(string name)
@@ -215,6 +215,23 @@ namespace Services
                 _genericRepository.Delete(@class);
                 _unitOfWork.Commit();
             }
+        }
+
+        public SelectList GetSelectListClasses()
+        {
+            IEnumerable<SelectListItem> allClasses;
+            using (_unitOfWork.Start())
+            {
+                allClasses = new List<SelectListItem>(
+                    _classRepository.FindAllClasses().Select(x => new SelectListItem
+                    {
+                        Value = x.Name.ToString(),
+                        Text = x.Name.ToString()
+                    })
+                );
+            }
+
+            return new SelectList(allClasses.OrderBy(x => x.Text), "Value", "Text");
         }
     }
 }

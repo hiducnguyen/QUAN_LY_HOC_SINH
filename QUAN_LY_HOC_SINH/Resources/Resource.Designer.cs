@@ -187,6 +187,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tạo bảng điểm.
+        /// </summary>
+        public static string CreateTranscript {
+            get {
+                return ResourceManager.GetString("CreateTranscript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giá trị này phải là một ngày.
         /// </summary>
         public static string DateOnlyError {
@@ -277,6 +286,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Điểm 15 phút.
+        /// </summary>
+        public static string FifteenMinutesTestScore {
+            get {
+                return ResourceManager.GetString("FifteenMinutesTestScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điểm cuối kỳ.
+        /// </summary>
+        public static string FinalTestScore {
+            get {
+                return ResourceManager.GetString("FinalTestScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điểm 1 tiết.
+        /// </summary>
+        public static string FortyFiveMinutesTestScore {
+            get {
+                return ResourceManager.GetString("FortyFiveMinutesTestScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giới tính.
         /// </summary>
         public static string Gender {
@@ -336,6 +372,15 @@ namespace Resources {
         public static string ListRules {
             get {
                 return ResourceManager.GetString("ListRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Danh sách bảng điểm.
+        /// </summary>
+        public static string ListScripts {
+            get {
+                return ResourceManager.GetString("ListScripts", resourceCulture);
             }
         }
         
@@ -408,6 +453,15 @@ namespace Resources {
         public static string NumberOfStudentsInClass {
             get {
                 return ResourceManager.GetString("NumberOfStudentsInClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giá trị này phải là một số.
+        /// </summary>
+        public static string NumberOnlyError {
+            get {
+                return ResourceManager.GetString("NumberOnlyError", resourceCulture);
             }
         }
         
@@ -520,11 +574,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bảng điểm.
+        /// </summary>
+        public static string Script {
+            get {
+                return ResourceManager.GetString("Script", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tra cứu điểm.
         /// </summary>
         public static string SearchTranscript {
             get {
                 return ResourceManager.GetString("SearchTranscript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Học kỳ.
+        /// </summary>
+        public static string Semester {
+            get {
+                return ResourceManager.GetString("Semester", resourceCulture);
             }
         }
         
@@ -606,6 +678,24 @@ namespace Resources {
         public static string Transcript {
             get {
                 return ResourceManager.GetString("Transcript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chi tiết bảng điểm.
+        /// </summary>
+        public static string TranscriptDetail {
+            get {
+                return ResourceManager.GetString("TranscriptDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Môn học/Lớp/Học kỳ.
+        /// </summary>
+        public static string TranscriptOfClass {
+            get {
+                return ResourceManager.GetString("TranscriptOfClass", resourceCulture);
             }
         }
         

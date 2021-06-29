@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Services
 {
@@ -59,5 +60,10 @@ namespace Services
         /// </exception>
         /// <param name="createSubjectDTO"></param>
         void UpdateSubject(CreateSubjectDTO createSubjectDTO);
+        /// <summary>
+        /// Find all subjects and convert them to SelectList
+        /// </summary>
+        /// <returns></returns>
+        SelectList GetSelectListSubjects();
     }
 }

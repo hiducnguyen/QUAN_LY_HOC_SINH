@@ -159,6 +159,9 @@
   <data name="CreateSubject" xml:space="preserve">
     <value>Thêm môn học</value>
   </data>
+  <data name="CreateTranscript" xml:space="preserve">
+    <value>Tạo bảng điểm</value>
+  </data>
   <data name="DateOnlyError" xml:space="preserve">
     <value>Giá trị này phải là một ngày</value>
   </data>
@@ -189,6 +192,15 @@
   <data name="Female" xml:space="preserve">
     <value>Nữ</value>
   </data>
+  <data name="FifteenMinutesTestScore" xml:space="preserve">
+    <value>Điểm 15 phút</value>
+  </data>
+  <data name="FinalTestScore" xml:space="preserve">
+    <value>Điểm cuối kỳ</value>
+  </data>
+  <data name="FortyFiveMinutesTestScore" xml:space="preserve">
+    <value>Điểm 1 tiết</value>
+  </data>
   <data name="Gender" xml:space="preserve">
     <value>Giới tính</value>
   </data>
@@ -209,6 +221,9 @@
   </data>
   <data name="ListRules" xml:space="preserve">
     <value>Danh sách quy định</value>
+  </data>
+  <data name="ListScripts" xml:space="preserve">
+    <value>Danh sách bảng điểm</value>
   </data>
   <data name="ListStudents" xml:space="preserve">
     <value>Danh sách học sinh</value>
@@ -233,6 +248,9 @@
   </data>
   <data name="NumberOfStudentsInClass" xml:space="preserve">
     <value>Sĩ số</value>
+  </data>
+  <data name="NumberOnlyError" xml:space="preserve">
+    <value>Giá trị này phải là một số</value>
   </data>
   <data name="ObjectAlreadyExists" xml:space="preserve">
     <value>{0} có {1}: {2} đã tồn tại, vui lòng chọn {1} khác</value>
@@ -270,8 +288,14 @@
   <data name="Save" xml:space="preserve">
     <value>Lưu</value>
   </data>
+  <data name="Script" xml:space="preserve">
+    <value>Bảng điểm</value>
+  </data>
   <data name="SearchTranscript" xml:space="preserve">
     <value>Tra cứu điểm</value>
+  </data>
+  <data name="Semester" xml:space="preserve">
+    <value>Học kỳ</value>
   </data>
   <data name="StringLengthError" xml:space="preserve">
     <value>{0} không được vượt quá {1} kí tự</value>
@@ -299,6 +323,12 @@
   </data>
   <data name="Transcript" xml:space="preserve">
     <value>Bảng điểm</value>
+  </data>
+  <data name="TranscriptDetail" xml:space="preserve">
+    <value>Chi tiết bảng điểm</value>
+  </data>
+  <data name="TranscriptOfClass" xml:space="preserve">
+    <value>Môn học/Lớp/Học kỳ</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Kiểu dữ liệu</value>

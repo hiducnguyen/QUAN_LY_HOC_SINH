@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Services
 {
@@ -132,7 +133,7 @@ namespace Services
                 throw new ObjectNotExistsException(Resource.Subject, Resource.Id, createSubjectDTO.SubjectId);
             if (subject.Version != createSubjectDTO.Version)
                 throw new ObjectHasBeenUpdatedException(Resource.Subject, Resource.Id, createSubjectDTO.SubjectId);
-            
+
             // Check if the new name of subject has already taken or not
             using (_unitOfWork.Start())
             {
@@ -147,6 +148,23 @@ namespace Services
                 _genericRepository.Update(subject);
                 _unitOfWork.Commit();
             }
+        }
+
+        public SelectList GetSelectListSubjects()
+        {
+            IEnumerable<SelectListItem> allSubjects;
+            using (_unitOfWork.Start())
+            {
+                allSubjects = new List<SelectListItem>(
+                    _subjectRepository.FindAllSubjects().Select(x => new SelectListItem
+                    {
+                        Value = x.SubjectId.ToString(),
+                        Text = $"{x.SubjectId}: {x.Name}"
+                    })
+                );
+            }
+
+            return new SelectList(allSubjects.OrderBy(x => x.Text), "Value", "Text");
         }
     }
 }
