@@ -110,19 +110,31 @@ namespace Services
 
         public int GetMaxNumberOfStudentEachClass()
         {
-            return Convert.ToInt32(_ruleRepository.FindRuleById(1000).Value);
+            using (_unitOfWork.Start())
+            {
+                return Convert.ToInt32(_ruleRepository.FindRuleById(1000).Value);
+            }
         }
         public int GetMinimumAge()
         {
-            return Convert.ToInt32(_ruleRepository.FindRuleById(1001).Value);
+            using (_unitOfWork.Start())
+            {
+                return Convert.ToInt32(_ruleRepository.FindRuleById(1001).Value);
+            }
         }
         public int GetMaximumAge()
         {
-            return Convert.ToInt32(_ruleRepository.FindRuleById(1002).Value);
+            using (_unitOfWork.Start())
+            {
+                return Convert.ToInt32(_ruleRepository.FindRuleById(1002).Value);
+            }
         }
         public float GetMinimumPassScored()
         {
-            return Convert.ToSingle(_ruleRepository.FindRuleById(1003).Value);
+            using (_unitOfWork.Start())
+            {
+                return Convert.ToSingle(_ruleRepository.FindRuleById(1003).Value);
+            }
         }
     }
 }

@@ -60,7 +60,12 @@ namespace Test
             _mockRules.Add(rule3);
 
             // Act
-            IList<Rule> rules = _ruleRepository.FindAllRules();
+            IList<Rule> rules;
+            
+            using (_unitOfWork.Start())
+            {
+                rules = _ruleRepository.FindAllRules();
+            }
 
             // Assert
             foreach (Rule rule in _mockRules)
@@ -86,7 +91,12 @@ namespace Test
             _mockRules.Add(rule);
 
             // Act
-            Rule foundRule = _ruleRepository.FindRuleById(rule.Id);
+            Rule foundRule;
+            
+            using (_unitOfWork.Start())
+            {
+                foundRule = _ruleRepository.FindRuleById(rule.Id);
+            }
 
             // Assert
             Assert.AreNotEqual(null, foundRule);

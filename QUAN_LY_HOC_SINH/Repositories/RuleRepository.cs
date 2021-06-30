@@ -17,19 +17,13 @@ namespace Repositories
         }
         public IList<Rule> FindAllRules()
         {
-            using (_unitOfWork.Start())
-            {
-                return _unitOfWork.Session.QueryOver<Rule>().List();
-            }
+            return _unitOfWork.Session.QueryOver<Rule>().List();
         }
         public Rule FindRuleById(int id)
         {
-            using (_unitOfWork.Start())
-            {
-                return _unitOfWork.Session.QueryOver<Rule>()
-                    .Where(x => x.Id == id)
-                    .SingleOrDefault();
-            }
+            return _unitOfWork.Session.QueryOver<Rule>()
+                .Where(x => x.Id == id)
+                .SingleOrDefault();
         }
     }
 }
