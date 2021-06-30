@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quay lại trang chủ.
+        /// </summary>
+        public static string BackToHomepage {
+            get {
+                return ResourceManager.GetString("BackToHomepage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ngày sinh.
         /// </summary>
         public static string BirthDate {
@@ -223,6 +232,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phát triển bởi helloVanDuc.
+        /// </summary>
+        public static string DevelopeByHelloVanDuc {
+            get {
+                return ResourceManager.GetString("DevelopeByHelloVanDuc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xong.
         /// </summary>
         public static string Done {
@@ -273,6 +291,15 @@ namespace Resources {
         public static string EmailAddressError {
             get {
                 return ResourceManager.GetString("EmailAddressError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lỗi.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
