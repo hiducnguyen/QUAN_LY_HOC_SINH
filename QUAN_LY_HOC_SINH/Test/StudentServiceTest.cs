@@ -331,9 +331,25 @@ namespace Test
         {
             // Arrange
             Student student = CreateOneMockStudent();
+            Subject subject = new Subject
+            {
+                SubjectId = 500,
+                Name = "test"
+            };
+            Transcript transcript = new Transcript
+            {
+                FifteenMinuteTestScore = 5,
+                FortyFiveMinuteTestScore = 5,
+                FinalTestScore = 5,
+                Semester = Semester.First,
+                Subject = subject
+            };
             using (_unitOfWork.Start())
             {
                 _genericRepository.Save(student);
+                _genericRepository.Save(subject);
+                transcript.StudentId = student.Id;
+                _genericRepository.Save(transcript);
                 _unitOfWork.Commit();
             }
 
@@ -342,11 +358,22 @@ namespace Test
 
             // Assert
             Student foundStudent;
+            Transcript foundTranscript;
             using (_unitOfWork.Start())
             {
                 foundStudent = _studentRepository.FindStudentByStudentId(student.StudentId);
+                foundTranscript = new TranscriptRepository(_unitOfWork)
+                    .FindTranscript(subject, student.Id, transcript.Semester);
             }
             Assert.AreEqual(null, foundStudent);
+            Assert.AreEqual(null, foundTranscript);
+
+            // Tear down
+            using (_unitOfWork.Start())
+            {
+                _genericRepository.Delete(subject);
+                _unitOfWork.Commit();
+            }
         }
 
         [Test]

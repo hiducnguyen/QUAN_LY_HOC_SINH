@@ -18,10 +18,12 @@ namespace Repositories
             _unitOfWork = unitOfWork;
         }
 
-        public IList<Transcript> FindAllTranscripts()
+        public IList<Transcript> FindAllTranscripts(Subject subject)
         {
-            throw new NotImplementedException();
+            return _unitOfWork.Session.QueryOver<Transcript>()
+                .Where(x => x.Subject == subject).List();
         }
+
         public IList<TranscriptOfClass> FindAllTranscriptsOfClass()
         {
             return _unitOfWork.Session.QueryOver<TranscriptOfClass>().List();

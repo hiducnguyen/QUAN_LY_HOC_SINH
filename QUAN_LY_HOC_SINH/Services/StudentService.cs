@@ -109,7 +109,15 @@ namespace Services
                 {
                     throw new ObjectNotExistsException(Resource.Student, Resource.StudentId, studentId);
                 }
-
+                foreach (Transcript transcript in student.Transcripts)
+                {
+                    _genericRepository.Delete(transcript);
+                }
+                _unitOfWork.Commit();
+            }
+            using (_unitOfWork.Start())
+            {
+                Student student = _studentRepository.FindStudentByStudentId(studentId);
                 _genericRepository.Delete(student);
                 _unitOfWork.Commit();
             }

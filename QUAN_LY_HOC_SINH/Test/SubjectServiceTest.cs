@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Repositories;
+using Repositories.Enums;
 using Repositories.Models;
 using Repositories.UnitOfWork;
 using Services;
@@ -20,6 +21,7 @@ namespace Test
         private IUnitOfWork _unitOfWork;
         private ISubjectRepository _subjectRepository;
         private IGenericRepository _genericRepository;
+        private ITranscriptRepository _transcriptRepository; 
         private IList<Subject> _mockSubjects;
 
         [OneTimeSetUp]
@@ -28,7 +30,9 @@ namespace Test
             _unitOfWork = new UnitOfWork();
             _genericRepository = new GenericRepository(_unitOfWork);
             _subjectRepository = new SubjectRepository(_unitOfWork);
-            _subjectService = new SubjectService(_unitOfWork, _subjectRepository, _genericRepository);
+            _transcriptRepository = new TranscriptRepository(_unitOfWork);
+            _subjectService = new SubjectService(_unitOfWork, _subjectRepository,
+                _genericRepository, _transcriptRepository);
             _mockSubjects = new List<Subject>();
         }
 
@@ -235,9 +239,29 @@ namespace Test
                 Name = "test",
                 SubjectId = 500
             };
+            Student student = new Student
+            {
+                StudentId =  3000,
+                Name = "test",
+                Address = "test",
+                BirthDate = new DateTime(2000,3,26),
+                Email = "test@gmail.com",
+                Gender = Gender.Female
+            };
+            Transcript transcript = new Transcript
+            {
+                FifteenMinuteTestScore = 5,
+                FortyFiveMinuteTestScore = 5,
+                FinalTestScore = 5,
+                Semester = Semester.First,
+                Subject = subject
+            };
             using (_unitOfWork.Start())
             {
                 _genericRepository.Save(subject);
+                _genericRepository.Save(student);
+                transcript.StudentId = student.Id;
+                _genericRepository.Save(transcript);
                 _unitOfWork.Commit();
             }
 
@@ -248,7 +272,16 @@ namespace Test
             using (_unitOfWork.Start())
             {
                 Subject foundSubject = _subjectRepository.FindSubjectBySubjectId(subject.SubjectId);
+                IList<Transcript> foundTranscripts = _transcriptRepository.FindAllTranscripts(subject);
                 Assert.AreEqual(null, foundSubject);
+                Assert.AreEqual(0, foundTranscripts.Count);
+            }
+
+            // Tear down
+            using (_unitOfWork.Start())
+            {
+                _genericRepository.Delete(student);
+                _unitOfWork.Commit();
             }
         }
 

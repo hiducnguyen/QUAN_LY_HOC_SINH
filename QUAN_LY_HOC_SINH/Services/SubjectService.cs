@@ -17,6 +17,7 @@ namespace Services
     {
         private IUnitOfWork _unitOfWork;
         private ISubjectRepository _subjectRepository;
+        private ITranscriptRepository _transcriptRepository;
         private IGenericRepository _genericRepository;
 
         private bool IsMissingRequiredFielad(CreateSubjectDTO createSubjectDTO)
@@ -25,11 +26,13 @@ namespace Services
         }
 
         public SubjectService(IUnitOfWork unitOfWork, ISubjectRepository subjectRepository,
-            IGenericRepository genericRepository)
+            IGenericRepository genericRepository,
+            ITranscriptRepository transcriptRepository)
         {
             _unitOfWork = unitOfWork;
             _subjectRepository = subjectRepository;
             _genericRepository = genericRepository;
+            _transcriptRepository = transcriptRepository;
         }
 
         public Subject CreateSubject(CreateSubjectDTO createSubjectDTO)
@@ -99,6 +102,11 @@ namespace Services
             {
                 Subject subject = _subjectRepository.FindSubjectBySubjectId(subjecId);
                 if (subject == null) throw new ObjectNotExistsException(Resource.Subject, Resource.Id, subjecId);
+                IList<Transcript> transcripts = _transcriptRepository.FindAllTranscripts(subject);
+                foreach (Transcript transcript in transcripts)
+                {
+                    _genericRepository.Delete(transcript);
+                }
                 _genericRepository.Delete(subject);
                 _unitOfWork.Commit();
             }
