@@ -33,43 +33,6 @@ namespace QUAN_LY_HOC_SINH.Controllers
             return View(model);
         }
 
-        // GET: Transcript/Create
-        public ActionResult Create()
-        {
-            CreateTranscriptDTO model = new CreateTranscriptDTO
-            {
-                AllClasses = _classService.GetSelectListClasses(),
-                AllSemesters = SemesterHelper.GetAllSemesters(),
-                AllSubjects = _subjectService.GetSelectListSubjects()
-            };
-            ViewBag.Title = Resource.CreateTranscript;
-            return View(model);
-        }
-
-        // POST: Transcript/Create
-        [HttpPost]
-        public ActionResult Create([Bind(Include = "ClassName,SubjectId,Semester")]
-            CreateTranscriptDTO model)
-        {
-            if (ModelState.IsValid)
-            {
-                _transcriptService.CreateTranscript(model);
-                return RedirectToAction("Detail", new RouteValueDictionary {
-                    {"subjectId", model.SubjectId },
-                    {"className", model.ClassName },
-                    {"semester", model.Semester }
-                });
-            }
-            else
-            {
-                ViewBag.Title = Resource.CreateTranscript;
-                model.AllClasses = _classService.GetSelectListClasses();
-                model.AllSemesters = SemesterHelper.GetAllSemesters();
-                model.AllSubjects = _subjectService.GetSelectListSubjects();
-                return View(model);
-            }
-        }
-
         [Route("transcript/detail/{subjectId}/{className}/{semester}")]
         public ActionResult Detail(int subjectId, string className, int semester)
         {
