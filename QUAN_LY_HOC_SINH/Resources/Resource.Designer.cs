@@ -124,15 +124,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thay đổi quy định.
-        /// </summary>
-        public static string ChangeRule {
-            get {
-                return ResourceManager.GetString("ChangeRule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Chọn giới tính.
         /// </summary>
         public static string ChooseGender {
@@ -169,11 +160,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tạo.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thêm lớp học.
         /// </summary>
         public static string CreateClass {
             get {
                 return ResourceManager.GetString("CreateClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tạo báo cáo tổng kết học kỳ.
+        /// </summary>
+        public static string CreateSemesterReport {
+            get {
+                return ResourceManager.GetString("CreateSemesterReport", resourceCulture);
             }
         }
         
@@ -192,6 +201,15 @@ namespace Resources {
         public static string CreateSubject {
             get {
                 return ResourceManager.GetString("CreateSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tạo báo cáo tổng kết môn học.
+        /// </summary>
+        public static string CreateSubjectReport {
+            get {
+                return ResourceManager.GetString("CreateSubjectReport", resourceCulture);
             }
         }
         
@@ -484,6 +502,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Số lượng đạt.
+        /// </summary>
+        public static string NumberOfStudentsPass {
+            get {
+                return ResourceManager.GetString("NumberOfStudentsPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giá trị này phải là một số.
         /// </summary>
         public static string NumberOnlyError {
@@ -534,6 +561,24 @@ namespace Resources {
         public static string RangeError {
             get {
                 return ResourceManager.GetString("RangeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tỉ lệ.
+        /// </summary>
+        public static string Ratio {
+            get {
+                return ResourceManager.GetString("Ratio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Báo cáo.
+        /// </summary>
+        public static string Report {
+            get {
+                return ResourceManager.GetString("Report", resourceCulture);
             }
         }
         
@@ -628,6 +673,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Báo cáo tổng kết học kỳ.
+        /// </summary>
+        public static string SemesterReport {
+            get {
+                return ResourceManager.GetString("SemesterReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} không được vượt quá {1} kí tự.
         /// </summary>
         public static string StringLengthError {
@@ -700,6 +754,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Báo cáo tổng kết môn học.
+        /// </summary>
+        public static string SubjectReport {
+            get {
+                return ResourceManager.GetString("SubjectReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bảng điểm.
         /// </summary>
         public static string Transcript {
@@ -750,6 +813,24 @@ namespace Resources {
         public static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật quy định.
+        /// </summary>
+        public static string UpdateRule {
+            get {
+                return ResourceManager.GetString("UpdateRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật bảng điểm.
+        /// </summary>
+        public static string UpdateTranscript {
+            get {
+                return ResourceManager.GetString("UpdateTranscript", resourceCulture);
             }
         }
         

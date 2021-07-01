@@ -19,6 +19,7 @@ namespace Services
         private IGenericRepository _genericRepository;
         private IStudentRepository _studentRepository;
         private IClassRepository _classRepository;
+        private ISubjectRepository _subjectRepository;
         private IUnitOfWork _unitOfWork;
 
         private Student MapDTOtoStudent(CreateStudentDTO createStudentDTO, bool editMode = false)
@@ -67,14 +68,16 @@ namespace Services
         }
 
         public StudentService(
+            IUnitOfWork unitOfWork,
             IGenericRepository genericRepository,
             IStudentRepository studentRepository,
             IClassRepository classRepository,
-            IUnitOfWork unitOfWork)
+            ISubjectRepository subjectRepository)
         {
             _genericRepository = genericRepository;
             _studentRepository = studentRepository;
             _classRepository = classRepository;
+            _subjectRepository = subjectRepository;
             _unitOfWork = unitOfWork;
         }
         public Student CreateStudent(CreateStudentDTO createStudentDTO)
@@ -92,8 +95,24 @@ namespace Services
                 {
                     throw new ObjectAlreadyExistsException(Resource.Student, Resource.StudentId, student.StudentId);
                 }
-
                 _genericRepository.Save(student);
+
+                IList<Subject> subjects = _subjectRepository.FindAllSubjects();
+                IList<Semester> semesters = SemesterHelper.GetAllSemesters();
+
+                foreach (Subject subject in subjects)
+                {
+                    foreach (Semester semester in semesters)
+                    {
+                        Transcript transcript = new Transcript
+                        {
+                            Semester = semester,
+                            StudentId = student.Id,
+                            Subject = subject
+                        };
+                        _genericRepository.Save(transcript);
+                    }
+                }
                 _unitOfWork.Commit();
             }
 

@@ -19,6 +19,7 @@ namespace Services
         /// <summary>
         /// Map the DTO to Subject and save it
         /// </summary>
+        /// <remarks>Create subject also create a transcript of the subject for all students</remarks>
         /// <param name="createSubjectDTO"></param>
         /// <exception cref="Services.Exceptions.MissingRequiredFieldException"></exception>
         /// <exception cref="Services.Exceptions.ObjectAlreadyExistsException"></exception>

@@ -22,6 +22,7 @@ namespace Test
         private IUnitOfWork _unitOfWork;
         private IGenericRepository _genericRepository;
         private IStudentRepository _studentRepository;
+        private ISubjectRepository _subjectRepository;
         private IClassRepository _classRepository;
         
         [OneTimeSetUp]
@@ -32,7 +33,9 @@ namespace Test
             _genericRepository = new GenericRepository(_unitOfWork);
             _studentRepository = new StudentRepository(_unitOfWork);
             _classRepository = new ClassRepository(_unitOfWork);
-            _studentService = new StudentService(_genericRepository, _studentRepository, _classRepository, _unitOfWork);
+            _subjectRepository = new SubjectRepository(_unitOfWork);
+            _studentService = new StudentService(_unitOfWork, _genericRepository, _studentRepository,
+                _classRepository, _subjectRepository);
         }
 
         [TearDown]
@@ -40,9 +43,26 @@ namespace Test
         {
             using (_unitOfWork.Start())
             {
-                foreach (Student student in _mockStudents)
+                for (int i = 0; i < _mockStudents.Count; i++)
                 {
-                    _genericRepository.Delete(student);
+                    _mockStudents[i] = _studentRepository.FindStudentByStudentId(_mockStudents[i].StudentId);
+
+                    if (_mockStudents[i].Transcripts != null)
+                    {
+                        foreach (Transcript transcript in _mockStudents[i].Transcripts)
+                        {
+                            _genericRepository.Delete(transcript);
+                        }
+                    }
+                }
+                _unitOfWork.Commit();
+            }
+            using (_unitOfWork.Start())
+            {
+                for (int i = 0; i < _mockStudents.Count; i++)
+                {
+                    _mockStudents[i] = _studentRepository.FindStudentByStudentId(_mockStudents[i].StudentId);
+                    _genericRepository.Delete(_mockStudents[i]);
                 }
                 _unitOfWork.Commit();
             }

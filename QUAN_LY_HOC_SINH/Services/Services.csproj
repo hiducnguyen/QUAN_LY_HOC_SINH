@@ -90,6 +90,7 @@
     <Compile Include="DTO\IndexTranscriptDTO.cs" />
     <Compile Include="DTO\IndexStudentDTO.cs" />
     <Compile Include="DTO\IndexSubjectDTO.cs" />
+    <Compile Include="DTO\ReportDTO.cs" />
     <Compile Include="DTO\TranscriptDetailDTO.cs" />
     <Compile Include="DTO\UpdateRuleDTO.cs" />
     <Compile Include="Exceptions\BaseException.cs" />

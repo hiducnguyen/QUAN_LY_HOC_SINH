@@ -22,13 +22,15 @@ namespace Services
         private IClassRepository _classRepository;
         private ISubjectRepository _subjectRepository;
         private IStudentRepository _studentRepository;
+        private IRuleRepository _ruleRepository;
 
         public TranscriptService(IUnitOfWork unitOfWork, 
             ITranscriptRepository transcriptRepository,
             IGenericRepository genericRepository,
             IClassRepository classRepository,
             ISubjectRepository subjectRepository,
-            IStudentRepository studentRepository)
+            IStudentRepository studentRepository,
+            IRuleRepository ruleRepository)
         {
             _unitOfWork = unitOfWork;
             _transcriptRepository = transcriptRepository;
@@ -36,6 +38,7 @@ namespace Services
             _classRepository = classRepository;
             _subjectRepository = subjectRepository;
             _studentRepository = studentRepository;
+            _ruleRepository = ruleRepository;
         }
 
         public void CreateTranscript(CreateTranscriptDTO createTranscriptDTO)
@@ -126,6 +129,98 @@ namespace Services
                 indexTranscriptDTOs.Add(indexTranscriptDTO);
             }
             return indexTranscriptDTOs;
+        }
+
+        public IList<ReportDTO> FindSubjectReports(int semester, int subjectId)
+        {
+            using (_unitOfWork.Start())
+            {
+                IList<Class> classes = _classRepository.FindAllClasses();
+                Subject subject = _subjectRepository.FindSubjectBySubjectId(subjectId);
+                if (subject == null)
+                {
+                    throw new ObjectNotExistsException(Resource.Subject, Resource.Id, subjectId);
+                }
+                IList<ReportDTO> subjectReportDTOs = new List<ReportDTO>();
+                float standardScore = Convert.ToSingle(_ruleRepository.FindRuleById(1003).Value);
+                foreach (Class @class in classes)
+                {
+                    ReportDTO subjectReportDTO = new ReportDTO
+                    {
+                        ClassName = @class.Name
+                    };
+                    IList<Student> students = _studentRepository.FindStudentsByClassId(@class.Id);
+                    subjectReportDTO.NumberOfStudentsInClass = students.Count;
+                    subjectReportDTO.NumberOfStudentsPass = 0;
+
+                    foreach (Student student in students)
+                    {
+                        Transcript transcript = _transcriptRepository.FindTranscript(subject, student.Id,
+                            (Semester)semester);
+                            
+                        float averageScore = CalculateAverageScore(transcript.FifteenMinuteTestScore,
+                            transcript.FortyFiveMinuteTestScore, transcript.FinalTestScore);
+                        if (averageScore >= standardScore) subjectReportDTO.NumberOfStudentsPass++;
+                    }
+
+                    subjectReportDTO.Ratio = ((int)(((float)subjectReportDTO.NumberOfStudentsPass) /
+                        subjectReportDTO.NumberOfStudentsInClass * 100)).ToString() + "%";
+
+                    subjectReportDTOs.Add(subjectReportDTO);
+                }
+                return subjectReportDTOs;
+            }
+        }
+
+        public IList<ReportDTO> FindSemesterReports(int semester)
+        {
+            using (_unitOfWork.Start())
+            {
+                IList<Class> classes = _classRepository.FindAllClasses();
+                IList<ReportDTO> reportDTOs = new List<ReportDTO>();
+
+                float standardScore = Convert.ToSingle(_ruleRepository.FindRuleById(1003).Value);
+                foreach (Class @class in classes)
+                {
+                    ReportDTO reportDTO = new ReportDTO
+                    {
+                        ClassName = @class.Name
+                    };
+                    IList<Student> students = _studentRepository.FindStudentsByClassId(@class.Id);
+                    reportDTO.NumberOfStudentsInClass = students.Count;
+                    reportDTO.NumberOfStudentsPass = 0;
+
+                    foreach (Student student in students)
+                    {
+                        bool isStudentPass = true;
+                        IList<Transcript> transcripts = _transcriptRepository
+                                                    .FindAllTranscripts(student.Id, (Semester)semester);
+                        for (int i = 0; i < transcripts.Count; i++)
+                        {
+                            float averageScore = CalculateAverageScore(transcripts[i].FifteenMinuteTestScore,
+                                transcripts[i].FortyFiveMinuteTestScore, transcripts[i].FinalTestScore);
+                            if (averageScore < standardScore)
+                            {
+                                isStudentPass = false;
+                                break;
+                            }
+                        }
+                        if (isStudentPass) reportDTO.NumberOfStudentsPass++;
+                    }
+
+                    reportDTO.Ratio = ((int)(((float)reportDTO.NumberOfStudentsPass) /
+                        reportDTO.NumberOfStudentsInClass * 100)).ToString() + "%";
+
+                    reportDTOs.Add(reportDTO);
+                }
+                return reportDTOs;
+            }
+        }
+
+        private float CalculateAverageScore(float fifteenMinutesTestScore,
+            float fortyFiveMinutesTestScore, float finalTestScore)
+        {
+            return (fifteenMinutesTestScore + fortyFiveMinutesTestScore * 2 + finalTestScore * 3) / 6;
         }
 
         public IList<TranscriptDetailDTO> FindTranscripts(int subjectId, string className, int semester)

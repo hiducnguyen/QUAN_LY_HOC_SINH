@@ -36,6 +36,19 @@ namespace Services
         /// <returns></returns>
         IList<TranscriptDetailDTO> FindTranscripts(int subjectId, string className, int semester);
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <param name="subjectId"></param>
+        /// <returns></returns>
+        IList<ReportDTO> FindSubjectReports(int semester, int subjectId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="semester"></param>
+        /// <returns></returns>
+        IList<ReportDTO> FindSemesterReports(int semester);
+        /// <summary>
         /// Update the scripts of corresponding subject, semester and student
         /// </summary>
         /// <param name="subjectId"></param>

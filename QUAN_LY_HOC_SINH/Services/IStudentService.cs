@@ -10,6 +10,7 @@ namespace Services
         /// <summary>
         /// Create a Student from the DTO and save it to database
         /// </summary>
+        /// <remarks>Create a Student also create the transcripts of all subject for the student</remarks>
         /// <param name="createStudentDTO"></param>
         /// <exception cref="Services.Exceptions.ObjectAlreadyExistsException">
         /// Throw when a student with the same StudentId has already exists 

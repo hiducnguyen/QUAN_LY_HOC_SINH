@@ -1,4 +1,5 @@
 ﻿using Repositories;
+using Repositories.Enums;
 using Repositories.Models;
 using Repositories.UnitOfWork;
 using Resources;
@@ -18,6 +19,7 @@ namespace Services
         private IUnitOfWork _unitOfWork;
         private ISubjectRepository _subjectRepository;
         private ITranscriptRepository _transcriptRepository;
+        private IStudentRepository _studentRepository;
         private IGenericRepository _genericRepository;
 
         private bool IsMissingRequiredFielad(CreateSubjectDTO createSubjectDTO)
@@ -27,12 +29,14 @@ namespace Services
 
         public SubjectService(IUnitOfWork unitOfWork, ISubjectRepository subjectRepository,
             IGenericRepository genericRepository,
-            ITranscriptRepository transcriptRepository)
+            ITranscriptRepository transcriptRepository,
+            IStudentRepository studentRepository)
         {
             _unitOfWork = unitOfWork;
             _subjectRepository = subjectRepository;
             _genericRepository = genericRepository;
             _transcriptRepository = transcriptRepository;
+            _studentRepository = studentRepository;
         }
 
         public Subject CreateSubject(CreateSubjectDTO createSubjectDTO)
@@ -54,6 +58,24 @@ namespace Services
                     SubjectId = createSubjectDTO.SubjectId
                 };
                 _genericRepository.Save(subject);
+
+                IList<Student> students = _studentRepository.FindAllStudents();
+                IList<Semester> semesters = SemesterHelper.GetAllSemesters();
+
+                foreach (Student student in students)
+                {
+                    foreach (Semester semester in semesters)
+                    {
+                        Transcript transcript = new Transcript
+                        {
+                            Semester = semester,
+                            StudentId = student.Id,
+                            Subject = subject
+                        };
+                        _genericRepository.Save(transcript);
+                    }
+                }
+
                 _unitOfWork.Commit();
                 return subject;
             }

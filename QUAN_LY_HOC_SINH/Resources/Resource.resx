@@ -138,9 +138,6 @@
   <data name="Cancel" xml:space="preserve">
     <value>Hủy</value>
   </data>
-  <data name="ChangeRule" xml:space="preserve">
-    <value>Thay đổi quy định</value>
-  </data>
   <data name="ChooseGender" xml:space="preserve">
     <value>Chọn giới tính</value>
   </data>
@@ -153,14 +150,23 @@
   <data name="ConfirmCancel" xml:space="preserve">
     <value>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</value>
   </data>
+  <data name="Create" xml:space="preserve">
+    <value>Tạo</value>
+  </data>
   <data name="CreateClass" xml:space="preserve">
     <value>Thêm lớp học</value>
+  </data>
+  <data name="CreateSemesterReport" xml:space="preserve">
+    <value>Tạo báo cáo tổng kết học kỳ</value>
   </data>
   <data name="CreateStudent" xml:space="preserve">
     <value>Thêm học sinh</value>
   </data>
   <data name="CreateSubject" xml:space="preserve">
     <value>Thêm môn học</value>
+  </data>
+  <data name="CreateSubjectReport" xml:space="preserve">
+    <value>Tạo báo cáo tổng kết môn học</value>
   </data>
   <data name="CreateTranscript" xml:space="preserve">
     <value>Tạo bảng điểm</value>
@@ -258,6 +264,9 @@
   <data name="NumberOfStudentsInClass" xml:space="preserve">
     <value>Sĩ số</value>
   </data>
+  <data name="NumberOfStudentsPass" xml:space="preserve">
+    <value>Số lượng đạt</value>
+  </data>
   <data name="NumberOnlyError" xml:space="preserve">
     <value>Giá trị này phải là một số</value>
   </data>
@@ -275,6 +284,12 @@
   </data>
   <data name="RangeError" xml:space="preserve">
     <value>{0} phải thuộc khoảng từ {1} đến {2}</value>
+  </data>
+  <data name="Ratio" xml:space="preserve">
+    <value>Tỉ lệ</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Báo cáo</value>
   </data>
   <data name="ReportSemester" xml:space="preserve">
     <value>Báo cáo học kì</value>
@@ -306,6 +321,9 @@
   <data name="Semester" xml:space="preserve">
     <value>Học kỳ</value>
   </data>
+  <data name="SemesterReport" xml:space="preserve">
+    <value>Báo cáo tổng kết học kỳ</value>
+  </data>
   <data name="StringLengthError" xml:space="preserve">
     <value>{0} không được vượt quá {1} kí tự</value>
   </data>
@@ -330,6 +348,9 @@
   <data name="Subject" xml:space="preserve">
     <value>Môn học</value>
   </data>
+  <data name="SubjectReport" xml:space="preserve">
+    <value>Báo cáo tổng kết môn học</value>
+  </data>
   <data name="Transcript" xml:space="preserve">
     <value>Bảng điểm</value>
   </data>
@@ -347,6 +368,12 @@
   </data>
   <data name="Update" xml:space="preserve">
     <value>Sửa</value>
+  </data>
+  <data name="UpdateRule" xml:space="preserve">
+    <value>Cập nhật quy định</value>
+  </data>
+  <data name="UpdateTranscript" xml:space="preserve">
+    <value>Cập nhật bảng điểm</value>
   </data>
   <data name="Value" xml:space="preserve">
     <value>Giá trị</value>
