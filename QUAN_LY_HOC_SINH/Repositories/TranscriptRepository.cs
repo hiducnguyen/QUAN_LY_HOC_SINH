@@ -24,6 +24,13 @@ namespace Repositories
                 .Where(x => x.Subject == subject).List();
         }
 
+        public IList<Transcript> FindAllTranscripts(Guid studentId, Semester semester)
+        {
+            return _unitOfWork.Session.QueryOver<Transcript>()
+                .Where(x => x.StudentId == studentId && x.Semester == semester)
+                .List();
+        }
+
         public IList<TranscriptOfClass> FindAllTranscriptsOfClass()
         {
             return _unitOfWork.Session.QueryOver<TranscriptOfClass>().List();
