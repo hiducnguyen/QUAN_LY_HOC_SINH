@@ -69,7 +69,8 @@
                        @((currentLink=="/transcript/index" || currentLink=="/transcript/detail")?"current_item":"")">
                         @Resource.UpdateTranscript
                     </a>
-                    <a href="./searchTranscript.html" class="nav_option">
+                    <a href="/transcript/search" class="nav_option
+                       @(currentLink=="/transcript/search"?"current_item":"")">
                         @Resource.SearchTranscript
                     </a>
                 </div>

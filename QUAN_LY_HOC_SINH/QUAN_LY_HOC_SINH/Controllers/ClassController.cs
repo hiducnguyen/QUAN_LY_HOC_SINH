@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace QUAN_LY_HOC_SINH.Controllers
 {
-    public class ClassController : Controller
+    public class ClassController : BaseController
     {
         private IClassService _classService;
         private IStudentService _studentService;

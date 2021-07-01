@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace QUAN_LY_HOC_SINH.Controllers
 {
-    public class ReportController : Controller
+    public class ReportController : BaseController
     {
         private ITranscriptService _transcriptService;
         private ISubjectService _subjectService;

@@ -28,7 +28,7 @@ namespace QUAN_LY_HOC_SINH.Controllers
         // GET: Transcript
         public ActionResult Index()
         {
-            IList<IndexTranscriptDTO> model = _transcriptService.FindAllTranscripts();
+            IList<IndexTranscriptDTO> model = _transcriptService.GetListIndexTranscriptDTOFromAllTranscripts();
             ViewBag.Title = Resource.ListScripts;
             return View(model);
         }
@@ -68,20 +68,13 @@ namespace QUAN_LY_HOC_SINH.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Delete(string id)
+        // GET: Transcript/Search
+        public ActionResult Search()
         {
-            // format of id: "{SubjectId}/{ClassName}/{Semester}"
-            if (id != null)
-            {
-                string[] ids = id.Split('/');
-                if (ids.Length == 3)
-                {
-                    _transcriptService.DeleteTranscripts(Convert.ToInt32(ids[0]), ids[1], Convert.ToInt32(ids[2]));
-                }
-            }
-
-            return RedirectToAction("Index");
+            IList<SearchTranscriptDTO> model = _transcriptService
+                .GetListSearchTranscriptDTOFromAllTranscripts();
+            ViewBag.Title = Resource.SearchTranscript;
+            return View(model);
         }
     }
 }

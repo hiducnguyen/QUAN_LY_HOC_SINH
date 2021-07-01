@@ -330,6 +330,7 @@
     <Content Include="Views\Report\SubjectReport.cshtml" />
     <Content Include="Views\Report\Semester.cshtml" />
     <Content Include="Views\Report\SemesterReport.cshtml" />
+    <Content Include="Views\Transcript\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
