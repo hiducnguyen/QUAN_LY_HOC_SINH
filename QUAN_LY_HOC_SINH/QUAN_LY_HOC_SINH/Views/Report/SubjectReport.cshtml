@@ -1,0 +1,32 @@
+﻿@model IList<Services.DTO.ReportDTO>
+@using Services.DTO
+@using Resources
+
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.SubjectReport</p>
+    <h5 class="d-flex justify-content-center">
+        @Resource.Semester:&nbsp;<span>@ViewBag.Semester</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        @Resource.Subject:&nbsp;<span>@ViewBag.Subject</span>
+    </h5>
+    <div class="table-responsive">
+        <table class="data_table table-striped table-bordered">
+            <thead>
+                <th>@Resource.Class</th>
+                <th>@Resource.NumberOfStudentsInClass</th>
+                <th>@Resource.NumberOfStudentsPass</th>
+                <th>@Resource.Ratio</th>
+            </thead>
+            <tbody>
+                @foreach (ReportDTO reportDTO in Model)
+                {
+                    <tr>
+                        <td>@reportDTO.ClassName</td>
+                        <td>@reportDTO.NumberOfStudentsInClass</td>
+                        <td>@reportDTO.NumberOfStudentsPass</td>
+                        <td>@reportDTO.Ratio</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

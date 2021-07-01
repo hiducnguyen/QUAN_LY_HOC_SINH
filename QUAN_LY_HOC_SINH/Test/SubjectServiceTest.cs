@@ -21,7 +21,8 @@ namespace Test
         private IUnitOfWork _unitOfWork;
         private ISubjectRepository _subjectRepository;
         private IGenericRepository _genericRepository;
-        private ITranscriptRepository _transcriptRepository; 
+        private ITranscriptRepository _transcriptRepository;
+        private IStudentRepository _studentRepository;
         private IList<Subject> _mockSubjects;
 
         [OneTimeSetUp]
@@ -31,8 +32,9 @@ namespace Test
             _genericRepository = new GenericRepository(_unitOfWork);
             _subjectRepository = new SubjectRepository(_unitOfWork);
             _transcriptRepository = new TranscriptRepository(_unitOfWork);
+            _studentRepository = new StudentRepository(_unitOfWork);
             _subjectService = new SubjectService(_unitOfWork, _subjectRepository,
-                _genericRepository, _transcriptRepository);
+                _genericRepository, _transcriptRepository, _studentRepository);
             _mockSubjects = new List<Subject>();
         }
 
@@ -43,6 +45,14 @@ namespace Test
             {
                 foreach (Subject subject in _mockSubjects)
                 {
+                    IList<Transcript> transcripts = _transcriptRepository.FindAllTranscripts(subject);
+                    if (transcripts != null)
+                    {
+                        foreach (Transcript transcript in transcripts)
+                        {
+                            _genericRepository.Delete(transcript);
+                        }
+                    }
                     _genericRepository.Delete(subject);
                 }
                 _unitOfWork.Commit();

@@ -50,31 +50,43 @@
                     <a href="/subject/create" class="nav_option @(currentLink=="/subject/create"?"current_item":"")">
                         @Resource.Subject
                     </a>
-                    <a href="/transcript/create" class="nav_option @(currentLink=="/transcript/create"?"current_item":"")">
-                        @Resource.Transcript
-                    </a>
                 </div>
                 <div class="nav_group">
                     <p class="nav_group_name">@Resource.List</p>
                     <a href="/student/index" class="nav_option @(currentLink=="/student/index"?"current_item":"")">
-                        @Resource.Student</a>
+                        @Resource.Student
+                    </a>
                     <a href="/class/index" class="nav_option @(currentLink=="/class/index"?"current_item":"")">
-                        @Resource.ClassLong</a>
+                        @Resource.ClassLong
+                    </a>
                     <a href="/subject/index" class="nav_option @(currentLink=="/subject/index"?"current_item":"")">
-                        @Resource.Subject</a>
-                    <a href="/transcript/index" class="nav_option @(currentLink=="/transcript/index"?"current_item":"")">
-                        @Resource.Transcript</a>
+                        @Resource.Subject
+                    </a>
                 </div>
                 <div class="nav_group">
-                    <p class="nav_group_name">@Resource.Other</p>
+                    <p class="nav_group_name">@Resource.Transcript</p>
+                    <a href="/transcript/index" class="nav_option
+                       @((currentLink=="/transcript/index" || currentLink=="/transcript/detail")?"current_item":"")">
+                        @Resource.UpdateTranscript
+                    </a>
                     <a href="./searchTranscript.html" class="nav_option">
-                        @Resource.SearchTranscript</a>
-                    <a href="./searchSubjectReport.html" class="nav_option">
-                        @Resource.ReportSubject</a>
-                    <a href="./searchSemesterReport.html" class="nav_option">
-                        @Resource.ReportSemester</a>
+                        @Resource.SearchTranscript
+                    </a>
+                </div>
+                <div class="nav_group">
+                    <p class="nav_group_name">@Resource.Report</p>
+                    <a href="/report/subject" class="nav_option @(currentLink=="/report/subject"?"current_item":"")">
+                        @Resource.ReportSubject
+                    </a>
+                    <a href="/report/semester" class="nav_option @(currentLink=="/report/semester"?"current_item":"")">
+                        @Resource.ReportSemester
+                    </a>
+                </div>
+                <div class="nav_group">
+                    <p class="nav_group_name">@Resource.Rule</p>
                     <a href="/rule/index" class="nav_option @(currentLink=="/rule/index"?"current_item":"")">
-                        @Resource.ChangeRule</a>
+                        @Resource.UpdateRule
+                    </a>
                 </div>
             </nav>
             <!--    Content here -->

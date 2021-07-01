@@ -163,6 +163,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RuleController.cs" />
     <Compile Include="Controllers\TranscriptController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -324,8 +325,11 @@
     <Content Include="Views\Subject\Index.cshtml" />
     <Content Include="Views\Subject\Create.cshtml" />
     <Content Include="Views\Transcript\Index.cshtml" />
-    <Content Include="Views\Transcript\Create.cshtml" />
     <Content Include="Views\Transcript\Detail.cshtml" />
+    <Content Include="Views\Report\Subject.cshtml" />
+    <Content Include="Views\Report\SubjectReport.cshtml" />
+    <Content Include="Views\Report\Semester.cshtml" />
+    <Content Include="Views\Report\SemesterReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

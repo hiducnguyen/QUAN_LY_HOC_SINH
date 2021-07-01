@@ -1,0 +1,16 @@
+﻿@using Resources
+@{ 
+    SelectList allSubjects = (SelectList)ViewBag.AllSubjects;
+    SelectList allSemesters = (SelectList)ViewBag.AllSemesters;
+}
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.CreateSubjectReport</p>
+    <form action="/report/subject" method="post">
+        <label for="semester" class="required">@Resource.Semester</label>
+        @Html.DropDownList("semester", allSemesters, new { @class = "form-control" })
+        <label for="subject" class="required">@Resource.Subject</label>
+        @Html.DropDownList("subjectId", allSubjects, new { @class = "form-control" })
+        <br>
+        <button type="submit" class="btn btn-primary">@Resource.Create</button>
+    </form>
+</div>

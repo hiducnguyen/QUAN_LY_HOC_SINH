@@ -12,7 +12,7 @@ namespace Repositories.Enums
     }
     public class SemesterHelper
     {
-        public static SelectList GetAllSemesters()
+        public static SelectList GetSelectListOfAllSemesters()
         {
             IEnumerable<SelectListItem> allSemesters = new List<SelectListItem>(Enumerable.Range(1, 2)
                 .Select(x => new SelectListItem
@@ -23,6 +23,13 @@ namespace Repositories.Enums
             );
 
             return new SelectList(allSemesters.OrderBy(x => x.Text), "Value", "Text");
+        }
+        public static IList<Semester> GetAllSemesters()
+        {
+            return new List<Semester> {
+                Semester.First,
+                Semester.Second
+            };
         }
     }
 }

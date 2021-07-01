@@ -20,9 +20,6 @@
                         <td>@transcript.SubjectName</td>
                         <td>@transcript.Semester</td>
                         <td>
-                            <a data-toggle="modal" href="#deleteModal"
-                               data-id="@transcript.SubjectId/@transcript.ClassName/@transcript.Semester"
-                               >@Resource.Delete</a>
                             <a href="/transcript/detail/@transcript.SubjectId/@transcript.ClassName/@transcript.Semester"
                                >@Resource.Update</a>
                         </td>
@@ -30,12 +27,5 @@
                 }
             </tbody>
         </table>
-
     </div>
-    @Html.Partial("_DeleteModal", new ViewDataDictionary {
-        { "Action", "/transcript/delete"},
-        { "InputType", "text" },
-        { "ObjectName", Resource.Transcript},
-        { "ObjectIdName", Resource.TranscriptOfClass }
-    })
 </div>
