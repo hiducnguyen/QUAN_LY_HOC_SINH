@@ -11,10 +11,15 @@ namespace Services
     public interface ITranscriptService
     {
         /// <summary>
-        /// Find all scripts and map each of them to IndexScriptDTO
+        /// Find all scripts and map each of them to IndexTranscriptDTO
         /// </summary>
         /// <returns></returns>
-        IList<IndexTranscriptDTO> FindAllTranscripts();
+        IList<IndexTranscriptDTO> GetListIndexTranscriptDTOFromAllTranscripts();
+        /// <summary>
+        /// Find all scripts and map each of them to SearchTranscriptDTO
+        /// </summary>
+        /// <returns></returns>
+        IList<SearchTranscriptDTO> GetListSearchTranscriptDTOFromAllTranscripts();
         /// <summary>
         /// Create transcripts base on DTO
         /// </summary>

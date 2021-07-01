@@ -108,7 +108,7 @@ namespace Services
             }
         }
 
-        public IList<IndexTranscriptDTO> FindAllTranscripts()
+        public IList<IndexTranscriptDTO> GetListIndexTranscriptDTOFromAllTranscripts()
         {
             IList<TranscriptOfClass> transcriptOfClasses;
             using (_unitOfWork.Start())
@@ -129,6 +129,39 @@ namespace Services
                 indexTranscriptDTOs.Add(indexTranscriptDTO);
             }
             return indexTranscriptDTOs;
+        }
+
+        public IList<SearchTranscriptDTO> GetListSearchTranscriptDTOFromAllTranscripts()
+        {
+            IList<SearchTranscriptDTO> searchTranscriptDTOs = new List<SearchTranscriptDTO>();
+            IList<Student> students;
+
+            using (_unitOfWork.Start())
+            {
+                students = _studentRepository.FindAllStudents();
+                foreach (Student student in students)
+                {
+                    SearchTranscriptDTO searchTranscriptDTO = new SearchTranscriptDTO
+                    {
+                        StudentId = student.StudentId,
+                        StudentName = student.Name
+                    };
+                    IList<Transcript> transcriptsOfFirstSemester = _transcriptRepository
+                        .FindAllTranscripts(student.Id, Semester.First);
+
+                    IList<Transcript> transcriptsOfSecondSemester = _transcriptRepository
+                        .FindAllTranscripts(student.Id, Semester.Second);
+
+                    searchTranscriptDTO.FirstSemesterAverageScore = 
+                        CalculateAverageScoreOfAllTranscripts(transcriptsOfFirstSemester);
+                    searchTranscriptDTO.SecondSemesterAverageScore =
+                        CalculateAverageScoreOfAllTranscripts(transcriptsOfSecondSemester);
+
+                    searchTranscriptDTOs.Add(searchTranscriptDTO);
+                }
+            }
+
+            return searchTranscriptDTOs;
         }
 
         public IList<ReportDTO> FindSubjectReports(int semester, int subjectId)
@@ -215,6 +248,19 @@ namespace Services
                 }
                 return reportDTOs;
             }
+        }
+
+        private float CalculateAverageScoreOfAllTranscripts(IList<Transcript> transcripts)
+        {
+            int numberOfTranscript = transcripts.Count;
+            float totalAverageScoreOfAllTranscripts = 0;
+            foreach (Transcript transcript in transcripts)
+            {
+                float averageScore = CalculateAverageScore(transcript.FifteenMinuteTestScore,
+                    transcript.FortyFiveMinuteTestScore, transcript.FinalTestScore);
+                totalAverageScoreOfAllTranscripts += averageScore;
+            }
+            return totalAverageScoreOfAllTranscripts / numberOfTranscript;
         }
 
         private float CalculateAverageScore(float fifteenMinutesTestScore,

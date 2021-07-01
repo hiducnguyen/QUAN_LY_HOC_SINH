@@ -91,6 +91,7 @@
     <Compile Include="DTO\IndexStudentDTO.cs" />
     <Compile Include="DTO\IndexSubjectDTO.cs" />
     <Compile Include="DTO\ReportDTO.cs" />
+    <Compile Include="DTO\SearchTranscriptDTO.cs" />
     <Compile Include="DTO\TranscriptDetailDTO.cs" />
     <Compile Include="DTO\UpdateRuleDTO.cs" />
     <Compile Include="Exceptions\BaseException.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Exceptions\ObjectHasBeenUpdatedException.cs" />
     <Compile Include="Exceptions\ObjectNotExistsException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyExistsException.cs" />
+    <Compile Include="Exceptions\OutOfMaximumNumberOfStudentsInClassException.cs" />
     <Compile Include="Exceptions\StudentAlreadyHaveClassException.cs" />
     <Compile Include="Exceptions\UnableToCastException.cs" />
     <Compile Include="IClassService.cs" />

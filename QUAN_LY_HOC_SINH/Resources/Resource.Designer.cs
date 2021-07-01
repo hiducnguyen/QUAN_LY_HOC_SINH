@@ -349,6 +349,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TBHK1.
+        /// </summary>
+        public static string FirstSemesterAverageScore {
+            get {
+                return ResourceManager.GetString("FirstSemesterAverageScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Điểm 1 tiết.
         /// </summary>
         public static string FortyFiveMinutesTestScore {
@@ -556,6 +565,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sĩ số của một lớp không được vượt quá {0} học sinh.
+        /// </summary>
+        public static string OutOfMaximumNumberOfStudentsInClass {
+            get {
+                return ResourceManager.GetString("OutOfMaximumNumberOfStudentsInClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} phải thuộc khoảng từ {1} đến {2}.
         /// </summary>
         public static string RangeError {
@@ -660,6 +678,15 @@ namespace Resources {
         public static string SearchTranscript {
             get {
                 return ResourceManager.GetString("SearchTranscript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TBHK2.
+        /// </summary>
+        public static string SecondSemesterAverageScore {
+            get {
+                return ResourceManager.GetString("SecondSemesterAverageScore", resourceCulture);
             }
         }
         

@@ -23,6 +23,7 @@ namespace Test
         private IUnitOfWork _unitOfWork;
         private IGenericRepository _genericRepository;
         private IClassRepository _classRepository;
+        private IRuleRepository _ruleRepository;
         private IStudentRepository _studentRepository;
 
         [OneTimeSetUp]
@@ -34,7 +35,9 @@ namespace Test
             _genericRepository = new GenericRepository(_unitOfWork);
             _classRepository = new ClassRepository(_unitOfWork);
             _studentRepository = new StudentRepository(_unitOfWork);
-            _classService = new ClassService(_unitOfWork, _genericRepository, _classRepository, _studentRepository);
+            _ruleRepository = new RuleRepository(_unitOfWork);
+            _classService = new ClassService(_unitOfWork, _genericRepository,
+                _classRepository, _studentRepository, _ruleRepository);
         }
 
         [TearDown]

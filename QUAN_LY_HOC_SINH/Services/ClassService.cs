@@ -20,6 +20,7 @@ namespace Services
         private IGenericRepository _genericRepository;
         private IClassRepository _classRepository;
         private IStudentRepository _studentRepository;
+        private IRuleRepository _ruleRepository;
         private IUnitOfWork _unitOfWork;
 
         private bool IsMissingRequiredField(CreateClassDTO createClassDTO)
@@ -31,12 +32,14 @@ namespace Services
             IUnitOfWork unitOfWork,
             IGenericRepository genericRepository,
             IClassRepository classRepository,
-            IStudentRepository studentRepository)
+            IStudentRepository studentRepository,
+            IRuleRepository ruleRepository)
         {
             _unitOfWork = unitOfWork;
             _genericRepository = genericRepository;
             _classRepository = classRepository;
             _studentRepository = studentRepository;
+            _ruleRepository = ruleRepository;
         }
 
         public Class CreateClass(CreateClassDTO createClassDTO)
@@ -44,6 +47,16 @@ namespace Services
             if (IsMissingRequiredField(createClassDTO))
             {
                 throw new MissingRequiredFieldException();
+            }
+            if (createClassDTO.Students != null)
+            {
+                using (_unitOfWork.Start())
+                {
+                    int maximumNumberOfStudentsInOneClass =
+                        Convert.ToInt32(_ruleRepository.FindRuleById(1000).Value);
+                    if (createClassDTO.Students.Count > maximumNumberOfStudentsInOneClass)
+                        throw new OutOfMaximumNumberOfStudentsInClassException(maximumNumberOfStudentsInOneClass);
+                }
             }
             Class @class = new Class
             {
@@ -136,6 +149,16 @@ namespace Services
             if (IsMissingRequiredField(createClassDTO))
             {
                 throw new MissingRequiredFieldException();
+            }
+            if (createClassDTO.Students != null)
+            {
+                using (_unitOfWork.Start())
+                {
+                    int maximumNumberOfStudentsInOneClass =
+                        Convert.ToInt32(_ruleRepository.FindRuleById(1000).Value);
+                    if (createClassDTO.Students.Count > maximumNumberOfStudentsInOneClass)
+                        throw new OutOfMaximumNumberOfStudentsInClassException(maximumNumberOfStudentsInOneClass);
+                }
             }
             Class @class;
             using (_unitOfWork.Start())

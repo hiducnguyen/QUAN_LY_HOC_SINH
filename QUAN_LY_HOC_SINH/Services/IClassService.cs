@@ -25,6 +25,7 @@ namespace Services
         /// </exception>
         /// <exception cref="Services.Exceptions.MissingRequiredFieldException"></exception>
         /// <exception cref="Services.Exceptions.StudentAlreadyHaveClassException"></exception>
+        /// <exception cref="Services.Exceptions.OutOfMaximumNumberOfStudentsInClassException"></exception>
         /// <exception cref="Services.Exceptions.ObjectNotExistsException">
         /// Throw when a student of class not exists
         /// </exception>
@@ -51,6 +52,7 @@ namespace Services
         /// <exception cref="Services.Exceptions.ObjectNotExistsException"></exception>
         /// <exception cref="Services.Exceptions.MissingRequiredFieldException"></exception>
         /// <exception cref="Services.Exceptions.ObjectHasBeenUpdatedException"></exception>
+        /// <exception cref="Services.Exceptions.OutOfMaximumNumberOfStudentsInClassException"></exception>
         /// <exception cref="Services.Exceptions.StudentAlreadyHaveClassException"></exception>
         /// <param name="createClassDTO"></param>
         void UpdateClass(CreateClassDTO createClassDTO);

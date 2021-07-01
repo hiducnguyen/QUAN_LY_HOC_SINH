@@ -213,6 +213,9 @@
   <data name="FinalTestScore" xml:space="preserve">
     <value>Điểm cuối kỳ</value>
   </data>
+  <data name="FirstSemesterAverageScore" xml:space="preserve">
+    <value>TBHK1</value>
+  </data>
   <data name="FortyFiveMinutesTestScore" xml:space="preserve">
     <value>Điểm 1 tiết</value>
   </data>
@@ -282,6 +285,9 @@
   <data name="Other" xml:space="preserve">
     <value>Khác</value>
   </data>
+  <data name="OutOfMaximumNumberOfStudentsInClass" xml:space="preserve">
+    <value>Sĩ số của một lớp không được vượt quá {0} học sinh</value>
+  </data>
   <data name="RangeError" xml:space="preserve">
     <value>{0} phải thuộc khoảng từ {1} đến {2}</value>
   </data>
@@ -317,6 +323,9 @@
   </data>
   <data name="SearchTranscript" xml:space="preserve">
     <value>Tra cứu điểm</value>
+  </data>
+  <data name="SecondSemesterAverageScore" xml:space="preserve">
+    <value>TBHK2</value>
   </data>
   <data name="Semester" xml:space="preserve">
     <value>Học kỳ</value>
