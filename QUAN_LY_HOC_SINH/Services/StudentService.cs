@@ -252,5 +252,22 @@ namespace Services
             );
             return new MultiSelectList(selectListStudents.OrderBy(x => x.Text), "Value", "Text");
         }
+
+        public SelectList GetSelectListOfAllStudents()
+        {
+            IList<Student> students;
+            using (_unitOfWork.Start())
+            {
+                students = _studentRepository.FindAllStudents();
+            }
+            IEnumerable<SelectListItem> selectListStudents = new List<SelectListItem>(
+                students.Select(x => new SelectListItem
+                {
+                    Value = x.StudentId.ToString(),
+                    Text = $"{x.StudentId}: {x.Name}"
+                })
+            );
+            return new SelectList(selectListStudents.OrderBy(x => x.Text), "Value", "Text");
+        }
     }
 }

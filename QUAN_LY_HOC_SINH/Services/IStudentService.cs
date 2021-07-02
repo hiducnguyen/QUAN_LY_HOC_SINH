@@ -73,5 +73,10 @@ namespace Services
         /// </exception>
         /// <returns>All student which have not had class yet and all current student of the class which have className</returns>
         MultiSelectList GetAllAvailableStudents(string className);
+        /// <summary>
+        /// Find all students and convert them to SelectList
+        /// </summary>
+        /// <returns></returns>
+        SelectList GetSelectListOfAllStudents();
     }
 }

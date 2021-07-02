@@ -18,6 +18,12 @@ namespace Repositories
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Class FindClassById(Guid id);
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         IList<Class> FindAllClasses();
     }

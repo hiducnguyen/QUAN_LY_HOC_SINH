@@ -23,6 +23,13 @@ namespace Repositories
             return _unitOfWork.Session.QueryOver<Class>().List();
         }
 
+        public Class FindClassById(Guid id)
+        {
+            return _unitOfWork.Session.QueryOver<Class>()
+                .Where(x => x.Id == id)
+                .SingleOrDefault();
+        }
+
         public Class FindClassByName(string name)
         {
             Class @class = _unitOfWork.Session.QueryOver<Class>()

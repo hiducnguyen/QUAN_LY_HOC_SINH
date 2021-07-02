@@ -16,11 +16,6 @@ namespace Services
         /// <returns></returns>
         IList<IndexTranscriptDTO> GetListIndexTranscriptDTOFromAllTranscripts();
         /// <summary>
-        /// Find all scripts and map each of them to SearchTranscriptDTO
-        /// </summary>
-        /// <returns></returns>
-        IList<SearchTranscriptDTO> GetListSearchTranscriptDTOFromAllTranscripts();
-        /// <summary>
         /// Create transcripts base on DTO
         /// </summary>
         /// <param name="createTranscriptDTO"></param>
@@ -62,5 +57,11 @@ namespace Services
         /// <param name="transcriptDetailDTOs"></param>
         void UpdateTranscripts(int subjectId, string className, int semester,
             IList<TranscriptDetailDTO> transcriptDetailDTOs);
+        /// <summary>
+        /// Find transcripts corresponding to studentId and convert them to SearchTranscriptDTO
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        SearchTranscriptDTO GetSearchTranscriptDTOByStudentId(int studentId);
     }
 }

@@ -16,13 +16,17 @@ namespace QUAN_LY_HOC_SINH.Controllers
         private ITranscriptService _transcriptService;
         private IClassService _classService;
         private ISubjectService _subjectService;
+        private IStudentService _studentService;
+
         public TranscriptController(ITranscriptService scriptService,
             IClassService classService,
-            ISubjectService subjectService)
+            ISubjectService subjectService,
+            IStudentService studentService)
         {
             _transcriptService = scriptService;
             _classService = classService;
             _subjectService = subjectService;
+            _studentService = studentService;
         }
 
         // GET: Transcript
@@ -71,9 +75,18 @@ namespace QUAN_LY_HOC_SINH.Controllers
         // GET: Transcript/Search
         public ActionResult Search()
         {
-            IList<SearchTranscriptDTO> model = _transcriptService
-                .GetListSearchTranscriptDTOFromAllTranscripts();
             ViewBag.Title = Resource.SearchTranscript;
+            ViewBag.AllStudents = _studentService.GetSelectListOfAllStudents();
+            return View();
+        }
+
+        // POST: Transcript/Search
+        [HttpPost]
+        public ActionResult Search(int studentId)
+        {
+            SearchTranscriptDTO model = _transcriptService.GetSearchTranscriptDTOByStudentId(studentId);
+            ViewBag.Title = Resource.SearchTranscript;
+            ViewBag.AllStudents = _studentService.GetSelectListOfAllStudents();
             return View(model);
         }
     }

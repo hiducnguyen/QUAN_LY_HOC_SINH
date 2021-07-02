@@ -9,8 +9,8 @@ namespace Services.DTO
 {
     public class SearchTranscriptDTO
     {
-        public int StudentId { get; set; }
         public string StudentName { get; set; }
+        public string ClassName { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:#.##}")]
         public float FirstSemesterAverageScore { get; set; }

@@ -131,39 +131,6 @@ namespace Services
             return indexTranscriptDTOs;
         }
 
-        public IList<SearchTranscriptDTO> GetListSearchTranscriptDTOFromAllTranscripts()
-        {
-            IList<SearchTranscriptDTO> searchTranscriptDTOs = new List<SearchTranscriptDTO>();
-            IList<Student> students;
-
-            using (_unitOfWork.Start())
-            {
-                students = _studentRepository.FindAllStudents();
-                foreach (Student student in students)
-                {
-                    SearchTranscriptDTO searchTranscriptDTO = new SearchTranscriptDTO
-                    {
-                        StudentId = student.StudentId,
-                        StudentName = student.Name
-                    };
-                    IList<Transcript> transcriptsOfFirstSemester = _transcriptRepository
-                        .FindAllTranscripts(student.Id, Semester.First);
-
-                    IList<Transcript> transcriptsOfSecondSemester = _transcriptRepository
-                        .FindAllTranscripts(student.Id, Semester.Second);
-
-                    searchTranscriptDTO.FirstSemesterAverageScore = 
-                        CalculateAverageScoreOfAllTranscripts(transcriptsOfFirstSemester);
-                    searchTranscriptDTO.SecondSemesterAverageScore =
-                        CalculateAverageScoreOfAllTranscripts(transcriptsOfSecondSemester);
-
-                    searchTranscriptDTOs.Add(searchTranscriptDTO);
-                }
-            }
-
-            return searchTranscriptDTOs;
-        }
-
         public IList<ReportDTO> FindSubjectReports(int semester, int subjectId)
         {
             using (_unitOfWork.Start())
@@ -269,6 +236,35 @@ namespace Services
             return (fifteenMinutesTestScore + fortyFiveMinutesTestScore * 2 + finalTestScore * 3) / 6;
         }
 
+        public SearchTranscriptDTO GetSearchTranscriptDTOByStudentId(int studentId)
+        {
+            SearchTranscriptDTO searchTranscriptDTO;
+            using (_unitOfWork.Start())
+            {
+                Student student = _studentRepository.FindStudentByStudentId(studentId);
+                searchTranscriptDTO = new SearchTranscriptDTO
+                {
+                    StudentName = student.Name
+                };
+                if (student.ClassId != null)
+                {
+                    searchTranscriptDTO.ClassName =
+                        _classRepository.FindClassById((Guid)student.ClassId).Name;
+                }
+                IList<Transcript> transcriptsOfFirstSemester = _transcriptRepository
+                    .FindAllTranscripts(student.Id, Semester.First);
+
+                IList<Transcript> transcriptsOfSecondSemester = _transcriptRepository
+                    .FindAllTranscripts(student.Id, Semester.Second);
+
+                searchTranscriptDTO.FirstSemesterAverageScore =
+                    CalculateAverageScoreOfAllTranscripts(transcriptsOfFirstSemester);
+                searchTranscriptDTO.SecondSemesterAverageScore =
+                    CalculateAverageScoreOfAllTranscripts(transcriptsOfSecondSemester);
+            }
+            return searchTranscriptDTO;
+        }
+
         public IList<TranscriptDetailDTO> FindTranscripts(int subjectId, string className, int semester)
         {
             using (_unitOfWork.Start())
@@ -310,7 +306,8 @@ namespace Services
             }
         }
 
-        public void UpdateTranscripts(int subjectId, string className, int semester, IList<TranscriptDetailDTO> transcriptDetailDTOs)
+        public void UpdateTranscripts(int subjectId, string className, int semester,
+            IList<TranscriptDetailDTO> transcriptDetailDTOs)
         {
             using (_unitOfWork.Start())
             {

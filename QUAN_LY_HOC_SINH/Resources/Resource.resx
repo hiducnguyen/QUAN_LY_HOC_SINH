@@ -321,6 +321,9 @@
   <data name="Script" xml:space="preserve">
     <value>Bảng điểm</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tra cứu</value>
+  </data>
   <data name="SearchTranscript" xml:space="preserve">
     <value>Tra cứu điểm</value>
   </data>

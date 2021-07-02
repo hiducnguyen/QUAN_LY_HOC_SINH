@@ -1,27 +1,38 @@
-﻿@model IList<SearchTranscriptDTO>
+﻿@model SearchTranscriptDTO
 @using Resources
 @using Services.DTO 
+@{ 
+    SelectList allStudents = (SelectList)ViewBag.AllStudents;
+}
+
 <div class="col-lg-10 content">
     <p class="page_title">@Resource.SearchTranscript</p>
     <div class="table-responsive">
-        <table class="data_table table-striped table-bordered">
-            <thead>
-            <th>@Resource.StudentId</th>
-            <th>@Resource.StudentName</th>
-            <th>@Resource.FirstSemesterAverageScore</th>
-            <th>@Resource.SecondSemesterAverageScore</th>
-            </thead>
-            <tbody>
-                @foreach (SearchTranscriptDTO searchTranscriptDTO in Model)
-                {
+        <form action="/transcript/search" method="post">
+            <label for="studentId">@Resource.Student</label>
+            @Html.DropDownList("studentId", allStudents, new { @class = "form-control" })
+            <br>
+            <button type="submit" class="btn btn-primary">@Resource.Search</button>
+        </form>
+        @if (Model != null)
+        {
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                <th>@Resource.StudentName</th>
+                <th>@Resource.Class</th>
+                <th>@Resource.FirstSemesterAverageScore</th>
+                <th>@Resource.SecondSemesterAverageScore</th>
+                </thead>
+                <tbody>
                     <tr>
-                        <td>@searchTranscriptDTO.StudentId</td>
-                        <td>@searchTranscriptDTO.StudentName</td>
-                        <td>@searchTranscriptDTO.FirstSemesterAverageScore</td>
-                        <td>@searchTranscriptDTO.SecondSemesterAverageScore</td>
+                        <td>@Model.StudentName</td>
+                        <td>@Model.ClassName</td>
+                        <td>@Model.FirstSemesterAverageScore</td>
+                        <td>@Model.SecondSemesterAverageScore</td>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        }
     </div>
 </div>
