@@ -38,7 +38,7 @@ namespace Test
 
         private float GenerateScore()
         {
-            float score = rand.Next(4, 10) + rand.Next(0, 2) * 0.5F;
+            float score = rand.Next(4, 11) + rand.Next(0, 2) * 0.5F;
             if (score > 10) score = 10;
             return score;
         }
