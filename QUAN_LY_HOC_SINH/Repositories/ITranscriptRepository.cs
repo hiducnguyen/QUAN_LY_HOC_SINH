@@ -11,6 +11,11 @@ namespace Repositories
     public interface ITranscriptRepository
     {
         /// <summary>
+        /// Find all transcripts
+        /// </summary>
+        /// <returns></returns>
+        IList<Transcript> FindAllTranscripts();
+        /// <summary>
         /// Find all transcripts which belong to a subject with corresponding subjectId
         /// </summary>
         /// <param name="subject"></param>

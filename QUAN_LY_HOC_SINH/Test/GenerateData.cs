@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Repositories;
+using Repositories.Models;
 using Repositories.UnitOfWork;
 using Services;
 using Services.DTO;
@@ -14,8 +15,65 @@ namespace Test
     class GenerateData
     {
         private Random rand = new Random();
+
         [Test]
-        public void Generate()
+        public void GenerateTranscripts()
+        {
+            IUnitOfWork unitOfWork = new UnitOfWork();
+            ITranscriptRepository transcriptRepository = new TranscriptRepository(unitOfWork);
+            IGenericRepository genericRepository = new GenericRepository(unitOfWork);
+            using (unitOfWork.Start())
+            {
+                IList<Transcript> allTranscripts = transcriptRepository.FindAllTranscripts();
+                foreach (Transcript transcript in allTranscripts)
+                {
+                    transcript.FifteenMinuteTestScore = GenerateScore();
+                    transcript.FortyFiveMinuteTestScore = GenerateScore();
+                    transcript.FinalTestScore = GenerateScore();
+                    genericRepository.Update(transcript);
+                }
+                unitOfWork.Commit();
+            }
+        }
+
+        private float GenerateScore()
+        {
+            float score = rand.Next(4, 10) + rand.Next(0, 2) * 0.5F;
+            if (score > 10) score = 10;
+            return score;
+        }
+
+        [Test]
+        public void AutoAddStudentsToClasses()
+        {
+            IUnitOfWork unitOfWork = new UnitOfWork();
+            IGenericRepository genericRepository = new GenericRepository(unitOfWork);
+            IClassRepository classRepository = new ClassRepository(unitOfWork);
+            IStudentRepository studentRepository = new StudentRepository(unitOfWork);
+            IRuleRepository ruleRepository = new RuleRepository(unitOfWork);
+            IClassService classService = new ClassService(unitOfWork, genericRepository,
+                classRepository, studentRepository, ruleRepository);
+            
+            using (unitOfWork.Start())
+            {
+                IList<Class> allClasses = classRepository.FindAllClasses();
+                foreach (Class @class in allClasses)
+                {
+                    while (@class.Students.Count < 40)
+                    {
+                        IList<Student> allAvailableStudents = studentRepository.FindAllAvailableStudents();
+                        if (allAvailableStudents.Count == 0) break;
+                        Student student = allAvailableStudents[rand.Next(0, allAvailableStudents.Count)];
+                        student.ClassId = @class.Id;
+                        @class.Students.Add(student);
+                    }
+                }
+                unitOfWork.Commit();
+            }
+        }
+
+        [Test]
+        public void GenerateStudents()
         {
             IUnitOfWork unitOfWork = new UnitOfWork();
             IGenericRepository genericRepository = new GenericRepository(unitOfWork);
@@ -27,7 +85,7 @@ namespace Test
             IList<CreateStudentDTO> createStudentDTOs = new List<CreateStudentDTO>();
             int currentAvailabelId = 1000;
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 350; i++)
             {
                 createStudentDTOs.Add(GenerateCreateStudentDTO(ref currentAvailabelId));
             }
@@ -38,6 +96,7 @@ namespace Test
                 studentService.CreateStudent(createStudentDTO);
             }
         }
+
         private CreateStudentDTO GenerateCreateStudentDTO(ref int nextAvailableId)
         {
             CreateStudentDTO createStudentDTO = new CreateStudentDTO();

@@ -18,6 +18,11 @@ namespace Repositories
             _unitOfWork = unitOfWork;
         }
 
+        public IList<Transcript> FindAllTranscripts()
+        {
+            return _unitOfWork.Session.QueryOver<Transcript>().List();
+        }
+
         public IList<Transcript> FindAllTranscripts(Subject subject)
         {
             return _unitOfWork.Session.QueryOver<Transcript>()
