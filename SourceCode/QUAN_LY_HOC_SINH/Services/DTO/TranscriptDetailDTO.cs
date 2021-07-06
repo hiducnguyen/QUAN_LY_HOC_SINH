@@ -16,19 +16,16 @@ namespace Services.DTO
         [Display(Name = "FifteenMinutesTestScore", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Range(0, 10, ErrorMessageResourceName = "RangeError", ErrorMessageResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:#.##}")]
         public float FifteenMinutesTestScore { get; set; }
 
         [Display(Name = "FortyFiveMinutesTestScore", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Range(0, 10, ErrorMessageResourceName = "RangeError", ErrorMessageResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:#.##}")]
         public float FortyFiveMinutesTestScore { get; set; }
 
         [Display(Name = "FinalTestScore", ResourceType = typeof(Resource))]
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Range(0, 10, ErrorMessageResourceName = "RangeError", ErrorMessageResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:#.##}")]
         public float FinalTestScore { get; set; }
         public int Version { get; set; }
     }

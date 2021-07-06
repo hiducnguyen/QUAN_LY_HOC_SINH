@@ -6,11 +6,12 @@
     if (culture === "vi") {
         $('.data_table').DataTable({
             "language": {
-                "decimal": "",
+                "decimal": ",",
                 "info": "Hiển thị từ _START_ tới _END_ trong _TOTAL_ hàng",
                 "infoEmpty": "Hiển thị từ 0 tới 0 trong 0 hàng",
+                "infoFiltered": "(lọc từ toàn bộ _MAX_ hàng)",
                 "infoPostFix": "",
-                "thousands": ",",
+                "thousands": " ",
                 "lengthMenu": "Hiển thị _MENU_ hàng",
                 "loadingRecords": "Đang tải...",
                 "processing": "Đang xử lý...",
@@ -40,3 +41,11 @@
         document.querySelector('#deleteModal #id_to_delete').innerText = id;
     });
 });
+$.validator.methods.range = function (value, element, param) {
+    let globalizedValue = value.replace(",", ".");
+    return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+}
+
+$.validator.methods.number = function (value, element) {
+    return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+}
