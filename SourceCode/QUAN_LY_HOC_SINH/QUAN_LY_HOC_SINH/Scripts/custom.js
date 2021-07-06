@@ -40,7 +40,9 @@
         document.querySelector('#deleteModal input[name="id"]').value = id;
         document.querySelector('#deleteModal #id_to_delete').innerText = id;
     });
-});
+}); 
+
+// Allow to use comma to display decimal
 $.validator.methods.range = function (value, element, param) {
     let globalizedValue = value.replace(",", ".");
     return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
