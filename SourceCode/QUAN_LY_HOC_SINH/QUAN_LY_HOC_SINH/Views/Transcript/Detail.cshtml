@@ -9,7 +9,8 @@
         @Resource.Subject:&nbsp;<span>@ViewBag.SubjectName</span>&nbsp;&nbsp;&nbsp;&nbsp;
         @Resource.Semester:&nbsp;<span>@ViewBag.Semester</span>
     </h5>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post,
+        new { id = "transcriptDetail" }))
     {
         @Html.AntiForgeryToken()
 
