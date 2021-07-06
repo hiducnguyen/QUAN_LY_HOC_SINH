@@ -165,10 +165,12 @@
     <Compile Include="Controllers\ClassController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RuleController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\TranscriptController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="CultureHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -331,6 +333,7 @@
     <Content Include="Views\Report\Semester.cshtml" />
     <Content Include="Views\Report\SemesterReport.cshtml" />
     <Content Include="Views\Transcript\Search.cshtml" />
+    <Content Include="Views\Setting\Culture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

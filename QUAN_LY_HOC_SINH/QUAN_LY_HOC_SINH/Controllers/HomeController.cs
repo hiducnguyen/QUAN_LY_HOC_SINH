@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Resources;
+using System.Web.Mvc;
 
 namespace QUAN_LY_HOC_SINH.Controllers
 {
@@ -7,7 +8,7 @@ namespace QUAN_LY_HOC_SINH.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.Title = "Trang chủ";
+            ViewBag.Title = Resource.HomePage;
             return View();
         }
     }

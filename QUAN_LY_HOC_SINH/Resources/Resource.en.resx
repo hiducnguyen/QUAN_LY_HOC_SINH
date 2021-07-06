@@ -118,288 +118,288 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>Tài khoản</value>
+    <value>Account</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Thêm</value>
+    <value>Add</value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>Địa chỉ</value>
+    <value>Address</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>Quản lý học sinh</value>
+    <value>Student Management</value>
   </data>
   <data name="BackToHomepage" xml:space="preserve">
-    <value>Quay lại trang chủ</value>
+    <value>Back to homepage</value>
   </data>
   <data name="BirthDate" xml:space="preserve">
-    <value>Ngày sinh</value>
+    <value>Date of Birth</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Hủy</value>
+    <value>Cancel</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
-    <value>Thay đổi ngôn ngữ</value>
+    <value>Change language</value>
   </data>
   <data name="ChooseGender" xml:space="preserve">
-    <value>Chọn giới tính</value>
+    <value>Choose gender</value>
   </data>
   <data name="Class" xml:space="preserve">
-    <value>Lớp</value>
+    <value>Class</value>
   </data>
   <data name="ClassLong" xml:space="preserve">
-    <value>Lớp học</value>
+    <value>Class</value>
   </data>
   <data name="ConfirmCancel" xml:space="preserve">
-    <value>Bạn có chắc chắn muốn hủy, các thay đổi sẽ không được lưu?</value>
+    <value>Do you really want to cancel, every changes will not be saved?</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Tạo</value>
+    <value>Create</value>
   </data>
   <data name="CreateClass" xml:space="preserve">
-    <value>Thêm lớp học</value>
+    <value>Create class</value>
   </data>
   <data name="CreateSemesterReport" xml:space="preserve">
-    <value>Tạo báo cáo tổng kết học kỳ</value>
+    <value>Create semester report</value>
   </data>
   <data name="CreateStudent" xml:space="preserve">
-    <value>Thêm học sinh</value>
+    <value>Create student</value>
   </data>
   <data name="CreateSubject" xml:space="preserve">
-    <value>Thêm môn học</value>
+    <value>Create subject</value>
   </data>
   <data name="CreateSubjectReport" xml:space="preserve">
-    <value>Tạo báo cáo tổng kết môn học</value>
+    <value>Create subject report</value>
   </data>
   <data name="CreateTranscript" xml:space="preserve">
-    <value>Tạo bảng điểm</value>
+    <value>Create transcript</value>
   </data>
   <data name="DateOnlyError" xml:space="preserve">
-    <value>Giá trị này phải là một ngày</value>
+    <value>This value must be a date</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Xóa</value>
+    <value>Delete</value>
   </data>
   <data name="DeleteConfirmMessage" xml:space="preserve">
-    <value>Bạn có chắc muốn xóa {0} có {1} </value>
+    <value>Do you really want to delete {0} which has  {1} </value>
   </data>
   <data name="DevelopeByHelloVanDuc" xml:space="preserve">
-    <value>Phát triển bởi helloVanDuc</value>
+    <value>Develope by helloVanDuc</value>
   </data>
   <data name="Done" xml:space="preserve">
-    <value>Xong</value>
+    <value>Done</value>
   </data>
   <data name="EditClass" xml:space="preserve">
-    <value>Cập nhật thông tin lớp học</value>
+    <value>Edit class</value>
   </data>
   <data name="EditStudent" xml:space="preserve">
-    <value>Cập nhật thông tin học sinh</value>
+    <value>Edit student</value>
   </data>
   <data name="EditSubject" xml:space="preserve">
-    <value>Cập nhật thông tin môn học</value>
+    <value>Edit subject</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="EmailAddressError" xml:space="preserve">
-    <value>{0} phải là một địa chỉ email</value>
+    <value>{0} must be an email address</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Lỗi</value>
+    <value>Error</value>
   </data>
   <data name="Female" xml:space="preserve">
-    <value>Nữ</value>
+    <value>Female</value>
   </data>
   <data name="FifteenMinutesTestScore" xml:space="preserve">
-    <value>Điểm 15 phút</value>
+    <value>Fifteen minutes test score</value>
   </data>
   <data name="FinalTestScore" xml:space="preserve">
-    <value>Điểm cuối kỳ</value>
+    <value>Final test score</value>
   </data>
   <data name="FirstSemesterAverageScore" xml:space="preserve">
-    <value>TBHK1</value>
+    <value>First semester average score</value>
   </data>
   <data name="FortyFiveMinutesTestScore" xml:space="preserve">
-    <value>Điểm 1 tiết</value>
+    <value>Forty minutes test score</value>
   </data>
   <data name="Gender" xml:space="preserve">
-    <value>Giới tính</value>
+    <value>Gender</value>
   </data>
   <data name="Grade" xml:space="preserve">
-    <value>Khối</value>
+    <value>Grade</value>
   </data>
   <data name="HomePage" xml:space="preserve">
-    <value>Trang chủ</value>
+    <value>Home page</value>
   </data>
   <data name="Id" xml:space="preserve">
-    <value>Mã số</value>
+    <value>Id</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Ngôn ngữ</value>
+    <value>Language</value>
   </data>
   <data name="List" xml:space="preserve">
-    <value>Danh sách</value>
+    <value>List</value>
   </data>
   <data name="ListClasses" xml:space="preserve">
-    <value>Danh sách lớp học</value>
+    <value>List classes</value>
   </data>
   <data name="ListRules" xml:space="preserve">
-    <value>Danh sách quy định</value>
+    <value>List rules</value>
   </data>
   <data name="ListScripts" xml:space="preserve">
-    <value>Danh sách bảng điểm</value>
+    <value>List transcripts</value>
   </data>
   <data name="ListStudents" xml:space="preserve">
-    <value>Danh sách học sinh</value>
+    <value>List students</value>
   </data>
   <data name="ListSubjects" xml:space="preserve">
-    <value>Danh sách môn học</value>
+    <value>List subjects</value>
   </data>
   <data name="LogOut" xml:space="preserve">
-    <value>Đăng xuất</value>
+    <value>Log out</value>
   </data>
   <data name="Male" xml:space="preserve">
-    <value>Nam</value>
+    <value>Male</value>
   </data>
   <data name="Menu" xml:space="preserve">
-    <value>Mục lục</value>
+    <value>Menu</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Tên</value>
+    <value>Name</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>Không</value>
+    <value>No</value>
   </data>
   <data name="NumberOfStudentsInClass" xml:space="preserve">
-    <value>Sĩ số</value>
+    <value>Number of Students</value>
   </data>
   <data name="NumberOfStudentsPass" xml:space="preserve">
-    <value>Số lượng đạt</value>
+    <value>Number of Pass</value>
   </data>
   <data name="NumberOnlyError" xml:space="preserve">
-    <value>Giá trị này phải là một số</value>
+    <value>This value must be a number</value>
   </data>
   <data name="ObjectAlreadyExists" xml:space="preserve">
-    <value>{0} có {1}: {2} đã tồn tại, vui lòng chọn {1} khác</value>
+    <value>{0} which has {1}: {2} already exist, please select other {1}</value>
   </data>
   <data name="ObjectDoesNotExists" xml:space="preserve">
-    <value>{0} với {1}: {2} không tồn tại</value>
+    <value>{0} which has  {1}: {2} not exist</value>
   </data>
   <data name="ObjectHasBeenUpdated" xml:space="preserve">
-    <value>{0} có {1}: {2} đã bị thay đổi sau khi bạn tải chúng</value>
+    <value>{0} which has {1}: {2} has been updated since the last time you load it</value>
   </data>
   <data name="Other" xml:space="preserve">
-    <value>Khác</value>
+    <value>Other</value>
   </data>
   <data name="OutOfMaximumNumberOfStudentsInClass" xml:space="preserve">
-    <value>Sĩ số của một lớp không được vượt quá {0} học sinh</value>
+    <value>The number of student in one class can not over {0}</value>
   </data>
   <data name="RangeError" xml:space="preserve">
-    <value>{0} phải thuộc khoảng từ {1} đến {2}</value>
+    <value>{0} must be from {1} to {2}</value>
   </data>
   <data name="Ratio" xml:space="preserve">
-    <value>Tỉ lệ</value>
+    <value>Ratio</value>
   </data>
   <data name="Report" xml:space="preserve">
-    <value>Báo cáo</value>
+    <value>Report</value>
   </data>
   <data name="ReportSemester" xml:space="preserve">
-    <value>Báo cáo học kì</value>
+    <value>Semester report</value>
   </data>
   <data name="ReportSubject" xml:space="preserve">
-    <value>Báo cáo môn học</value>
+    <value>Subject report</value>
   </data>
   <data name="RequiredError" xml:space="preserve">
-    <value>Giá trị này không được bỏ trống</value>
+    <value>This value must be filled</value>
   </data>
   <data name="RequiredFieldMissing" xml:space="preserve">
-    <value>Một (một số) trường giá trị bắt buộc bị thiếu</value>
+    <value>Required field(s) is missed</value>
   </data>
   <data name="Rule" xml:space="preserve">
-    <value>Quy định</value>
+    <value>Rule</value>
   </data>
   <data name="RuleName" xml:space="preserve">
-    <value>Tên quy định</value>
+    <value>Rule name</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Lưu</value>
+    <value>Save</value>
   </data>
   <data name="Script" xml:space="preserve">
-    <value>Bảng điểm</value>
+    <value>Transcript</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Tra cứu</value>
+    <value>Search</value>
   </data>
   <data name="SearchTranscript" xml:space="preserve">
-    <value>Tra cứu điểm</value>
+    <value>Search transcript</value>
   </data>
   <data name="SecondSemesterAverageScore" xml:space="preserve">
-    <value>TBHK2</value>
+    <value>Second semester average score</value>
   </data>
   <data name="Semester" xml:space="preserve">
-    <value>Học kỳ</value>
+    <value>Semester</value>
   </data>
   <data name="SemesterReport" xml:space="preserve">
-    <value>Báo cáo tổng kết học kỳ</value>
+    <value>Semester report</value>
   </data>
   <data name="Setting" xml:space="preserve">
-    <value>Cài đặt</value>
+    <value>Setting</value>
   </data>
   <data name="StringLengthError" xml:space="preserve">
-    <value>{0} không được vượt quá {1} kí tự</value>
+    <value>{0} can not over {1} characters</value>
   </data>
   <data name="Student" xml:space="preserve">
-    <value>Học sinh</value>
+    <value>Student</value>
   </data>
   <data name="StudentAgeInvalid" xml:space="preserve">
-    <value>Độ tuổi của học sinh phải từ {0} tới {1}</value>
+    <value>Student age must be from {0} to {1}</value>
   </data>
   <data name="StudentAlreadyHaveClass" xml:space="preserve">
-    <value>Học sinh với mã số {0} đã có lớp học, bạn không thể thêm học sinh này vào lớp khác</value>
+    <value>Student with id {0} already has class, you can not add him/her to other class</value>
   </data>
   <data name="StudentId" xml:space="preserve">
-    <value>Mã số học sinh</value>
+    <value>Student Id</value>
   </data>
   <data name="StudentIdAlreadyExist" xml:space="preserve">
-    <value>Mã số học sinh đã tồn tại, vui lòng chọn mã số khác</value>
+    <value>Student Id already exist, please select other Id</value>
   </data>
   <data name="StudentName" xml:space="preserve">
-    <value>Họ tên</value>
+    <value>Full name</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Môn học</value>
+    <value>Subject</value>
   </data>
   <data name="SubjectReport" xml:space="preserve">
-    <value>Báo cáo tổng kết môn học</value>
+    <value>Subject report</value>
   </data>
   <data name="Transcript" xml:space="preserve">
-    <value>Bảng điểm</value>
+    <value>Transcript</value>
   </data>
   <data name="TranscriptDetail" xml:space="preserve">
-    <value>Chi tiết bảng điểm</value>
+    <value>Transcript detail</value>
   </data>
   <data name="TranscriptOfClass" xml:space="preserve">
-    <value>Môn học/Lớp/Học kỳ</value>
+    <value>Subject/Class/Semester</value>
   </data>
   <data name="Type" xml:space="preserve">
-    <value>Kiểu dữ liệu</value>
+    <value>Type</value>
   </data>
   <data name="UnableToCast" xml:space="preserve">
-    <value>Giá trị không hợp lệ, không thể chuyển về kiểu dữ liệu phù hợp của quy định</value>
+    <value>Invalid value, please change the value proper with the type of the rule</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Sửa</value>
+    <value>Update</value>
   </data>
   <data name="UpdateRule" xml:space="preserve">
-    <value>Cập nhật quy định</value>
+    <value>Update rules</value>
   </data>
   <data name="UpdateTranscript" xml:space="preserve">
-    <value>Cập nhật bảng điểm</value>
+    <value>Update transcript</value>
   </data>
   <data name="Value" xml:space="preserve">
-    <value>Giá trị</value>
+    <value>Value</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Có</value>
+    <value>Yes</value>
   </data>
 </root>

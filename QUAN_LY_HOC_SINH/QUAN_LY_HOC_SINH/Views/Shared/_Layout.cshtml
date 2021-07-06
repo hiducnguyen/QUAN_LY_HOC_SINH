@@ -86,7 +86,13 @@
                 <div class="nav_group">
                     <p class="nav_group_name">@Resource.Rule</p>
                     <a href="/rule/index" class="nav_option @(currentLink=="/rule/index"?"current_item":"")">
-                        @Resource.UpdateRule
+                        @Resource.Rule
+                    </a>
+                </div>
+                <div class="nav_group">
+                    <p class="nav_group_name">@Resource.Setting</p>
+                    <a href="/setting/culture" class="nav_option @(currentLink=="/setting/culture"?"current_item":"")">
+                        @Resource.Language
                     </a>
                 </div>
             </nav>
@@ -106,6 +112,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/select2")
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+    <script>
+        let culture = "@CultureHelper.GetCurrentNeutralCulture()";
+    </script>
     @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)
 </body>

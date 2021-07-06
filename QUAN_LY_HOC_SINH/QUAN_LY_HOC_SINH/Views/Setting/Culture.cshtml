@@ -1,0 +1,13 @@
+﻿@using Resources
+@{
+    SelectList allCultures = (SelectList)ViewBag.AllCultures;
+}
+<div class="col-lg-10 content">
+    <p class="page_title">@Resource.ChangeLanguage</p>
+    <form action="/setting/culture" method="post">
+        <label for="culture">@Resource.Language</label>
+        @Html.DropDownList("culture", allCultures, new { @class = "form-control"})
+        <br>
+        <button type="submit" class="btn btn-primary">@Resource.Update</button>
+    </form>
+</div>
