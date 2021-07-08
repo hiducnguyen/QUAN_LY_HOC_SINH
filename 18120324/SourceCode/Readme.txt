@@ -6,9 +6,9 @@ Phần mềm cần cài đật:
 - MSSQL Server Management Studio
 
 Tạo database:
-- Mở file ./SourceCode/QUAN_LY_HOC_SINH/GenerateData.sql bằng MSSQL Management Studio
+- Mở file ./QUAN_LY_HOC_SINH/GenerateData.sql bằng MSSQL Management Studio
 - Chạy file để tạo database
 
 Build và chạy ứng dụng:
-- Mở file ./SourceCode/QUAN_LY_HOC_SINH/QUAN_LY_HOC_SINH.sln
+- Mở file ./QUAN_LY_HOC_SINH/QUAN_LY_HOC_SINH.sln
 - Build và chạy ứng dụng
